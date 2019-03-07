@@ -1,0 +1,4 @@
+﻿基础设施的，
+这里面有 依赖注入的接口的
+IDependencyRegister 这个是依赖注入所有容器的实现
+AppDomainTypeFinder类型查找器

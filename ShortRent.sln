@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Api", "ShortRent.Api\ShortRent.Api.csproj", "{946DB274-CA13-4BF0-9C68-3D6B76A91D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Core", "ShortRent.Core\ShortRent.Core.csproj", "{6D90FE98-8825-4D54-B90B-8B7D90131C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Data", "ShortRent.Data\ShortRent.Data.csproj", "{7A134BAE-0723-49A1-8187-B6D7A3843C00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Web", "ShortRent.Web\ShortRent.Web.csproj", "{A3863320-E1EA-4A5C-BF00-555409F0CB65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.WebCore", "ShortRent.WebCore\ShortRent.WebCore.csproj", "{B2BCEAD8-D456-488D-9C0C-012353C4F28B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Service", "ShortRent.Service\ShortRent.Service.csproj", "{F539FCB8-A1DF-478B-A360-4FBCC4FC0DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Test", "ShortRent.Test\ShortRent.Test.csproj", "{E746A6FD-D908-45A4-B2AB-BAFF4983D682}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{946DB274-CA13-4BF0-9C68-3D6B76A91D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946DB274-CA13-4BF0-9C68-3D6B76A91D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946DB274-CA13-4BF0-9C68-3D6B76A91D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946DB274-CA13-4BF0-9C68-3D6B76A91D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D90FE98-8825-4D54-B90B-8B7D90131C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D90FE98-8825-4D54-B90B-8B7D90131C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D90FE98-8825-4D54-B90B-8B7D90131C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D90FE98-8825-4D54-B90B-8B7D90131C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A134BAE-0723-49A1-8187-B6D7A3843C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A134BAE-0723-49A1-8187-B6D7A3843C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A134BAE-0723-49A1-8187-B6D7A3843C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A134BAE-0723-49A1-8187-B6D7A3843C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3863320-E1EA-4A5C-BF00-555409F0CB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3863320-E1EA-4A5C-BF00-555409F0CB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3863320-E1EA-4A5C-BF00-555409F0CB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3863320-E1EA-4A5C-BF00-555409F0CB65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2BCEAD8-D456-488D-9C0C-012353C4F28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BCEAD8-D456-488D-9C0C-012353C4F28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BCEAD8-D456-488D-9C0C-012353C4F28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BCEAD8-D456-488D-9C0C-012353C4F28B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F539FCB8-A1DF-478B-A360-4FBCC4FC0DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F539FCB8-A1DF-478B-A360-4FBCC4FC0DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F539FCB8-A1DF-478B-A360-4FBCC4FC0DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F539FCB8-A1DF-478B-A360-4FBCC4FC0DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCAEDEEB-2DFC-42B8-ABC2-0BBB875B2DAC}
+	EndGlobalSection
+EndGlobal
