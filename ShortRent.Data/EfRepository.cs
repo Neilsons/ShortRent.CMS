@@ -78,7 +78,6 @@ namespace ShortRent.Data
         }
 
         #endregion
-        ssd
 
     }
 }
