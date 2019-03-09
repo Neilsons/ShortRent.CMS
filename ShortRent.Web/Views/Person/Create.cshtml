@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     @using (Html.BeginForm()) 
@@ -57,10 +58,9 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
-    @Scripts.Render("~/Scripts/Jquery");
-    @Scripts.Render("~/Scripts/Jquery-Validate");
-    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive");
-    @RenderSection("script",required:false);
+    @Scripts.Render("~/Scripts/Jquery")
+    @Scripts.Render("~/Scripts/Jquery-Validate")
+    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
 </body>
 </html>
 
