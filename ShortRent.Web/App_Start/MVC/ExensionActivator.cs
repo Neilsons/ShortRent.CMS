@@ -21,6 +21,8 @@ namespace ShortRent.Web.App_Start
             AutofacValidatorFactory autofacValidator = new AutofacValidatorFactory(AutofacConfig.GetConfiguratedBulid());
             //将验证器换成第三方的
             ModelValidatorProviders.Providers.Add(new FluentValidation.Mvc.FluentValidationModelValidatorProvider(autofacValidator)) ;
+            //更改mvc默认的元数据提供者
+            ModelMetadataProviders.Current = new CustomModelMetadataProvider();
         }
     }
 }

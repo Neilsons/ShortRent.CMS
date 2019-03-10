@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using FluentValidation;
 using ShortRent.Core.Domain;
+using ShortRent.Web.Properties;
 
 namespace ShortRent.Web.Validator.Persons
 {
@@ -11,7 +12,7 @@ namespace ShortRent.Web.Validator.Persons
     {
        public PersonValidator()
         {
-            RuleFor(p => p.Name).NotNull().WithMessage("姓名不能为空").Length(5,10);
+            RuleFor(p => p.Name).NotNull().Length(5,10).WithLocalizedMessage(()=>Resources.Scope);
             RuleFor(p => p.Birthday).NotNull();
         }
     }

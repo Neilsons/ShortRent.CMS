@@ -1,4 +1,5 @@
-﻿using ShortRent.Core.Domain;
+﻿using AutoMapper;
+using ShortRent.Core.Domain;
 using ShortRent.Service;
 using ShortRent.WebCore.MVC;
 using System;
@@ -13,11 +14,17 @@ namespace ShortRent.Web.Controllers
     {
         #region Field 
         private readonly IPersonService _personService;
+        //autoMapper
+        private readonly IMapper _mapper;
+        private readonly MapperConfiguration _mapperConfig;
         #endregion
         #region Construction
-        public PersonController(IPersonService personService)
+        public PersonController(IPersonService personService
+            ,IMapper mapper,MapperConfiguration mapperConfiguration)
         {
            this._personService = personService;
+            this._mapper = mapper;
+            this._mapperConfig = mapperConfiguration;
         }
         #endregion
         #region Method
@@ -29,6 +36,11 @@ namespace ShortRent.Web.Controllers
         {
             return Json(_personService.GetPersons(),JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
         public ActionResult Create(Person model)
         {
             if(ModelState.IsValid)
