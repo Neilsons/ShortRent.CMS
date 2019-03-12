@@ -50,6 +50,11 @@ namespace ShortRent.Web.Controllers
             }
             return View(model);
         }
+        public ActionResult Test()
+        {
+            ViewBag.Title = "测试成功";
+            return View();
+        }
         #endregion
     }
 }
