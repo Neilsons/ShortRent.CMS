@@ -63,8 +63,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryRegister.cs" />
+    <Compile Include="ShortRentMap\AddressInfoMap.cs" />
+    <Compile Include="ShortRentMap\CollectMap.cs" />
     <Compile Include="ShortRentMap\CompanyMap.cs" />
     <Compile Include="ShortRentMap\CompanyPerTagMap.cs" />
+    <Compile Include="ShortRentMap\DiscussMap.cs" />
+    <Compile Include="ShortRentMap\PerOrComIntroGuidanceMap.cs" />
+    <Compile Include="ShortRentMap\PerOrComIntroMap.cs" />
     <Compile Include="ShortRentMap\PersonMap.cs" />
     <Compile Include="ShortRentMap\PublishMsgMap.cs" />
     <Compile Include="ShortRentMap\UserTypeMap.cs" />
