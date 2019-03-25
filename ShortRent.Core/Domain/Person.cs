@@ -38,7 +38,7 @@ namespace ShortRent.Core.Domain
         /// 信用积分
         /// </summary>
         [DefaultValue(100)]
-        public int CreditScore { get; set; }
+        public decimal CreditScore { get; set; }
         /// <summary>
         /// 身份证号
         /// </summary>
@@ -47,6 +47,14 @@ namespace ShortRent.Core.Domain
         /// 用户排序
         /// </summary>
         public int PerOrder { get; set; }
+        /// <summary>
+        /// QQ
+        /// </summary>
+        public string Qq { get; set; }
+        /// <summary>
+        /// 微信
+        /// </summary>
+        public string WeChat { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

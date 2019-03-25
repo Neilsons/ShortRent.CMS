@@ -15,13 +15,13 @@ namespace ShortRent.Data.ShortRentMap
             this.ToTable("Person");
             this.HasKey(c=>c.ID);
             this.Property(c=>c.Name).IsRequired().HasMaxLength(20);
-            this.Property(c => c.CreditScore).IsRequired();
+            this.Property(c => c.CreditScore).IsRequired().HasPrecision(18,2);
             this.Property(c=>c.IdCard).HasMaxLength(18).IsRequired();
             this.Property(c=>c.PassWord).HasMaxLength(120);
             this.Property(c=>c.PerImage).HasMaxLength(200);
             this.Property(c=>c.PerOrder).IsOptional();
-
-
+            this.Property(c => c.Qq).HasMaxLength(50);
+            this.Property(c => c.WeChat).HasMaxLength(50);
         }
     }
 }

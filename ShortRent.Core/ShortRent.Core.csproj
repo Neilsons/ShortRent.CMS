@@ -97,7 +97,12 @@
     <Compile Include="Config\RedisCacheElement.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
+    <Compile Include="Domain\Company.cs" />
+    <Compile Include="Domain\CompanyPerTag.cs" />
+    <Compile Include="Domain\PerOrComIntroGuidance.cs" />
     <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\PublishMsg.cs" />
+    <Compile Include="Domain\UserType.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
