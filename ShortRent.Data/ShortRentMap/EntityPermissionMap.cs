@@ -14,8 +14,8 @@ namespace ShortRent.Data.ShortRentMap
         {
             this.ToTable("EntityPermission");
             this.HasKey(c=>c.ID);
-            this.Property(c=>c.Name).IsRequired().HasMaxLength(100);
-            this.Property(c => c.RoleId).IsRequired();
+            this.Property(c=>c.Name).IsRequired().HasMaxLength(20);
+            this.HasRequired(c=>c.Role).WithMany().HasForeignKey(t=>t.RoleId).WillCascadeOnDelete(true);
         }
     }
 }

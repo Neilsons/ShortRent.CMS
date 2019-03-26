@@ -26,5 +26,7 @@ namespace ShortRent.Core.Domain
         /// 角色 Id Role 外键
         /// </summary>
         public int RoleId { get; set; }
+
+        public virtual Role Role { get; set; }
     }
 }

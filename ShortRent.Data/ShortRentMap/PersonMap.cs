@@ -22,6 +22,12 @@ namespace ShortRent.Data.ShortRentMap
             this.Property(c=>c.PerOrder).IsOptional();
             this.Property(c => c.Qq).HasMaxLength(50);
             this.Property(c => c.WeChat).HasMaxLength(50);
+            this.HasMany(c=>c.UserTypes);
+            this.HasMany(c => c.Roles).WithMany().Map(m=> {
+                m.ToTable("UserRole");
+                m.MapLeftKey("PersonId");
+                m.MapRightKey("RoleId");                
+            });
         }
     }
 }

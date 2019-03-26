@@ -27,5 +27,7 @@ namespace ShortRent.Core.Domain
         [DefaultValue(false)]
         public bool IsDelete { get; set; }
 
+        public virtual ICollection<Permission> Permissions { get; set; } = new List<Permission>();
+
     }
 }

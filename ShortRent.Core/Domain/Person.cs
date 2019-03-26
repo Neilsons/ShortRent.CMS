@@ -65,5 +65,8 @@ namespace ShortRent.Core.Domain
         [DefaultValue(false)]
         public bool IsDelete { get; set; }
 
+        public virtual ICollection<UserType> UserTypes { get; set; } = new List<UserType>();
+
+        public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
     }
 }

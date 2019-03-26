@@ -14,6 +14,12 @@ namespace ShortRent.Data.ShortRentMap
         {
             this.ToTable("Role");
             this.Property(c => c.Name).IsRequired().HasMaxLength(100);
+            this.HasMany(c => c.Permissions).WithMany().Map(m =>
+              {
+                  m.ToTable("RolePermission");
+                  m.MapLeftKey("RoleId");
+                  m.MapRightKey("PermissionId");
+              });
         }
     }
 }
