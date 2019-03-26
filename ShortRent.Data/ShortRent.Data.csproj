@@ -68,10 +68,15 @@
     <Compile Include="ShortRentMap\CompanyMap.cs" />
     <Compile Include="ShortRentMap\CompanyPerTagMap.cs" />
     <Compile Include="ShortRentMap\DiscussMap.cs" />
+    <Compile Include="ShortRentMap\EntityPermissionMap.cs" />
+    <Compile Include="ShortRentMap\HistoryRecordMap.cs" />
+    <Compile Include="ShortRentMap\ManagerMap.cs" />
+    <Compile Include="ShortRentMap\PermissionMap.cs" />
     <Compile Include="ShortRentMap\PerOrComIntroGuidanceMap.cs" />
     <Compile Include="ShortRentMap\PerOrComIntroMap.cs" />
     <Compile Include="ShortRentMap\PersonMap.cs" />
     <Compile Include="ShortRentMap\PublishMsgMap.cs" />
+    <Compile Include="ShortRentMap\RoleMap.cs" />
     <Compile Include="ShortRentMap\UserTypeMap.cs" />
     <Compile Include="SRentDbContext.cs" />
   </ItemGroup>

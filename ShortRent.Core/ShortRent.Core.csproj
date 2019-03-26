@@ -102,10 +102,15 @@
     <Compile Include="Domain\Company.cs" />
     <Compile Include="Domain\CompanyPerTag.cs" />
     <Compile Include="Domain\Discuss.cs" />
+    <Compile Include="Domain\EntityPermission.cs" />
+    <Compile Include="Domain\HistoryRecord.cs" />
+    <Compile Include="Domain\Manager.cs" />
+    <Compile Include="Domain\Permission.cs" />
     <Compile Include="Domain\PerOrComIntro.cs" />
     <Compile Include="Domain\PerOrComIntroGuidance.cs" />
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Domain\PublishMsg.cs" />
+    <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\UserType.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
