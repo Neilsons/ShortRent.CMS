@@ -26,5 +26,9 @@ namespace ShortRent.Core.Domain
         /// </summary>
         [DefaultValue(false)]
         public bool IsDelete { get; set; }
+
+        public virtual AddressInfo Parent { get; set; }
+
+        public virtual ICollection<AddressInfo> Childrens { get; set; }
     }
 }

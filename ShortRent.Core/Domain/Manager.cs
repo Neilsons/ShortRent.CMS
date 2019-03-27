@@ -34,5 +34,10 @@ namespace ShortRent.Core.Domain
         /// 图标颜色
         /// </summary>
         public string Color { get; set; }
+
+        public int Pid { get; set; }
+
+        public virtual Manager Parent { get; set; }
+        public virtual ICollection<Manager> Childrens { get; set; }
     }
 }

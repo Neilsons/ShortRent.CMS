@@ -16,6 +16,7 @@ namespace ShortRent.Data.ShortRentMap
             this.HasKey(c=>c.ID);
             this.Property(c=>c.Name).HasMaxLength(100);
             this.Property(c => c.PerId).IsOptional();
+            this.HasOptional(c=>c.Parent);
         }
     }
 }
