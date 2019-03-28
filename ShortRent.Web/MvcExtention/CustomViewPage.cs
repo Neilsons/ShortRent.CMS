@@ -1,9 +1,9 @@
-﻿using ShortRent.Web.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShortRent.Resource;
 
 namespace ShortRent.Web.MvcExtention
 {
@@ -15,7 +15,7 @@ namespace ShortRent.Web.MvcExtention
     {
         public string T(string key)
         {
-            return Resources.ResourceManager.GetString(key);
+            return ResourceManagers.getViewElement(key);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using ShortRent.Web.Properties;
+﻿using ShortRent.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,9 @@ namespace ShortRent.Web
             var modelMetadata = base.CreateMetadata(attributes,containerType,modelAccessor,modelType,propertyName);
             if(containerType!=null)
             {
-                string key = containerType.Name.Replace(".",string.Empty)+propertyName+nameof(modelMetadata.DisplayName);
+               
                 //从资源中拿根据键
-                string displayName=Resources.ResourceManager.GetString(key);
+                string displayName=ResourceManagers.getMetaDataDisplayName(containerType, propertyName,nameof(modelMetadata.DisplayName));
                 if(!string.IsNullOrWhiteSpace(displayName))
                 {
                     modelMetadata.DisplayName = displayName;

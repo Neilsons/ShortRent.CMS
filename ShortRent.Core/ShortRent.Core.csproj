@@ -116,6 +116,9 @@
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Infrastructure\ServiceContainer.cs" />
+    <Compile Include="Language\ILanguages.cs" />
+    <Compile Include="Language\Language.cs" />
+    <Compile Include="Language\Languages.cs" />
     <Compile Include="Log\ILogger.cs" />
     <Compile Include="Log\NLogLogger.cs" />
     <Compile Include="Log\NullLogger.cs" />
@@ -130,6 +133,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,8 @@ using System.Web;
 using Autofac;
 using FluentValidation;
 using ShortRent.Core.Infrastructure;
-using ShortRent.Web.Properties;
+using ShortRent.Resource;
+using ShortRent.Resource.Mvc;
 
 namespace ShortRent.Web.Validator
 {
@@ -24,7 +25,7 @@ namespace ShortRent.Web.Validator
             {
                 string key = type.Name + memberInfo.Name + "DisplayName";
                 //从资源中拿根据键
-                string displayName = Resources.ResourceManager.GetString(key);
+                string displayName = ResourceManagers.getViewElement(key);
                 return displayName;
             };
             //资源从资源文件中获取

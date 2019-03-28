@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Service", "ShortR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Test", "ShortRent.Test\ShortRent.Test.csproj", "{E746A6FD-D908-45A4-B2AB-BAFF4983D682}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShortRent.Resource", "ShortRent.Resource\ShortRent.Resource.csproj", "{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E746A6FD-D908-45A4-B2AB-BAFF4983D682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

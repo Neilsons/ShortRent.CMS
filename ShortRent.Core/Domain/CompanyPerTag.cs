@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShortRent.Core.Domain
 {
-    public  class CompanyPerTag
+    public  class CompanyPerTag:BaseEntity
     {
         /// <summary>
         /// 标签名称

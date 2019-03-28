@@ -13,6 +13,7 @@ namespace ShortRent.Data.ShortRentMap
         public CompanyPerTagMap()
         {
             this.ToTable("CompanyPerTag");
+            this.HasKey(c=>c.ID);
             this.Property(c=>c.Color).HasMaxLength(10).IsRequired();
             this.Property(c=>c.Name).HasMaxLength(20).IsRequired();
         }

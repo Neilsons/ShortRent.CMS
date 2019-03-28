@@ -168,6 +168,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Language.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -202,16 +203,6 @@
     <Compile Include="MvcExtention\CustomViewPage.cs" />
     <Compile Include="MvcExtention\LanguageActionFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.en-us.Designer.cs">
-      <DependentUpon>Resources.en-us.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Validator\AutofacValidatorFactory.cs" />
     <Compile Include="Validator\Persons\PersonValidator.cs" />
     <Compile Include="Validator\ValidatorRegister.cs" />
@@ -279,6 +270,10 @@
       <Project>{7a134bae-0723-49a1-8187-b6d7a3843c00}</Project>
       <Name>ShortRent.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShortRent.Resource\ShortRent.Resource.csproj">
+      <Project>{AD8E5CB4-819D-4508-8A4C-FC0A0384E6C5}</Project>
+      <Name>ShortRent.Resource</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShortRent.Service\ShortRent.Service.csproj">
       <Project>{f539fcb8-a1df-478b-a360-4fbcc4fc0de6}</Project>
       <Name>ShortRent.Service</Name>
@@ -287,16 +282,6 @@
       <Project>{b2bcead8-d456-488d-9c0c-012353c4f28b}</Project>
       <Name>ShortRent.WebCore</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.en-us.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.en-us.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

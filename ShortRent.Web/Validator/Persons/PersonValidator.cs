@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using FluentValidation;
 using ShortRent.Core.Domain;
-using ShortRent.Web.Properties;
+using ShortRent.Resource;
+using ShortRent.Resource.Mvc;
 
 namespace ShortRent.Web.Validator.Persons
 {
