@@ -54,6 +54,7 @@ namespace ShortRent.Web.Controllers
         public ActionResult Test()
         {
             ViewBag.Title = "测试成功";
+            ViewBag.Data = RouteData.DataTokens["language"].ToString();
             return View();
         }
         #endregion
