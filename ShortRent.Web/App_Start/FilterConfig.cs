@@ -10,7 +10,6 @@ namespace ShortRent.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new LanguageActionFilter());
             filters.Add(new HandleErrorAttribute());
         }
     }

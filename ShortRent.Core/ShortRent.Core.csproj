@@ -116,6 +116,7 @@
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Infrastructure\ServiceContainer.cs" />
+    <Compile Include="Language\GlobalManager.cs" />
     <Compile Include="Language\ILanguages.cs" />
     <Compile Include="Language\Language.cs" />
     <Compile Include="Language\Languages.cs" />

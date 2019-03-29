@@ -201,7 +201,6 @@
     <Compile Include="MvcExtention\AutoMapperProfile.cs" />
     <Compile Include="MvcExtention\CustomModelMetadataProvider.cs" />
     <Compile Include="MvcExtention\CustomViewPage.cs" />
-    <Compile Include="MvcExtention\LanguageActionFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\AutofacValidatorFactory.cs" />
     <Compile Include="Validator\Persons\PersonValidator.cs" />

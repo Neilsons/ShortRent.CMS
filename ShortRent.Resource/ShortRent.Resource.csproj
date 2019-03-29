@@ -47,17 +47,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Mvc\Resources.en-us.Designer.cs">
-      <DependentUpon>Resources.en-us.resx</DependentUpon>
+    <Compile Include="Mvc\Resources.en.Designer.cs">
+      <DependentUpon>Resources.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ResourceManagers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mvc\Resources.en-us.resx">
+    <EmbeddedResource Include="Mvc\Resources.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.en-us.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Mvc\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

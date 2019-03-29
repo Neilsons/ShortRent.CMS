@@ -16,7 +16,7 @@ namespace ShortRent.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{lg}/{controller}/{action}/{id}",
-                defaults: new {lg="zh-cn", controller = "Person", action = "Index", id = UrlParameter.Optional }
+                defaults: new {lg="zh", controller = "Person", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

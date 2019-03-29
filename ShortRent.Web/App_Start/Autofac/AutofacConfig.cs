@@ -7,6 +7,8 @@ using Autofac;
 using ShortRent.WebCore.Infrastructure;
 using System.Configuration;
 using ShortRent.Core.Config;
+using ShortRent.Core.Language;
+using System.Web.Hosting;
 
 namespace ShortRent.Web.App_Start
 {
@@ -26,6 +28,8 @@ namespace ShortRent.Web.App_Start
             //在程序启动的时候将配直节初始化将配置节注入进去
             var config = ConfigurationManager.GetSection("applicationConfig") as ApplicationConfig;
             container.RegisterInstance<ApplicationConfig>(config);
+            //注册所有语言
+            container.RegisterInstance<ILanguages>(new Languages(HostingEnvironment.MapPath("~/Language.config")));
             ITypeFinder typeFinder = new WebTypeFinder();
             //实现这个接口的都要注入
             var registerTypes = typeFinder.FindClassesOfType<IDependencyRegister>();

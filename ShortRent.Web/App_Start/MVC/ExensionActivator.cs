@@ -23,6 +23,7 @@ namespace ShortRent.Web.App_Start
             ModelValidatorProviders.Providers.Add(new FluentValidation.Mvc.FluentValidationModelValidatorProvider(autofacValidator)) ;
             //更改mvc默认的元数据提供者
             ModelMetadataProviders.Current = new CustomModelMetadataProvider();
+            
         }
     }
 }
