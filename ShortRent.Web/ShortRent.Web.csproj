@@ -145,6 +145,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\ionicons.svg" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\AdminMaster\adminlte.min.js" />
