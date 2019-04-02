@@ -98,6 +98,7 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Domain\AddressInfo.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
+    <Compile Include="Domain\Business.cs" />
     <Compile Include="Domain\Collect.cs" />
     <Compile Include="Domain\Company.cs" />
     <Compile Include="Domain\CompanyPerTag.cs" />

@@ -43,6 +43,18 @@ namespace ShortRent.Core.Domain
         /// 用户类别的外键
         /// </summary>
         public int UserTypeId{get;set;}
+        /// <summary>
+        /// 行业类别ID 外键
+        /// </summary>
+        public int BusinessTypeId { get; set; }
+        /// <summary>
+        /// 导航属性行业
+        /// </summary>
+        public virtual Business Business { get; set; }
+        /// <summary>
+        /// 用户类别导航属性
+        /// </summary>
+        public virtual UserType UserType { get; set; }
 
     }
 }

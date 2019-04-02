@@ -45,6 +45,10 @@ namespace ShortRent.Core.Domain
         public int PersonId { get; set; }
 
         public virtual Person Person { get; set; }
+        /// <summary>
+        /// 发布信息列表
+        /// </summary>
+        public virtual ICollection<PublishMsg> PublishMsgs { get; set; }
 
     }
 }

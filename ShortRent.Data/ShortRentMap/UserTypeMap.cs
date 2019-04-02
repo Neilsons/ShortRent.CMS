@@ -18,7 +18,8 @@ namespace ShortRent.Data.ShortRentMap
             this.Property(c => c.IdCardBack).HasMaxLength(200);
             this.Property(c => c.CompanyName).HasMaxLength(100);
             this.Property(c=>c.CompanyImg).HasMaxLength(500);
-            this.HasRequired(c => c.Person);
+            this.HasRequired(c => c.Person).WithMany().HasForeignKey(c=>c.PersonId).WillCascadeOnDelete();
+            this.HasMany(c=>c.PublishMsgs);
         }
     }
 }
