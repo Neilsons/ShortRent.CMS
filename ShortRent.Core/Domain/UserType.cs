@@ -49,6 +49,10 @@ namespace ShortRent.Core.Domain
         /// 发布信息列表
         /// </summary>
         public virtual ICollection<PublishMsg> PublishMsgs { get; set; }
+        /// <summary>
+        /// 问题域集合
+        /// </summary>
+        public virtual ICollection<PerOrComIntro> PerOrComIntros { get; set; }
 
     }
 }
