@@ -34,5 +34,17 @@ namespace ShortRent.Core.Domain
         /// </summary>
         [DefaultValue(false)]
         public bool IsDelete { get; set; }
+        /// <summary>
+        /// 收藏的用户的id
+        /// </summary>
+        public virtual UserType CollectUserType { get; set; }
+        /// <summary>
+        /// 收藏人的id
+        /// </summary>
+        public virtual UserType UserType { get; set; }
+        /// <summary>
+        /// 收藏的公司的id
+        /// </summary>
+        public virtual Company Company { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace ShortRent.Data.ShortRentMap
         {
             this.ToTable("HistoryRecord");
             this.HasKey(c=>c.ID);
-            this.Property(c => c.PublishId).IsRequired();
-            this.Property(c => c.UserTypeId).IsRequired();
+            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeId);
+            this.HasRequired(c => c.PublishMsg).WithMany().HasForeignKey(c => c.PublishId);
         }
     }
 }

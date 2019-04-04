@@ -42,6 +42,7 @@ namespace ShortRent.Core.Domain
         /// 父级导航属性
         /// </summary>
         public virtual Discuss Parent { get; set; }
+        public virtual ICollection<Discuss> ChildDiscuss { get; set; }
         /// <summary>
         /// 谁评论导航属性
         /// </summary>

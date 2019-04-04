@@ -42,8 +42,17 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 用户类别的外键
         /// </summary>
-        public int UserTypeId{get;set;}
-      
+        public int UserTypeId { get; set; }
+        /// <summary>
+        /// 行业id
+        /// </summary>
+        public int BusinessTypeId { get; set; }
+        public virtual Business Business{get;set;}
+        public virtual UserType UserType { get; set;}
+        /// <summary>
+        /// 所有的评论
+        /// </summary>
+        public virtual ICollection<Discuss> Discusss { get; set; }
 
     }
 }

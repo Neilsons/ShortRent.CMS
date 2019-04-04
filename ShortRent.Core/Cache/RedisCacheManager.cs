@@ -28,9 +28,10 @@ namespace ShortRent.Core.Cache
             if (string.IsNullOrWhiteSpace(config.RedisCacheConfig.ConnectionString))
             {
                 throw new ArgumentException("redis config is empty", nameof(config));
-                this.redisConnectionString = config.RedisCacheConfig.ConnectionString;
-                this.redisConnection = GetRedisConnection();
+                
             }
+            this.redisConnectionString = config.RedisCacheConfig.ConnectionString;
+            this.redisConnection = GetRedisConnection();
         }
         #endregion
         

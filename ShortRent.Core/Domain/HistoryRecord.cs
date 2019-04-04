@@ -31,5 +31,8 @@ namespace ShortRent.Core.Domain
         /// </summary>
        
         public int PublishId { get; set; }
+
+        public virtual UserType UserType { get; set; }
+        public virtual PublishMsg PublishMsg { get; set; }
     }
 }
