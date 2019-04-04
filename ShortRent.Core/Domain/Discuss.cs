@@ -38,5 +38,17 @@ namespace ShortRent.Core.Domain
         /// 父级ID 自己
         /// </summary>
         public int ParentId { get; set; }
+        /// <summary>
+        /// 父级导航属性
+        /// </summary>
+        public virtual Discuss Parent { get; set; }
+        /// <summary>
+        /// 谁评论导航属性
+        /// </summary>
+        public virtual UserType UserType { get; set; }
+        /// <summary>
+        ///  发布信息的导航属性
+        /// </summary>
+        public virtual PublishMsg PublishMsg { get; set; }
     }
 }

@@ -43,6 +43,7 @@ namespace ShortRent.Core.Domain
         /// 用户类别的外键
         /// </summary>
         public int UserTypeId{get;set;}
+      
 
     }
 }
