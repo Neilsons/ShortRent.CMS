@@ -30,5 +30,13 @@ namespace ShortRent.Core.Domain
         /// 外键 用户类别编号
         /// </summary>
         public int  UserTypeId{get;set;}
+        /// <summary>
+        /// 用户或公司介绍表 导航属性
+        /// </summary>
+        public virtual PerOrComIntroGuidance PerOrComIntroGuidance { get; set; }
+        /// <summary>
+        /// 用户 导航属性
+        /// </summary>
+        public virtual UserType UserType { get; set; }
     }
 }
