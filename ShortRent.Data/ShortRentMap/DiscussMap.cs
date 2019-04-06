@@ -16,7 +16,7 @@ namespace ShortRent.Data.ShortRentMap
             this.HasKey(c=>c.ID);
             this.Property(c=>c.Floor).IsOptional();
             this.Property(c=>c.Message).IsRequired().HasMaxLength(200);
-            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c=>c.UserTypeId);
+            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c=>c.UserTypeInfoId);
             this.HasRequired(c => c.PublishMsg).WithMany().HasForeignKey(c => c.PublishId);
             this.HasRequired(c=>c.Parent).WithMany(c=>c.ChildDiscuss).HasForeignKey(c=>c.ParentId);
         }

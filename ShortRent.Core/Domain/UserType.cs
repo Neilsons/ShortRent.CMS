@@ -42,7 +42,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// Person中的外键
         /// </summary>
-        public int PersonId { get; set; }
+        public int PerId { get; set; }
 
         public virtual Person Person { get; set; }
         /// <summary>

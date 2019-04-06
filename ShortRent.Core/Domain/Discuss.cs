@@ -33,7 +33,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 评论人Id UserType外键
         /// </summary>
-        public int UserTypeId { get; set; }
+        public int UserTypeInfoId { get; set; }
         /// <summary>
         /// 父级ID 自己
         /// </summary>

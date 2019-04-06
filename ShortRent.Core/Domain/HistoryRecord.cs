@@ -25,7 +25,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// UserTypeId 谁访问的记录 UserType 中的外键
         /// </summary>
-        public int UserTypeId { get; set; }
+        public int UserTypeInfoId { get; set; }
         /// <summary>
         /// 发布的信息的Id  publishMsg的外键
         /// </summary>

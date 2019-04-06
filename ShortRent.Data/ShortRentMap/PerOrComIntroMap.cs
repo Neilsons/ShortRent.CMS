@@ -16,9 +16,8 @@ namespace ShortRent.Data.ShortRentMap
             this.HasKey(c=>c.ID);
             this.Property(c=>c.Answer).IsRequired().HasMaxLength(500);
             this.Property(c=>c.QuestionId).IsRequired();
-            this.Property(c => c.UserTypeId).IsRequired();
             this.HasRequired(c => c.PerOrComIntroGuidance).WithMany().HasForeignKey(c=>c.QuestionId).WillCascadeOnDelete();
-            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeId).WillCascadeOnDelete();
+            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeInfoId).WillCascadeOnDelete();
         }
     }
 }

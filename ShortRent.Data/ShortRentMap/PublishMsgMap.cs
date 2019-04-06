@@ -18,8 +18,8 @@ namespace ShortRent.Data.ShortRentMap
             this.Property(c=>c.Email).HasMaxLength(50);
             this.Property(c=>c.Phone).HasMaxLength(20);
             this.HasRequired(c=>c.Business).WithMany().HasForeignKey(c=>c.BusinessTypeId);
-            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeId).WillCascadeOnDelete(false);
-            this.HasMany(c => c.Discusss);
+            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeInfoId).WillCascadeOnDelete(false);
+            this.HasMany(c => c.Discusss).WithRequired(c => c.PublishMsg).HasForeignKey(c => c.PublishId);
         }
     }
 }

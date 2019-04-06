@@ -29,7 +29,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 外键 用户类别编号
         /// </summary>
-        public int  UserTypeId{get;set;}
+        public int  UserTypeInfoId{get;set;}
         /// <summary>
         /// 用户或公司介绍表 导航属性
         /// </summary>

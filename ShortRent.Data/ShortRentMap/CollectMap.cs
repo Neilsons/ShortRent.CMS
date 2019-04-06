@@ -15,7 +15,7 @@ namespace ShortRent.Data.ShortRentMap
             this.ToTable("Collect");
             this.HasKey(c=>c.ID);
             this.HasRequired(c => c.CollectUserType).WithMany().HasForeignKey(c => c.CollectUserId);
-            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeId).WillCascadeOnDelete(false);
+            this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeInfoId).WillCascadeOnDelete(false);
             this.HasRequired(c => c.Company).WithMany().HasForeignKey(c => c.CollectCompanyId);
         }
     }

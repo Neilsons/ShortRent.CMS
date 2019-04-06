@@ -12,7 +12,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 收藏人的id UserType表中的外键
         /// </summary>
-        public int UserTypeId{get;set;}
+        public int UserTypeInfoId{get;set;}
         /// <summary>
         /// 收藏的公司Id 外键
         /// </summary>
