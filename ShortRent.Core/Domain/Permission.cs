@@ -20,13 +20,5 @@ namespace ShortRent.Core.Domain
         /// 描述
         /// </summary>
         public string Description { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 是否删除 false 不删除 true 删除
-        /// </summary>
-        public bool IsDelete { get; set; }
     }
 }
