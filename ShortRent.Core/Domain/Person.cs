@@ -68,5 +68,6 @@ namespace ShortRent.Core.Domain
         public virtual ICollection<UserType> UserTypes { get; set; } = new List<UserType>();
 
         public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
+        public virtual ICollection<HistoryOperator> HistoryOperators { get; set; } = new List<HistoryOperator>();
     }
 }

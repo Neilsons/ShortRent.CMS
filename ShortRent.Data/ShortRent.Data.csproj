@@ -70,6 +70,7 @@
     <Compile Include="ShortRentMap\CompanyPerTagMap.cs" />
     <Compile Include="ShortRentMap\DiscussMap.cs" />
     <Compile Include="ShortRentMap\EntityPermissionMap.cs" />
+    <Compile Include="ShortRentMap\HistoryOperatorMap.cs" />
     <Compile Include="ShortRentMap\HistoryRecordMap.cs" />
     <Compile Include="ShortRentMap\ManagerMap.cs" />
     <Compile Include="ShortRentMap\PermissionMap.cs" />

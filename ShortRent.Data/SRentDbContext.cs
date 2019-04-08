@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShortRent.Core.Domain;
 //转换器
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Reflection;
@@ -47,6 +48,12 @@ namespace ShortRent.Data
         }
         #endregion
 
-        public System.Data.Entity.DbSet<ShortRent.Core.Domain.Person> People { get; set; }
+        public DbSet<Person> Peoples { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<EntityPermission> EntityPermissions { get; set; }
+        public DbSet<Manager> Managers { get; set; }
+
     }
 }

@@ -17,6 +17,7 @@ namespace ShortRent.Service
         {
             //将PersonService注入
             container.RegisterType<PersonService>().As<IPersonService>();
+            container.RegisterType<RoleService>().As<IRoleService>();
         }
     }
 }

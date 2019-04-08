@@ -28,7 +28,7 @@ namespace ShortRent.Data
             }
         }
 
-        public IQueryable<T> Persons
+        public IQueryable<T> Entitys
         {
             get { return this.DbSet; }
         }

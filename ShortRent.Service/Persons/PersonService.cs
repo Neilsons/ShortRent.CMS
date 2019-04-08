@@ -48,12 +48,12 @@ namespace ShortRent.Service
             }
             else
             {
-                var list = _personRepository.Persons;
+                var list = _personRepository.Entitys;
                 if(list!=null)
                 {
                     persons = list.ToList();
                     //缓存半个小时
-                    _cacheManager.Set(PersonsCacheKey, persons, TimeSpan.FromMinutes(1));
+                    _cacheManager.Set(PersonsCacheKey, persons, TimeSpan.FromMinutes(30));
                 }
                 else
                 {

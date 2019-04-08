@@ -48,6 +48,8 @@
     <Compile Include="Persons\IPersonService.cs" />
     <Compile Include="Persons\PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\IRoleService.cs" />
+    <Compile Include="Role\RoleService.cs" />
     <Compile Include="ServiceRegister.cs" />
   </ItemGroup>
   <ItemGroup>
