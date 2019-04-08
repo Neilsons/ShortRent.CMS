@@ -172,6 +172,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Language.config" />
     <Content Include="App_Data\create-permissions.ps1" />
+    <Content Include="MvcMenu.sitemap" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -204,6 +205,12 @@
     <Compile Include="MvcExtention\AutoMapperProfile.cs" />
     <Compile Include="MvcExtention\CustomModelMetadataProvider.cs" />
     <Compile Include="MvcExtention\CustomViewPage.cs" />
+    <Compile Include="MvcExtention\SiteMap\IMvcSiteMapParser.cs" />
+    <Compile Include="MvcExtention\SiteMap\IMvcSiteMapProvider.cs" />
+    <Compile Include="MvcExtention\SiteMap\MvcSiteMap.cs" />
+    <Compile Include="MvcExtention\SiteMap\MvcSiteMapNode.cs" />
+    <Compile Include="MvcExtention\SiteMap\MvcSiteMapParser.cs" />
+    <Compile Include="MvcExtention\SiteMap\MvcSiteMapProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IPermissionProvider.cs" />
     <Compile Include="Security\PermissionProvider.cs" />
@@ -288,6 +295,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -316,7 +326,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted F:\graduation\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

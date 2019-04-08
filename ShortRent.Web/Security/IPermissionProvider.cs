@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShortRent.WebCore.Security
+namespace ShortRent.Web.Security
 {
     /// <summary>
     /// 权限提供者

@@ -20,7 +20,7 @@ namespace ShortRent.Data
         /// </summary>
         static SRentDbContext()
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<DbContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<SRentDbContext>());
         }
         public SRentDbContext():base("sRentDatabase")
         {

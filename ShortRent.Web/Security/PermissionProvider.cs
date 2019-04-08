@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShortRent.WebCore.Security
+namespace ShortRent.Web.Security
 {
     /// <summary>
     /// 权限提供者  开发者来维护这张表
@@ -16,7 +16,8 @@ namespace ShortRent.WebCore.Security
         {
             List<Permission> permissions = new List<Permission>();
             //添加权限
-            permissions.Add(new Permission() { Name = "PersionCreate", Category = "用户创建", Description = "创建" });
+            permissions.Add(new Permission() { Name = "PersonCreate", Category = "用户创建", Description = "创建" });
+            permissions.Add(new Permission() { Name = "PersonIndex", Category = "用户主页", Description = "列表" });
 
             return permissions;
         }
