@@ -137,7 +137,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\AdminCore.css" />
     <Content Include="Content\css\AdminLTE.min.css" />
+    <Content Include="Content\css\bootstrap-table.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\ionicons.css" />
@@ -151,6 +153,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\AdminMaster\adminlte.min.js" />
     <Content Include="Scripts\AdminMaster\demo.js" />
+    <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -202,8 +205,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PersonViewModel.cs" />
-    <Compile Include="MvcExtention\AutoMapperProfile.cs" />
+    <Compile Include="Models\Person\PersonViewModel.cs" />
+    <Compile Include="Models\Role\RoleViewModelIndex.cs" />
+    <Compile Include="MvcExtention\AutoMapper\PersonProfile.cs" />
+    <Compile Include="MvcExtention\AutoMapper\RoleProfile.cs" />
     <Compile Include="MvcExtention\CustomModelMetadataProvider.cs" />
     <Compile Include="MvcExtention\CustomViewPage.cs" />
     <Compile Include="MvcExtention\SiteMap\IMvcSiteMapParser.cs" />
@@ -254,7 +259,6 @@
     <Content Include="Views\Person\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Views\Person\Create.cshtml" />
     <Content Include="Validator\README.md" />
     <Content Include="Views\Shared\AdminMaster.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
@@ -262,6 +266,8 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\ControlSlider.cshtml" />
     <Content Include="Views\Person\Test.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RoleType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -270,7 +276,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Role\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShortRent.Core\ShortRent.Core.csproj">
@@ -329,7 +335,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted F:\graduation\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

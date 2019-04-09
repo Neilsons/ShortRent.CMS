@@ -13,7 +13,9 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/AllSkins").Include("~/Content/css/_all-skins.min.css"));
             bundles.Add(new StyleBundle("~/Styles/FontAwesome").Include("~/Content/css/font-awesome.css"));
             bundles.Add(new StyleBundle("~/Styles/IonIcons").Include("~/Content/css/ionicons.css"));
+            bundles.Add(new StyleBundle("~/Styles/AdminCore").Include("~/Content/css/AdminCore.css"));
             bundles.Add(new StyleBundle("~/Styles/BootStrap", "https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css").Include("~/Content/css/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Styles/BootstraTable", "https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.css").Include("~/Conten/css/bootstrap-table.css"));
              //公共的引用CSS结束
             //公共的JS库的引用开始
             bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-{version}.js"));
@@ -23,6 +25,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/FastClick", "https://cdn.bootcss.com/fastclick/1.0.5/fastclick.min.js").Include("~/Scripts/fastclick.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Adminlte").Include("~/Scripts/AdminMaster/adminlte.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Demo").Include("~/Scripts/AdminMaster/demo.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/BootstrapTable", "https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.js").Include("~/Scripts/bootstrap-table.js"));
             //公共的JS库的引用结束
 
         }

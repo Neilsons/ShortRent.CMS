@@ -13,7 +13,7 @@ namespace ShortRent.WebCore.MVC
     {
         public BaseController()
         {
-            GlobalManager.languages = ServiceContainer.Resolve<ILanguages>();
+            //GlobalManager.languages = ServiceContainer.Resolve<ILanguages>();
         }
         /// <summary>
         /// 替换微软的JsonResult
@@ -26,11 +26,11 @@ namespace ShortRent.WebCore.MVC
         {
           return new JsonNetResult() { Data=data,ContentEncoding=contentEncoding,ContentType=contentType,JsonRequestBehavior=behavior};
         }
-        protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
-        {
-            string abbreviation = RouteData.Values["lg"].ToString();
-            GlobalManager.languages.Current = GlobalManager.languages[abbreviation];
-            return base.BeginExecuteCore(callback, state);
-        }
+        //protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
+        //{
+        //    string abbreviation = RouteData.Values["lg"].ToString();
+        //    GlobalManager.languages.Current = GlobalManager.languages[abbreviation];
+        //    return base.BeginExecuteCore(callback, state);
+        //}
     }
 }

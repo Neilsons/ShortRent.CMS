@@ -45,7 +45,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 }
 #>
 <p>
-    @Html.ActionLink("Create New", "创建")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>

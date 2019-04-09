@@ -8,11 +8,12 @@ using ShortRent.Web.Models;
 
 namespace ShortRent.Web
 {
-    public class AutoMapperProfile:Profile
+    public class PersonProfile: Profile
     {
-       public AutoMapperProfile()
+       public PersonProfile()
         {
             this.CreateMap<PersonViewModel,Person>();
+            this.CreateMap<Person, PersonViewModel>();
         }
     }
 }

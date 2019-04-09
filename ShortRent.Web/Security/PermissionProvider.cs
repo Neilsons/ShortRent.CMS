@@ -16,8 +16,8 @@ namespace ShortRent.Web.Security
         {
             List<Permission> permissions = new List<Permission>();
             //添加权限
-            permissions.Add(new Permission() { Name = "PersonCreate", Category = "用户创建", Description = "创建" });
-            permissions.Add(new Permission() { Name = "PersonIndex", Category = "用户主页", Description = "列表" });
+            permissions.Add(new Permission() { Name = "PersonCreate", Category = "用户创建", Description = "创建",ID=1 });
+            permissions.Add(new Permission() { Name = "PersonIndex", Category = "用户主页", Description = "列表",ID=2 });
 
             return permissions;
         }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using ShortRent.Core.Domain;
 using ShortRent.Core.Language;
+using ShortRent.Core.Log;
 using ShortRent.Service;
+using ShortRent.Web.Models;
 using ShortRent.WebCore.MVC;
 using System;
 using System.Collections.Generic;
@@ -18,20 +20,41 @@ namespace ShortRent.Web.Controllers
         //autoMapper
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _mapperConfig;
+        private readonly ILogger _logger;
         #endregion
         #region Construction
         public PersonController(IPersonService personService
-            ,IMapper mapper,MapperConfiguration mapperConfiguration)
+            ,IMapper mapper,MapperConfiguration mapperConfiguration,ILogger logger)
         {
             this._personService = personService;
             this._mapper = mapper;
             this._mapperConfig = mapperConfiguration;
+            this._logger = logger;
         }
         #endregion
         #region Method
         public ActionResult Index()
         {
-            return View(_personService.GetPersons());
+            List<PersonViewModel> list = null;
+            try
+            {
+                var persons = _personService.GetPersons();
+                if (persons.Any())
+                {
+                    list = _mapper.Map<List<PersonViewModel>>(persons);
+                }
+                else
+                {
+                    list = new List<PersonViewModel>();
+                }
+            }
+            catch(Exception e)
+            {
+                list = new List<PersonViewModel>();
+                _logger.Debug(e.Message);
+                throw new Exception(e.Message);
+            }
+            return View(list.AsEnumerable());
         }
         public JsonResult GetJson()
         {

@@ -31,7 +31,7 @@ namespace ShortRent.Resource
         public static String getMetaDataDisplayName(Type containerType, string property,string DisplayName)
         {
             string key=containerType.Name.Replace(".", string.Empty) + property + DisplayName;
-            return GetResource("ShortRent.Resource.Mvc.Resources", key ?? "");
+            return GetResource("ShortRent.Resource.MetaData.Resources", key ?? "");
         }
        public static string getViewElement(string key)
         {

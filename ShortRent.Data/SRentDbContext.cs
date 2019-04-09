@@ -48,7 +48,7 @@ namespace ShortRent.Data
         }
         #endregion
 
-        public DbSet<Person> Peoples { get; set; }
+        public DbSet<Person> Persons { get; set; }
 
         public DbSet<Role> Roles { get; set; }
         public DbSet<Permission> Permissions { get; set; }

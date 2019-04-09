@@ -12,7 +12,8 @@
     @Styles.Render("~/Styles/FontAwesome")
     @Styles.Render("~/Styles/AllSkins")
     @Styles.Render("~/Styles/AdminLTE")
-    @RenderSection("style", required: false)
+    @Styles.Render("~/Styles/AdminCore")
+    @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -70,6 +71,6 @@
         @Scripts.Render("~/Scripts/FastClick")
         @Scripts.Render("~/Scripts/Adminlte")
         @Scripts.Render("~/Scripts/Demo")
-        @RenderSection("script", required: false)
+        @RenderSection("Scripts", required: false)
 </body>
 </html>
