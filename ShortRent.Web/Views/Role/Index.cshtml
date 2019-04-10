@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RoleViewModelIndex>
+﻿@using ShortRent.Web.MvcExtention
+@model IEnumerable<RoleViewModelIndex>
 
 @{
     ViewBag.Title = "Index";
@@ -6,45 +7,46 @@
 }
 <div class="row  gray-bg">
     <div class="col-xs-12 ">
-        <div class="row">
-            <p class="col-xs-4 col-sm-3 col-lg-2 top">
-                @Html.ActionLink("创建","Create","",new { @class="btn btn-primary btn-sm"})
+        <div class="row marTOrd-sm ">
+            <p class="col-xs-4 col-sm-3 col-lg-2">
+                @Html.ActionLinkAdd("创建", "Create", new { @class = "btn btn-primary btn-sm" })
             </p>
-        </div>           
+            <p class="col-xs-8 col-sm-9 col-lg-10">
+
+            </p>
         </div>
-        <div class="panel-body">
-            <table class="table">
+    </div>
+    <div class="col-xs-12 ">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Type)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("分配权限", "Details", new { id = item.ID }) 
+                    </td>
                 </tr>
+            }
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Type)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-       
+        </table>
     </div>
 </div>
+
 
 

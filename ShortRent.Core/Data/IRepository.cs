@@ -14,6 +14,7 @@ namespace ShortRent.Core.Data
         /// <param name="id">有可能是字符串或者是数字等</param>
         /// <returns></returns>
         T GetById(object id);
+
         /// <summary>
         /// 插入一条记录
         /// </summary>

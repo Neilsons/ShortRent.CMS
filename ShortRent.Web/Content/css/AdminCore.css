@@ -1,3 +1,17 @@
-﻿.gray-bg {
+﻿p{
+    margin:0;
+    padding:0;
+}
+.gray-bg {
     background-color: #FFF;
+}
+/*上下边距*/
+.marTOrd-lg {
+    margin: 2% 0;
+}
+.marTOrd-sm {
+    margin: 1% 0;
+}
+.marTOrd-xs{
+    margin:0.5% 0;
 }

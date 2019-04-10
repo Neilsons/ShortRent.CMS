@@ -53,5 +53,9 @@ namespace ShortRent.Web.Controllers
             //获取所有的角色列表展示
             return View(list.AsEnumerable());
         }
+        public ActionResult Authorize(int id)
+        {
+            return View();
+        }
     }
 }
