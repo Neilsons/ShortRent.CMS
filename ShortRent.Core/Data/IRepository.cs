@@ -9,13 +9,6 @@ namespace ShortRent.Core.Data
     public interface IRepository<T> where T:class
     {
         /// <summary>
-        /// 根据主键来查询
-        /// </summary>
-        /// <param name="id">有可能是字符串或者是数字等</param>
-        /// <returns></returns>
-        T GetById(object id);
-
-        /// <summary>
         /// 插入一条记录
         /// </summary>
         /// <param name="entity">实体对象</param>

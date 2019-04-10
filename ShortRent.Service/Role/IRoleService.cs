@@ -9,6 +9,7 @@ namespace ShortRent.Service
 {
     public interface IRoleService
     {
-        List<Role> GetRoles();
+        IQueryable<Role> GetRoles();
+        IQueryable<Permission> GetPermissions(int id);
     }
 }

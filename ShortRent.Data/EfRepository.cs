@@ -52,12 +52,6 @@ namespace ShortRent.Data
             this.DbSet.Remove(entity);
             this._dbContext.SaveChanges();
         }
-
-        public T GetById(object id)
-        {
-            return this.DbSet.Find(id);
-        }
-
         public void Insert(T entity)
         {
             if(entity==null)

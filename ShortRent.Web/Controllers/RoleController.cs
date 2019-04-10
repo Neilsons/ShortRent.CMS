@@ -55,6 +55,15 @@ namespace ShortRent.Web.Controllers
         }
         public ActionResult Authorize(int id)
         {
+            var groups = _roleService.GetPermissions(id).GroupBy(c => c.Category);
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            foreach(var group in groups)
+            {
+                var selectListGroup = new SelectListGroup { Name = group.Key };
+                selectListItems.AddRange(group.Select(g=>new SelectListItem {
+                    Group=selectListGroup
+                }));
+            }
             return View();
         }
     }
