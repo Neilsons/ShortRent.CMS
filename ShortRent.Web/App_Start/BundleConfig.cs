@@ -26,7 +26,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/Adminlte").Include("~/Scripts/AdminMaster/adminlte.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Demo").Include("~/Scripts/AdminMaster/demo.js"));
             bundles.Add(new ScriptBundle("~/Scripts/BootstrapTable", "https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.js").Include("~/Scripts/bootstrap-table.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/BootstrapTable_zh","https://cdn.bootcss.com/bootstrap-table/1.14.2/locale/bootstrap-table-zh-CN.js").Include("~/Scripts/bootstrap-table-zh-CN.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/BootstrapTable_zh","https://cdn.bootcss.com/bootstrap-table/1.14.2/locale/bootstrap-table-zh-CN.js").Include("~/Scripts/locale/bootstrap-table-zh-CN.js"));
             //公共的JS库的引用结束
 
             //role用到的js 自定义的开始

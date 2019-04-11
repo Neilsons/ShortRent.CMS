@@ -133,6 +133,6 @@
     <value>角色名称</value>
   </data>
   <data name="RoleViewModelIndexTypeDisplayName" xml:space="preserve">
-    <value>用户类别</value>
+    <value>用户类型</value>
   </data>
 </root>

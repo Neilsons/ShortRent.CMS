@@ -10,13 +10,21 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            <div class="box-header">
-                <p class="col-xs-4 col-sm-3 col-lg-2">
-                    @Html.ActionLinkAdd("创建", "Create", new { @class = "btn btn-primary btn-sm" })
-                </p>
-                <p class="col-xs-8 col-sm-9 col-lg-10">
-
-                </p>
+            <div class="box-header row">
+                <div class="col-xs-12 col-sm-3 col-lg-2">
+                    @Html.ActionLinkAdd("创建", "Create", new { @class = "btn btn-primary btn-sm" })                    
+                </div>
+                <div class="col-xs-12 col-sm-9 col-lg-10 marTOrd-lg">
+                    <div class="row">
+                        <label class="control-label col-sm-offset-5 col-lg-offset-5 col-sm-2 col-lg-2" for="txt_search_rolename">角色名称</label>
+                        <div class="col-sm-3 col-lg-3">
+                            <input type="text" class="form-control" id="txt_search_rolename">
+                        </div>
+                        <div class="col-sm-2 col-xs-12 col-lg-2 marTOrd-lg"  style="text-align:right;">
+                            <button type="button" id="btn_query" class="btn btn-primary">查询</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="box-body">
                 <table id="RolesTable" class="table col-xs-12 col-sm-12 col-lg-12">
@@ -31,55 +39,6 @@
     @Scripts.Render("~/Scripts/BootstrapTable_zh")
     @*本页面要用到的js*@
     @Scripts.Render("~/Scripts/RoleIndex")
-    <script type="text/javascript">
-        $(function () {
-            $("#RolesTable").bootstrapTable({
-                method:'get',//用get请求
-                url: '/Role/Index',
-                columns: [{
-                    title: '@Html.DisplayNameFor(model => model.Name)',
-                    field: 'name',
-                    align:'center'
-                },
-                {
-                    title: '@Html.DisplayNameFor(model => model.Type)',
-                    field: 'type',
-                    align:'center',
-                    formatter: function (value, row, index) {
-                        var result = "";
-                        if (value) {
-                            result += " <span class=\"label label-success\">前台</span>"
-                        } else {
-                            result += "<span class=\"label label-warning\">后台</span>"
-                        }
-                        return result;
-                    }
-                },
-                {
-                    title: '操作',
-                    field: 'id',
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        var result = "";
-                        result += "<a href='/Role/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
-                        result += "<a href='/Role/Edit/" + value + "'>分配权限</a>";
-                        return result;
-                    }
-                }],
-                striped: true,//是否显示行间隔色
-                cache: false,//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-                pagination: true,//是否显示分页（*）
-                pageNumber: 1,//初始化加载第一页，默认第一页
-                pageSize: 10, //每页的记录行数（*）
-                queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
-                // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
-                pageList:[5,10,15,20],//可供选择的每页的行数（*）
-                sidePagination: "server",   //分页方式：client客户端分页，server服务端分页（*）
-                minimumCountColumns: 2,    //最少允许的列数
-            });
-        });
-    </script>
-
 }
 
 

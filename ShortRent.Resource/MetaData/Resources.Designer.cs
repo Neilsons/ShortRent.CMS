@@ -106,7 +106,7 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
-        ///   查找类似 用户类别 的本地化字符串。
+        ///   查找类似 用户类型 的本地化字符串。
         /// </summary>
         public static string RoleViewModelIndexTypeDisplayName {
             get {

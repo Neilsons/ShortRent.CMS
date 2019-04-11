@@ -143,6 +143,53 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\ionicons.css" />
+    <Content Include="Scripts\locale\bootstrap-table-af-ZA.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ar-SA.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ca-ES.js" />
+    <Content Include="Scripts\locale\bootstrap-table-cs-CZ.js" />
+    <Content Include="Scripts\locale\bootstrap-table-da-DK.js" />
+    <Content Include="Scripts\locale\bootstrap-table-de-DE.js" />
+    <Content Include="Scripts\locale\bootstrap-table-el-GR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-en-US.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-AR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-CL.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-CR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-ES.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-MX.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-NI.js" />
+    <Content Include="Scripts\locale\bootstrap-table-es-SP.js" />
+    <Content Include="Scripts\locale\bootstrap-table-et-EE.js" />
+    <Content Include="Scripts\locale\bootstrap-table-eu-EU.js" />
+    <Content Include="Scripts\locale\bootstrap-table-fa-IR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-fi-FI.js" />
+    <Content Include="Scripts\locale\bootstrap-table-fr-BE.js" />
+    <Content Include="Scripts\locale\bootstrap-table-fr-FR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-he-IL.js" />
+    <Content Include="Scripts\locale\bootstrap-table-hr-HR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-hu-HU.js" />
+    <Content Include="Scripts\locale\bootstrap-table-id-ID.js" />
+    <Content Include="Scripts\locale\bootstrap-table-it-IT.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ja-JP.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ka-GE.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ko-KR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ms-MY.js" />
+    <Content Include="Scripts\locale\bootstrap-table-nb-NO.js" />
+    <Content Include="Scripts\locale\bootstrap-table-nl-NL.js" />
+    <Content Include="Scripts\locale\bootstrap-table-pl-PL.js" />
+    <Content Include="Scripts\locale\bootstrap-table-pt-BR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-pt-PT.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ro-RO.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ru-RU.js" />
+    <Content Include="Scripts\locale\bootstrap-table-sk-SK.js" />
+    <Content Include="Scripts\locale\bootstrap-table-sv-SE.js" />
+    <Content Include="Scripts\locale\bootstrap-table-th-TH.js" />
+    <Content Include="Scripts\locale\bootstrap-table-tr-TR.js" />
+    <Content Include="Scripts\locale\bootstrap-table-uk-UA.js" />
+    <Content Include="Scripts\locale\bootstrap-table-ur-PK.js" />
+    <Content Include="Scripts\locale\bootstrap-table-uz-Latn-UZ.js" />
+    <Content Include="Scripts\locale\bootstrap-table-vi-VN.js" />
+    <Content Include="Scripts\locale\bootstrap-table-zh-CN.js" />
+    <Content Include="Scripts\locale\bootstrap-table-zh-TW.js" />
     <Content Include="Content\css\_all-skins.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -153,7 +200,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\AdminMaster\adminlte.min.js" />
     <Content Include="Scripts\AdminMaster\demo.js" />
-    <Content Include="Scripts\bootstrap-table-zh-CN.js" />
     <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -177,6 +223,7 @@
     <Content Include="Language.config" />
     <Content Include="App_Data\create-permissions.ps1" />
     <Content Include="MvcMenu.sitemap" />
+    <Content Include="Scripts\locale\README.md" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -339,7 +386,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted F:\graduation\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
