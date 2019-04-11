@@ -13,6 +13,10 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string Name { get; set; }
         /// <summary>
+        /// 权限类别 false 前台 true 后台
+        /// </summary>
+        public bool Type { get; set; }
+        /// <summary>
         /// 权限分类
         /// </summary>
         public string Category { get; set; }

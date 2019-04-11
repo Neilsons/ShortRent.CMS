@@ -93,6 +93,8 @@
     <Compile Include="Cache\NullCacheManager.cs" />
     <Compile Include="Cache\RedisCacheManager.cs" />
     <Compile Include="Config\ApplicationConfig.cs" />
+    <Compile Include="Config\LevElement.cs" />
+    <Compile Include="Config\CacheTimesElement.cs" />
     <Compile Include="Config\PageConfig.cs" />
     <Compile Include="Config\RedisCacheElement.cs" />
     <Compile Include="Data\IRepository.cs" />

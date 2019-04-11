@@ -15,6 +15,7 @@ namespace ShortRent.Core.Config
     {
         #region  Field 字段
         private const string RedisCacheConfigChildName = "redisCache";
+        private const string CacheTimeConfigChildNameCollect = "CacheTime";
         #endregion
         #region Property 属性
         /// <summary>
@@ -25,6 +26,12 @@ namespace ShortRent.Core.Config
         {
             get { return (RedisCacheElement)base[RedisCacheConfigChildName]; }
             set { base[RedisCacheConfigChildName] = value; }
+        }
+        [ConfigurationProperty(CacheTimeConfigChildNameCollect,IsRequired =true)]
+        public CacheTimesElement CacheTimeCollect
+        {
+            get { return (CacheTimesElement)base[CacheTimeConfigChildNameCollect]; }
+            set { base[CacheTimeConfigChildNameCollect]=value; }
         }
         #endregion
     }

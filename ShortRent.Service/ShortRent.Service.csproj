@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="InfrastructureRegister.cs" />
+    <Compile Include="Permission\IPermissionService.cs" />
+    <Compile Include="Permission\PermissionService.cs" />
     <Compile Include="Persons\IPersonService.cs" />
     <Compile Include="Persons\PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

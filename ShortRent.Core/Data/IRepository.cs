@@ -24,6 +24,6 @@ namespace ShortRent.Core.Data
         /// <param name="entity">实体对象</param>
         void Delete(T entity);
      
-        IQueryable<T> Entitys { get; }
+        IEnumerable<T> Entitys { get; }
     }
 }

@@ -28,7 +28,7 @@ namespace ShortRent.Data
             }
         }
 
-        public IQueryable<T> Entitys
+        public IEnumerable<T> Entitys
         {
             get { return this.DbSet; }
         }

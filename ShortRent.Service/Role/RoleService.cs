@@ -8,15 +8,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShortRent.Core.Config;
 
 namespace ShortRent.Service
 {
-    public class RoleService:IRoleService
+    public class RoleService: BaseService,IRoleService
     {
         #region Field
         private readonly IRepository<Role> _roleRepository;
         private readonly ICacheManager _cacheManager;
         private readonly ILogger _logger;
+        private readonly ApplicationConfig _config;
         /// <summary>
         /// 缓存的键
         /// </summary>
@@ -25,35 +27,72 @@ namespace ShortRent.Service
         #endregion
 
         #region Construction
-        public RoleService(IRepository<Role> roleRepository, ICacheManager cacheManager,ILogger logger)
+        public RoleService(IRepository<Role> roleRepository, ICacheManager cacheManager,ILogger logger,ApplicationConfig config)
         {
             this._roleRepository = roleRepository;
             this._cacheManager = cacheManager;
             this._logger = logger;
+            this._config = config;
         }
         #endregion
 
         #region  Metods
-        public IQueryable<Role> GetRoles()
+        /// <summary>
+        /// 返回所有角色
+        /// </summary>
+        /// <returns></returns>
+        public List<Role> GetRoles()
         {
-            IQueryable<Role> roles = null;
+            List<Role> roles = null;
             try
             {
                 if (_cacheManager.Contains(RoleCacheKey))
                 {
-                    roles = _cacheManager.Get<IQueryable<Role>>(RoleCacheKey);
+                    roles = _cacheManager.Get<List<Role>>(RoleCacheKey);
                 }
                 else
                 {
                     var list = _roleRepository.Entitys;
                     if (list.Any())
                     {
-                        roles = list.Where(c=>c.IsDelete==false);
-                        _cacheManager.Set(RoleCacheKey, roles, TimeSpan.FromMinutes(30));
+                        roles = list.Where(c=>c.IsDelete==false).ToList();                        
+                        int cacheTime=GetTimeFromConfig(1);
+                        _cacheManager.Set(RoleCacheKey, roles, TimeSpan.FromMinutes(cacheTime));
                     }
                 }
             }
             catch (Exception e)
+            {
+                _logger.Debug(e.Message);
+                throw new Exception(e.Message);
+            }
+            return roles;
+        }
+        /// <summary>
+        /// 返回分页的数据
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
+        public List<Role> GetRoles(int pageSize,int pageNumber,out int total)
+        {
+            List<Role> roles = null;
+            try
+            {
+                if (_cacheManager.Contains(RoleCacheKey))
+                {
+                    var cache = _cacheManager.Get<List<Role>>(RoleCacheKey);
+                    roles = cache.Skip((pageNumber-1)*pageSize).Take(pageSize).ToList();
+                    total = cache.Count();
+                }
+                else
+                {
+                    var list = _roleRepository.Entitys;
+                    roles = list.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                    total = list.Count();
+                }
+            }
+            catch(Exception e)
             {
                 _logger.Debug(e.Message);
                 throw new Exception(e.Message);
@@ -72,7 +111,7 @@ namespace ShortRent.Service
             {
                 if (_cacheManager.Contains(RoleCacheKey))
                 {
-                    _cacheManager.Get<IQueryable<Role>>(RoleCacheKey).Where(c => c.Type == true && c.ID == id).FirstOrDefault();
+                    _cacheManager.Get<List<Role>>(RoleCacheKey).Where(c => c.Type == true && c.ID == id).FirstOrDefault();
                 }
                 else
                 {
@@ -97,26 +136,27 @@ namespace ShortRent.Service
 
         }
         /// <summary>
-        /// 返回某一角色的列表
+        /// 返回某一角色的权限列表列表
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IQueryable<Permission> GetPermissions(int id)
+        public List<Permission> GetPermissions(int id)
         {
-            IQueryable <Permission> permissions= null;
+            List<Permission> permissions= null;
             try
             {
                 if (_cacheManager.Contains(PermissionsCacheKey))
                 {
-                    permissions = _cacheManager.Get<IQueryable<Permission>>(PermissionsCacheKey);
+                    permissions = _cacheManager.Get<List<Permission>>(PermissionsCacheKey);
                 }
                 else
                 {
-                    var list = GetAdminRole(id).Permissions.AsQueryable();
+                    var list = GetAdminRole(id).Permissions;
                     if (list.Any())
                     {
-                        permissions = list;
-                        _cacheManager.Set(PermissionsCacheKey, permissions, TimeSpan.FromMinutes(30));
+                        permissions = list.ToList();
+                        int cacheTime = GetTimeFromConfig(1);
+                        _cacheManager.Set(PermissionsCacheKey, permissions, TimeSpan.FromMinutes(cacheTime));
                     }
                 }
             }

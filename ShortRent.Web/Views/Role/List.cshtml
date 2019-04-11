@@ -1,0 +1,85 @@
+﻿@using ShortRent.Web.MvcExtention
+@model IEnumerable<RoleViewModelIndex>
+
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/BootstraTable")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <p class="col-xs-4 col-sm-3 col-lg-2">
+                    @Html.ActionLinkAdd("创建", "Create", new { @class = "btn btn-primary btn-sm" })
+                </p>
+                <p class="col-xs-8 col-sm-9 col-lg-10">
+
+                </p>
+            </div>
+            <div class="box-body">
+                <table id="RolesTable" class="table col-xs-12 col-sm-12 col-lg-12">
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @*本页面要用到的js*@
+    @Scripts.Render("~/Scripts/RoleIndex")
+    <script type="text/javascript">
+        $(function () {
+            $("#RolesTable").bootstrapTable({
+                method:'get',//用get请求
+                url: '/Role/Index',
+                columns: [{
+                    title: '@Html.DisplayNameFor(model => model.Name)',
+                    field: 'name',
+                    align:'center'
+                },
+                {
+                    title: '@Html.DisplayNameFor(model => model.Type)',
+                    field: 'type',
+                    align:'center',
+                    formatter: function (value, row, index) {
+                        var result = "";
+                        if (value) {
+                            result += " <span class=\"label label-success\">前台</span>"
+                        } else {
+                            result += "<span class=\"label label-warning\">后台</span>"
+                        }
+                        return result;
+                    }
+                },
+                {
+                    title: '操作',
+                    field: 'id',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var result = "";
+                        result += "<a href='/Role/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
+                        result += "<a href='/Role/Edit/" + value + "'>分配权限</a>";
+                        return result;
+                    }
+                }],
+                striped: true,//是否显示行间隔色
+                cache: false,//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                pagination: true,//是否显示分页（*）
+                pageNumber: 1,//初始化加载第一页，默认第一页
+                pageSize: 10, //每页的记录行数（*）
+                queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+                // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
+                pageList:[5,10,15,20],//可供选择的每页的行数（*）
+                sidePagination: "server",   //分页方式：client客户端分页，server服务端分页（*）
+                minimumCountColumns: 2,    //最少允许的列数
+            });
+        });
+    </script>
+
+}
+
+

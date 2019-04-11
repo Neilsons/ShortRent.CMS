@@ -9,7 +9,9 @@ namespace ShortRent.Service
 {
     public interface IRoleService
     {
-        IQueryable<Role> GetRoles();
-        IQueryable<Permission> GetPermissions(int id);
+        List<Role> GetRoles();
+        List<Role> GetRoles(int pageSize, int pageNumber, out int total);
+        Role GetAdminRole(int id);
+        List<Permission> GetPermissions(int id);
     }
 }

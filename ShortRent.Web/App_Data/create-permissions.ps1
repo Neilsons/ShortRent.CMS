@@ -32,31 +32,33 @@ foreach($permission in $MyPermissions)
 
     foreach($row in $MyDataSet.Tables[0].Rows)
     {
-      if(($permission.ID -eq $row["ID"]) -or (($permission.Category -eq $row["Category"]) -and ($permission.Name -eq $row["Name"])) )
+      if(($permission.ID -eq $row["ID"]) -or (($permission.Category -eq $row["Category"]) -and ($permission.Name -eq $row["Name"]) -and ($permission.Type -eq $row["Type"]) ) )
       {
          $DatabaseRecordExists = $true
       }
     }
     if($DatabaseRecordExists -eq $false)
     {
-         $sql ="INSERT INTO [Permission](Category,Name,Description) VALUES (@Category,@Name,@Description)"  
+         $sql ="INSERT INTO [Permission](Category,Type,Name,Description) VALUES (@Category,@Type,@Name,@Description)"  
          $Command = New-Object System.Data.SQLClient.SQLCommand
          $Command.Connection = $Connection
          $Command.CommandText = $sql
          $Command.Parameters.AddWithValue("@Category", $permission.Category) | Out-Null
+		 $Command.Parameters.AddWithValue("@Type", $permission.Type) | Out-Null
          $Command.Parameters.AddWithValue("@Name", $permission.Name) | Out-Null
-		 $Command.Parameters.AddWithValue("@Description", $permission.Description) | Out-Null
+		 $Command.Parameters.AddWithValue("@Description", $permission.Description) | Out-Null		 
          $Command.ExecuteNonQuery() | Out-Null
          
          $permission
     }
 	else
 	{
-		 $sql ="UPDATE [Permission] SET Category=@Category,Name=@Name,Description=@Description WHERE ID=@ID"  
+		 $sql ="UPDATE [Permission] SET Category=@Category,Type=@Type,Name=@Name,Description=@Description WHERE ID=@ID"  
          $Command = New-Object System.Data.SQLClient.SQLCommand
          $Command.Connection = $Connection
          $Command.CommandText = $sql
          $Command.Parameters.AddWithValue("@Category", $permission.Category) | Out-Null
+		 $Command.Parameters.AddWithValue("@Type", $permission.Type) | Out-Null
          $Command.Parameters.AddWithValue("@Name", $permission.Name) | Out-Null
 		 $Command.Parameters.AddWithValue("@Description", $permission.Description) | Out-Null
          $Command.Parameters.AddWithValue("@ID", $permission.ID) | Out-Null
@@ -74,7 +76,7 @@ foreach($row in $MyDataSet.Tables[0].Rows)
 
     foreach($permission in $MyPermissions)
     {
-      if(($permission.ID -eq $row["ID"]) -or (($permission.Category -eq $row["Category"]) -and ($permission.Name -eq $row["Name"])))
+      if(($permission.ID -eq $row["ID"]) -or (($permission.Category -eq $row["Category"]) -and ($permission.Name -eq $row["Name"]) -and ($permission.Type -eq $row["Type"])))
       {
          $CodeRecordExists = $true
       }

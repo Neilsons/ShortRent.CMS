@@ -34,8 +34,8 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    General Form Elements
-                    <small>Preview</small>
+                    @ViewBag.Title
+                    <small>@ViewBag.Content</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -71,6 +71,7 @@
         @Scripts.Render("~/Scripts/FastClick")
         @Scripts.Render("~/Scripts/Adminlte")
         @Scripts.Render("~/Scripts/Demo")
+        @Scripts.Render("~/Scripts/BootstrapTable")
         @RenderSection("Scripts", required: false)
 </body>
 </html>

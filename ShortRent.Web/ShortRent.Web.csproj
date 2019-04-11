@@ -153,6 +153,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\AdminMaster\adminlte.min.js" />
     <Content Include="Scripts\AdminMaster\demo.js" />
+    <Content Include="Scripts\bootstrap-table-zh-CN.js" />
     <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -188,6 +189,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Role\RoleIndex.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -206,6 +208,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Person\PersonViewModel.cs" />
+    <Compile Include="Models\Role\RolePageListViewModel.cs" />
     <Compile Include="Models\Role\RoleViewModelIndex.cs" />
     <Compile Include="MvcExtention\AutoMapper\PersonProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\RoleProfile.cs" />
@@ -267,7 +270,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\ControlSlider.cshtml" />
     <Content Include="Views\Person\Test.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\List.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RoleType.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -336,7 +339,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted F:\graduation\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
