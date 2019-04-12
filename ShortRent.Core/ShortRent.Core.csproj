@@ -119,6 +119,7 @@
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
+    <Compile Include="Infrastructure\PredicateExtensions.cs" />
     <Compile Include="Infrastructure\ServiceContainer.cs" />
     <Compile Include="Language\GlobalManager.cs" />
     <Compile Include="Language\ILanguages.cs" />

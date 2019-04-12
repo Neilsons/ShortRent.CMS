@@ -31,6 +31,9 @@ namespace ShortRent.Web.App_Start
 
             //role用到的js 自定义的开始
             bundles.Add(new ScriptBundle("~/Scripts/RoleIndex").Include("~/Scripts/Role/RoleIndex.js"));
+            //表格导出
+            bundles.Add(new ScriptBundle("~/Scripts/BootstrapTableExport", "https://cdn.bootcss.com/bootstrap-table/1.14.2/extensions/export/bootstrap-table-export.js").Include("~/Scripts/extensions/export/bootstrap-table-export.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/TableExport").Include("~/Scripts/tableexport-1.10.3.js"));
         }
     }
 }

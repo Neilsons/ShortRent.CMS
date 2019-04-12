@@ -47,7 +47,7 @@ namespace ShortRent.Web.Controllers
         /// <param name="pageSize"></param>
         /// <param name="pageNumber"></param>
         /// <returns></returns>
-        public JsonResult Index(int pageSize,int pageNumber)
+        public JsonResult Index(int pageSize=5,int pageNumber=1,string roleName="")
         {
             List<RoleViewModelIndex> list = null;
             //返回的数据
@@ -55,7 +55,7 @@ namespace ShortRent.Web.Controllers
             try
             {
                 int total;
-                var roles = _roleService.GetRoles(pageSize,pageNumber,out total);
+                var roles = _roleService.GetRoles(pageSize,pageNumber,roleName,out total);
                 if (roles.Any())
                 {
                     list = _mapper.Map<List<RoleViewModelIndex>>(roles);

@@ -13,5 +13,6 @@ namespace ShortRent.Service
         List<Role> GetRoles(int pageSize, int pageNumber, out int total);
         Role GetAdminRole(int id);
         List<Permission> GetPermissions(int id);
+        List<Role> GetRoles(int pageSize, int pageNumber, string roleName, out int total);
     }
 }

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShortRent.Core.Config;
+using System.Linq.Expressions;
+using ShortRent.Core;
 
 namespace ShortRent.Service
 {
@@ -69,35 +71,64 @@ namespace ShortRent.Service
             return roles;
         }
         /// <summary>
-        /// 返回分页的数据
+        /// 返回未查询的分页的数据
         /// </summary>
         /// <param name="pageSize"></param>
         /// <param name="pageNumber"></param>
         /// <returns></returns>
         public List<Role> GetRoles(int pageSize,int pageNumber,out int total)
         {
+           return GetRoles(pageSize, pageNumber,null, out total);
+        }
+        /// <summary>
+        /// 返回查询的分页数据
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="roleName"></param>
+        /// <param name="total"></param>
+        /// <returns></returns>
+        public List<Role> GetRoles(int pageSize,int pageNumber,string roleName,out int total)
+        {
             List<Role> roles = null;
             try
             {
+                Expression<Func<Role, bool>> expression = test => true;
+                if (!string.IsNullOrWhiteSpace(roleName))//条件
+                {
+                   expression= expression.And(c => c.Name.Contains(roleName));
+                }
                 if (_cacheManager.Contains(RoleCacheKey))
                 {
-                    var cache = _cacheManager.Get<List<Role>>(RoleCacheKey);
-                    roles = cache.Skip((pageNumber-1)*pageSize).Take(pageSize).ToList();
+                    var cache = _cacheManager.Get<List<Role>>(RoleCacheKey).Where(expression.Compile());
+                    roles = cache.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
                     total = cache.Count();
                 }
                 else
                 {
                     var list = _roleRepository.Entitys;
-                    roles = list.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-                    total = list.Count();
+                    if (list.Any())
+                    {
+                        list = list.Where(c => c.IsDelete == false).ToList();
+                        int cacheTime = GetTimeFromConfig(1);
+                        roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                        total = list.Count();
+                        _cacheManager.Set(RoleCacheKey, list, TimeSpan.FromMinutes(cacheTime));
+                    }
+                    else
+                    {
+                        roles = new List<Role>();
+                        total = 0;
+                    }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.Debug(e.Message);
                 throw new Exception(e.Message);
             }
             return roles;
+
         }
         /// <summary>
         /// 返回后台用户角色

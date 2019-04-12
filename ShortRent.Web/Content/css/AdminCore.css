@@ -5,6 +5,18 @@
 .gray-bg {
     background-color: #FFF;
 }
+/*媒体查询开始*/
+@media (max-width:768px) {
+    .marTOrd-xs {
+        margin: 2% 0;
+    }
+}
+@media (min-width:768px) {
+    .marTOrd-xs {
+        margin: 0%;
+    }
+}
+/*媒体查询结束*/
 /*上下边距*/
 .marTOrd-lg {
     margin: 2% 0;
@@ -12,8 +24,8 @@
 .marTOrd-sm {
     margin: 1% 0;
 }
-.marTOrd-xs{
-    margin:0.5% 0;
+.no-records-found{
+    text-align: center;
 }
 .box {
     position: relative;

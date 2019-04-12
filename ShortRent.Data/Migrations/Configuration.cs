@@ -34,7 +34,10 @@ namespace ShortRent.Data.Migrations
             );
             context.Roles.AddOrUpdate(
                 new Role() { Name = "系统管理员", Type = true, CreateTime = DateTime.Now },
-                new Role() { Name = "普通用户", Type = false, CreateTime = DateTime.Now }
+                new Role() { Name = "普通用户", Type = false, CreateTime = DateTime.Now },
+                new Role() { Name = "测试用户", Type = true, CreateTime = DateTime.Now },
+                new Role() { Name = "前台普通用户", Type = false, CreateTime = DateTime.Now },
+                new Role() { Name = "前台招聘用户", Type = false, CreateTime = DateTime.Now }
                 );           
         }
     }
