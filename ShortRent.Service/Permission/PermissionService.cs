@@ -1,5 +1,6 @@
 ﻿using ShortRent.Core.Cache;
 using ShortRent.Core.Data;
+using ShortRent.Core;
 using ShortRent.Core.Domain;
 using ShortRent.Core.Log;
 using System;
@@ -47,7 +48,7 @@ namespace ShortRent.Service
                     if (list.Any())
                     {
                         permissions = list.Where(c => c.Type);
-                        int cacheTime = GetTimeFromConfig(1);
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
                         _cacheManager.Set(PermissionCacheKey, list, TimeSpan.FromMinutes(cacheTime));
                     }
                 }
