@@ -61,15 +61,6 @@ namespace ShortRent.Resource.Mvc {
         }
         
         /// <summary>
-        ///   查找类似 创建用户 的本地化字符串。
-        /// </summary>
-        public static string Createbutton {
-            get {
-                return ResourceManager.GetString("Createbutton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 {PropertyName}必须大于或等于{ComparisonValue} 的本地化字符串。
         /// </summary>
         public static string greaterthanorequal_error {
@@ -151,33 +142,6 @@ namespace ShortRent.Resource.Mvc {
         }
         
         /// <summary>
-        ///   查找类似 出生日期 的本地化字符串。
-        /// </summary>
-        public static string PersonBirthdayDisplayName {
-            get {
-                return ResourceManager.GetString("PersonBirthdayDisplayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 姓名 的本地化字符串。
-        /// </summary>
-        public static string PersonNameDisplayName {
-            get {
-                return ResourceManager.GetString("PersonNameDisplayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 性别 的本地化字符串。
-        /// </summary>
-        public static string PersonSexDisplayName {
-            get {
-                return ResourceManager.GetString("PersonSexDisplayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 {PropertyName}不符合指定的条件 的本地化字符串。
         /// </summary>
         public static string predicate_error {
@@ -196,6 +160,33 @@ namespace ShortRent.Resource.Mvc {
         }
         
         /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string RoleViewModelIndexIDDisplayName {
+            get {
+                return ResourceManager.GetString("RoleViewModelIndexIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 角色名称 的本地化字符串。
+        /// </summary>
+        public static string RoleViewModelIndexNameDisplayName {
+            get {
+                return ResourceManager.GetString("RoleViewModelIndexNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户类型 的本地化字符串。
+        /// </summary>
+        public static string RoleViewModelIndexTypeDisplayName {
+            get {
+                return ResourceManager.GetString("RoleViewModelIndexTypeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}不能超过{expectedPrecision}位 的本地化字符串。
         /// </summary>
         public static string scale_precision_error {
@@ -205,7 +196,7 @@ namespace ShortRent.Resource.Mvc {
         }
         
         /// <summary>
-        ///   查找类似 {PropertyName}的长度yinggai是{MinLength}-{MaxLength}个字符 的本地化字符串。
+        ///   查找类似 {PropertyName}的长度是{MinLength}-{MaxLength}个字符 的本地化字符串。
         /// </summary>
         public static string Scope {
             get {

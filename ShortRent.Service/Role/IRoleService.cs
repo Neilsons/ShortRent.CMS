@@ -11,8 +11,10 @@ namespace ShortRent.Service
     {
         List<Role> GetRoles();
         List<Role> GetRoles(int pageSize, int pageNumber, out int total);
-        Role GetAdminRole(int id);
+        Role GetRole(int id, bool? type=null);
         List<Permission> GetPermissions(int id);
         List<Role> GetRoles(int pageSize, int pageNumber, string roleName, out int total);
+        void CreateRole(Role role);
+        void UpdateRole(Role role);
     }
 }

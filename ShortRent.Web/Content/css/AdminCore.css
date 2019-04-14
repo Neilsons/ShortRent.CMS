@@ -2,6 +2,12 @@
     margin:0;
     padding:0;
 }
+.clear-margin{
+    margin:0;
+}
+.text-error {
+    color: #dd4b39;
+}
 .gray-bg {
     background-color: #FFF;
 }
@@ -10,10 +16,22 @@
     .marTOrd-xs {
         margin: 2% 0;
     }
+    .marTop-xs{
+        margin-top:2%;
+    }
+    body{
+        font-size:12px !important;
+    }
 }
 @media (min-width:768px) {
     .marTOrd-xs {
         margin: 0%;
+    }
+    .marTop-xs{
+        margin-top:4%;
+    }
+    body {
+        font-size: 13px !important;
     }
 }
 /*媒体查询结束*/
@@ -48,4 +66,10 @@
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     padding: 10px;
+}
+.display{
+    display:block;
+}
+.widthAll{
+    width:100%;
 }

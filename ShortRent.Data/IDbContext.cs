@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace ShortRent.Data
     /// </summary>
     public interface IDbContext
     {
+        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        
         IDbSet<TEntity> Set<TEntity>() where TEntity:class;
         /// <summary>
         /// 保存变更

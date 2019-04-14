@@ -154,18 +154,15 @@
     <value>{PropertyName}不能超过{expectedPrecision}位</value>
   </data>
   <data name="Scope" xml:space="preserve">
-    <value>{PropertyName}的长度yinggai是{MinLength}-{MaxLength}个字符</value>
+    <value>{PropertyName}的长度是{MinLength}-{MaxLength}个字符</value>
   </data>
-  <data name="PersonBirthdayDisplayName" xml:space="preserve">
-    <value>出生日期</value>
+  <data name="RoleViewModelIndexIDDisplayName" xml:space="preserve">
+    <value>编号</value>
   </data>
-  <data name="PersonNameDisplayName" xml:space="preserve">
-    <value>姓名</value>
+  <data name="RoleViewModelIndexNameDisplayName" xml:space="preserve">
+    <value>角色名称</value>
   </data>
-  <data name="PersonSexDisplayName" xml:space="preserve">
-    <value>性别</value>
-  </data>
-  <data name="Createbutton" xml:space="preserve">
-    <value>创建用户</value>
+  <data name="RoleViewModelIndexTypeDisplayName" xml:space="preserve">
+    <value>用户类型</value>
   </data>
 </root>

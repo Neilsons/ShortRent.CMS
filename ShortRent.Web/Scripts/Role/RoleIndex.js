@@ -3,7 +3,6 @@
     OTable.Init();
     //条件查询click事件注册
     $("#btn_query").click(function () {
-        $("#RolesTable").bootstrapTable('destroy');
         OTable.Init();
     });
     //2.初始化select的change事件
@@ -12,6 +11,8 @@
             exportDataType: $(this).val()
         });
     });
+    //导出数据的title更改
+    $(".export").children("button").attr("title","导出数据");
 });
 //数字
 function doOnMsoNumberFormat(cell, row, col) {
@@ -48,12 +49,12 @@ var TableInit = function () {
     var OTableInit = new Object();
     var $table = $("#RolesTable");
     OTableInit.Init = function () {
-        $table.bootstrapTable({
+        $table.bootstrapTable('destroy').bootstrapTable({
             method: 'get',//用get请求
             url: '/Role/Index',
             toolbar: '#toolbar',
-            showRefresh:true,
             showExport: true,                     //是否显示导出
+            showRefresh: true,
             exportDataType: "basic",              //basic', 'all', 'selected'.
             exportOptions: {
                 ignoreColumn: [3],  //忽略某一列的索引  
@@ -67,7 +68,6 @@ var TableInit = function () {
             columns: [{
                 title: '编号',
                 align: 'center',
-                height:200,
                 valign: 'bottom',
                 formatter: function (value, row, index) {
                     var pageNumber = $table.bootstrapTable('getOptions').pageNumber;
@@ -86,7 +86,7 @@ var TableInit = function () {
                 align: 'center',
                 formatter: function (value, row, index) {
                     var result = "";
-                    if (value) {
+                    if (!value) {
                         result += " <span class=\"label label-success\">前台</span>"
                     } else {
                         result += "<span class=\"label label-warning\">后台</span>"
@@ -109,7 +109,7 @@ var TableInit = function () {
             cache: false,//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
             pagination: true,//是否显示分页（*）
             pageNumber: 1,//初始化加载第一页，默认第一页
-            pageSize: 2, //每页的记录行数（*）
+            pageSize: 5, //每页的记录行数（*）
             queryParamsType: 'undefined',
             queryParams: OTableInit.Query,
             // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber

@@ -35,7 +35,7 @@ namespace ShortRent.Resource
         }
        public static string getViewElement(string key)
         {
-            return GetResource("ShortRent.Resource.Mvc.Resources",key);
+            return GetResource("ShortRent.Resource.MetaData.Resources", key);
         }
         private static String GetResource(String type, String key)
         {

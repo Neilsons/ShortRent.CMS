@@ -93,6 +93,7 @@
     <Compile Include="Cache\NullCacheManager.cs" />
     <Compile Include="Cache\RedisCacheManager.cs" />
     <Compile Include="Config\ApplicationConfig.cs" />
+    <Compile Include="Config\CacheTimeLev.cs" />
     <Compile Include="Config\LevElement.cs" />
     <Compile Include="Config\CacheTimesElement.cs" />
     <Compile Include="Config\PageConfig.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
+    <Compile Include="Infrastructure\JsonHelper.cs" />
     <Compile Include="Infrastructure\PredicateExtensions.cs" />
     <Compile Include="Infrastructure\ServiceContainer.cs" />
     <Compile Include="Language\GlobalManager.cs" />

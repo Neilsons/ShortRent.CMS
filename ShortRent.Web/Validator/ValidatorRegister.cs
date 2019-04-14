@@ -6,7 +6,7 @@ using Autofac;
 using FluentValidation;
 using ShortRent.Core.Infrastructure;
 using ShortRent.Resource;
-using ShortRent.Resource.Mvc;
+using ShortRent.Resource.MetaData;
 
 namespace ShortRent.Web.Validator
 {

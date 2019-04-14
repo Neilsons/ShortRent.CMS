@@ -58,7 +58,7 @@ namespace ShortRent.Service
                     if (list.Any())
                     {
                         roles = list.Where(c=>c.IsDelete==false).ToList();                        
-                        int cacheTime=GetTimeFromConfig(1);
+                        int cacheTime=GetTimeFromConfig((int)CacheTimeLev.lev1);
                         _cacheManager.Set(RoleCacheKey, roles, TimeSpan.FromMinutes(cacheTime));
                     }
                 }
@@ -110,7 +110,7 @@ namespace ShortRent.Service
                     if (list.Any())
                     {
                         list = list.Where(c => c.IsDelete == false).ToList();
-                        int cacheTime = GetTimeFromConfig(1);
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
                         roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
                         total = list.Count();
                         _cacheManager.Set(RoleCacheKey, list, TimeSpan.FromMinutes(cacheTime));
@@ -135,20 +135,27 @@ namespace ShortRent.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Role GetAdminRole(int id)
+        public Role GetRole(int id,bool? type=null)
         {
             Role role=null;
             try
             {
                 if (_cacheManager.Contains(RoleCacheKey))
                 {
-                    _cacheManager.Get<List<Role>>(RoleCacheKey).Where(c => c.Type == true && c.ID == id).FirstOrDefault();
+                    if (type == null)
+                     role=_cacheManager.Get<List<Role>>(RoleCacheKey).Where( c=>c.ID == id).FirstOrDefault();
+                    else
+                    role=_cacheManager.Get<List<Role>>(RoleCacheKey).Where(c => c.Type == type && c.ID == id).FirstOrDefault();
                 }
                 else
                 {
                     //类型为true 的是后台用户
-                    var model = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false && c.Type).FirstOrDefault();
-                    if(model!=null)
+                    Role model;
+                    if(type==null)
+                    model = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false).FirstOrDefault();
+                    else
+                    model = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false && c.Type == type).FirstOrDefault();
+                    if (model!=null)
                     {
                         role = model;
                     }
@@ -182,11 +189,11 @@ namespace ShortRent.Service
                 }
                 else
                 {
-                    var list = GetAdminRole(id).Permissions;
+                    var list = GetRole(id,true).Permissions;
                     if (list.Any())
                     {
                         permissions = list.ToList();
-                        int cacheTime = GetTimeFromConfig(1);
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
                         _cacheManager.Set(PermissionsCacheKey, permissions, TimeSpan.FromMinutes(cacheTime));
                     }
                 }
@@ -197,6 +204,43 @@ namespace ShortRent.Service
                 throw new Exception(e.Message);
             }          
             return permissions;
+        }
+        /// <summary>
+        /// 创建角色
+        /// </summary>
+        /// <param name="role"></param>
+        public void CreateRole(Role role)
+        {
+            try
+            {
+                _roleRepository.Insert(role);
+                _cacheManager.Remove(RoleCacheKey);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug(e.Message);
+                throw new Exception(e.Message);
+            }
+           
+        }
+        /// <summary>
+        /// 更新角色
+        /// </summary>
+        /// <param name="role"></param>
+        public void UpdateRole(Role role)
+        {
+            try
+            {
+                Role oldRole = GetRole(role.ID);
+                role.CreateTime = oldRole.CreateTime;
+                _roleRepository.Update(role);
+                _cacheManager.Remove(RoleCacheKey);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug(e.Message);
+                throw new Exception(e.Message);
+            }
         }
         #endregion
     }

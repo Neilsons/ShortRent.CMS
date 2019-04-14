@@ -13,8 +13,9 @@
     @Styles.Render("~/Styles/AllSkins")
     @Styles.Render("~/Styles/AdminLTE")
     @Styles.Render("~/Styles/AdminCore")
+    @Styles.Render("~/Styles/LayAlert")
+    @Styles.Render("~/Styles/Pace")
     @RenderSection("Styles", required: false)
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -72,6 +73,9 @@
         @Scripts.Render("~/Scripts/Adminlte")
         @Scripts.Render("~/Scripts/Demo")
         @Scripts.Render("~/Scripts/BootstrapTable")
+        @Scripts.Render("~/Scripts/ValidationExtention-Bootstrap")
+        @Scripts.Render("~/Scripts/LayAlert")
+        @Scripts.Render("~/Scripts/Pace")
         @RenderSection("Scripts", required: false)
 </body>
 </html>

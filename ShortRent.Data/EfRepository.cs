@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,8 @@ namespace ShortRent.Data
             {
                 throw new ArgumentNullException(nameof(entity));
             }
+            this.DbSet.Attach(entity);
+            this._dbContext.Entry<T>(entity).State = EntityState.Modified;
             this._dbContext.SaveChanges();
         }
 

@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="greaterthanorequal_error" xml:space="preserve">
+    <value>{PropertyName}必须大于或等于{ComparisonValue}</value>
+  </data>
+  <data name="inclusivebetween_error" xml:space="preserve">
+    <value>{PropertyName}必须在{From}和{To}之间</value>
+  </data>
+  <data name="InvalidUserNameOrPassword" xml:space="preserve">
+    <value>无效的用户名或密码</value>
+  </data>
+  <data name="length_error" xml:space="preserve">
+    <value>{PropertyName}的长度必须是{MinLength}-{MaxLength}个字符</value>
+  </data>
+  <data name="lessthanorequal_error" xml:space="preserve">
+    <value>{PropertyName}必须小于或等于{ComparisonValue}</value>
+  </data>
+  <data name="lessthan_error" xml:space="preserve">
+    <value>{PropertyName}必须小于{ComparisonValue}</value>
+  </data>
+  <data name="notempty_error" xml:space="preserve">
+    <value>{PropertyName}不能为空</value>
+  </data>
+  <data name="notequal_error" xml:space="preserve">
+    <value>{PropertyName}不能与{PropertyValue}相同</value>
+  </data>
+  <data name="notnull_error" xml:space="preserve">
+    <value>{PropertyName}不能为空</value>
+  </data>
   <data name="PersonViewModelBirthdayDisplayName" xml:space="preserve">
     <value>出生日期</value>
   </data>
@@ -126,6 +153,12 @@
   <data name="PersonViewModelSexDisplayName" xml:space="preserve">
     <value>性别</value>
   </data>
+  <data name="predicate_error" xml:space="preserve">
+    <value>{PropertyName}不符合指定的条件</value>
+  </data>
+  <data name="regex_error" xml:space="preserve">
+    <value>{PropertyName}格式不正确</value>
+  </data>
   <data name="RoleViewModelIndexIDDisplayName" xml:space="preserve">
     <value>编号</value>
   </data>
@@ -134,5 +167,11 @@
   </data>
   <data name="RoleViewModelIndexTypeDisplayName" xml:space="preserve">
     <value>用户类型</value>
+  </data>
+  <data name="scale_precision_error" xml:space="preserve">
+    <value>{PropertyName}不能超过{expectedPrecision}位</value>
+  </data>
+  <data name="Scope" xml:space="preserve">
+    <value>{PropertyName}的长度是{MinLength}-{MaxLength}个字符</value>
   </data>
 </root>
