@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HumanData\HumanInfoChina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumanInfoChina.resx</DependentUpon>
+    </Compile>
     <Compile Include="MetaData\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +65,10 @@
     <Compile Include="ResourceManagers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="HumanData\HumanInfoChina.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HumanInfoChina.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MetaData\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

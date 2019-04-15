@@ -14,6 +14,7 @@ namespace ShortRent.Web
         {
             this.CreateMap<Role, RoleViewModelIndex>();
             this.CreateMap<RoleViewModelIndex, Role>();
+            this.CreateMap<RoleViewModelIndex,RoleHumanModel>().ForMember(c=>c.Type,m=>m.MapFrom(src=>src.Type==true?"后台":"前台"));
         }
     }
 }

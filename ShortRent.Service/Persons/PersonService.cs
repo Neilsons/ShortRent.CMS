@@ -4,27 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShortRent.Core.Cache;
+using ShortRent.Core.Config;
 using ShortRent.Core.Data;
 using ShortRent.Core.Domain;
+using ShortRent.Core.Log;
+using ShortRent.Core;
 
 namespace ShortRent.Service
 {
-    public class PersonService : IPersonService
+    public class PersonService : BaseService,IPersonService
     {
         #region Field
         private readonly IRepository<Person> _personRepository;
-        //缓存
         private readonly ICacheManager _cacheManager;
+        private readonly ILogger _logger;
+        private readonly ApplicationConfig _config;
         //缓存中的key值
         private const string PersonsCacheKey = nameof(PersonService) + nameof(Person);
+        private const string HistoryOperatorCacheKey = nameof(PersonService) + nameof(HistoryOperator);
         #endregion
 
         #region Contruction
         public PersonService(IRepository<Person> personRepository,
-            ICacheManager cacheManager)
+            ICacheManager cacheManager,ILogger logger,ApplicationConfig config)
         {
             _personRepository = personRepository;
             _cacheManager = cacheManager;
+            _logger = logger;
+            _config = config;
         }
         #endregion
 
@@ -38,31 +45,114 @@ namespace ShortRent.Service
         {
             _personRepository.Delete(person);
         }
-
-        public List<Person> GetPersons()
+        /// <summary>
+        /// 得到特定的人
+        /// </summary>
+        /// <param name="IsActivator">false未激活 true 激活 null 全部</param>
+        /// <returns></returns>
+        public List<Person> GetPersons(bool? IsActivator=null)
         {
             List<Person> persons = null;
-            if(_cacheManager.Contains(PersonsCacheKey))
+            try
             {
-                persons = _cacheManager.Get<List<Person>>(PersonsCacheKey);
-            }
-            else
-            {
-                var list = _personRepository.Entitys;
-                if(list!=null)
+                if (_cacheManager.Contains(PersonsCacheKey))
                 {
-                    persons = list.ToList();
-                    //缓存半个小时
-                    _cacheManager.Set(PersonsCacheKey, persons, TimeSpan.FromMinutes(30));
+                    if (IsActivator == null)
+                        persons = _cacheManager.Get<List<Person>>(PersonsCacheKey);
+                    else
+                        persons = _cacheManager.Get<List<Person>>(PersonsCacheKey).Where(c => c.IsDelete == IsActivator).ToList();
                 }
                 else
                 {
-                    persons = new List<Person>();
+                    var list = _personRepository.Entitys.OrderByDescending(c=>c.CreateTime).ToList();
+                    if (list.Any())
+                    {
+                        if (IsActivator == null)
+                            persons = list;
+                        else
+                            persons = list.Where(c => c.IsDelete == IsActivator).ToList();
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
+                        //缓存半个小时
+                        _cacheManager.Set(PersonsCacheKey, list, TimeSpan.FromMinutes((int)CacheTimeLev.lev1));
+                    }
+                    else
+                    {
+                        persons = new List<Person>();
+                    }
                 }
+            }
+           catch(Exception e)
+            {
+                _logger.Debug("获取特定的用户",e);
+                throw e;
             }
             return persons;
         }
-
+        /// <summary>
+        /// 得到某一个用户
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="IsActivator"></param>
+        /// <returns></returns>
+        public Person GetPerson(int id,bool? IsActivator=null)
+        {
+            Person person = null;
+            try
+            {
+                if(_cacheManager.Contains(PersonsCacheKey))
+                {
+                    if (IsActivator == null)
+                        person = _cacheManager.Get<List<Person>>(PersonsCacheKey).Where(c => c.ID == id).FirstOrDefault();
+                    else
+                        person = _cacheManager.Get<List<Person>>(PersonsCacheKey).Where(c => c.ID == id&&c.IsDelete==IsActivator).FirstOrDefault();
+                }
+                else
+                {
+                    if (IsActivator == null)
+                        person = _personRepository.Entitys.Where(c => c.ID == id).FirstOrDefault();
+                    else
+                        person = _personRepository.Entitys.Where(c => c.ID == id && c.IsDelete == IsActivator).FirstOrDefault();
+                    if(person==null)
+                    {
+                        person = new Person();
+                    }                  
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("获得指定条件的用户",e);
+                throw e;
+            }
+            return person;
+        }
+        public List<HistoryOperator> GetPersonHistoryOperator(int personId)
+        {
+            List<HistoryOperator> list = null;
+            try
+            {
+                if(_cacheManager.Contains(HistoryOperatorCacheKey))
+                {
+                    list = _cacheManager.Get<List<HistoryOperator>>(HistoryOperatorCacheKey);
+                }
+                else
+                {
+                    ///得到激活用户
+                    var person = GetPerson(personId, true).HistoryOperators;
+                    if(person.Any())
+                    {
+                       list=person.OrderByDescending(c => c.CreateTime).ToList();
+                       int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
+                        _cacheManager.Set(HistoryOperatorCacheKey, list,TimeSpan.FromMinutes(cacheTime));
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("根据用户获取所有历史操作的信息",e);
+                throw e;
+            }
+            return list;
+        }
         public void UpdatePerson(Person person)
         {
             _personRepository.Update(person);

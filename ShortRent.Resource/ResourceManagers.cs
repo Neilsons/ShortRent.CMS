@@ -37,6 +37,10 @@ namespace ShortRent.Resource
         {
             return GetResource("ShortRent.Resource.MetaData.Resources", key);
         }
+        public static string getHumentData(string key)
+        {
+            return GetResource("ShortRent.Resource.HumanData.HumanInfoChina", key);
+        }
         private static String GetResource(String type, String key)
         {
             return Resources.ContainsKey(type) ? Resources[type].GetString(key) : null;

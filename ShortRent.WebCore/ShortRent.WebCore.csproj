@@ -85,6 +85,10 @@
       <Project>{6d90fe98-8825-4d54-b90b-8b7d90131c22}</Project>
       <Name>ShortRent.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShortRent.Resource\ShortRent.Resource.csproj">
+      <Project>{ad8e5cb4-819d-4508-8a4c-fc0a0384e6c5}</Project>
+      <Name>ShortRent.Resource</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,7 +54,7 @@ namespace ShortRent.Service
                 }
                 else
                 {
-                    var list = _roleRepository.Entitys;
+                    var list = _roleRepository.Entitys.OrderByDescending(c=>c.CreateTime);
                     if (list.Any())
                     {
                         roles = list.Where(c=>c.IsDelete==false).ToList();                        
@@ -65,8 +65,8 @@ namespace ShortRent.Service
             }
             catch (Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("返回所有角色", e);
+                throw e;
             }
             return roles;
         }
@@ -109,7 +109,7 @@ namespace ShortRent.Service
                     var list = _roleRepository.Entitys;
                     if (list.Any())
                     {
-                        list = list.Where(c => c.IsDelete == false).ToList();
+                        list = list.OrderByDescending(c=>c.CreateTime).Where(c => c.IsDelete == false).ToList();
                         int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
                         roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
                         total = list.Count();
@@ -124,14 +124,14 @@ namespace ShortRent.Service
             }
             catch (Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("返回查询的分页数据", e); 
+                throw e;
             }
             return roles;
 
         }
         /// <summary>
-        /// 返回后台用户角色
+        /// 返回用户角色
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -150,16 +150,11 @@ namespace ShortRent.Service
                 else
                 {
                     //类型为true 的是后台用户
-                    Role model;
                     if(type==null)
-                    model = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false).FirstOrDefault();
+                    role = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false).FirstOrDefault();
                     else
-                    model = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false && c.Type == type).FirstOrDefault();
-                    if (model!=null)
-                    {
-                        role = model;
-                    }
-                    else
+                    role = _roleRepository.Entitys.Where(c => c.ID == id && c.IsDelete == false && c.Type == type).FirstOrDefault();
+                    if (role==null)
                     {
                         role = new Role();
                     }
@@ -167,14 +162,14 @@ namespace ShortRent.Service
             }
             catch(Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("返回某一个用户角色", e);
+                throw e;
             }
             return role;
 
         }
         /// <summary>
-        /// 返回某一角色的权限列表列表
+        /// 返回某一角色的权限列表
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -200,8 +195,8 @@ namespace ShortRent.Service
             }
             catch(Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("返回某一角色的权限列表", e);
+                throw e;
             }          
             return permissions;
         }
@@ -218,10 +213,9 @@ namespace ShortRent.Service
             }
             catch(Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("创建角色", e);
+                throw e;
             }
-           
         }
         /// <summary>
         /// 更新角色
@@ -238,8 +232,8 @@ namespace ShortRent.Service
             }
             catch(Exception e)
             {
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("更新角色", e);
+                throw e;
             }
         }
         #endregion

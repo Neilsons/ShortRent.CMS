@@ -19,6 +19,7 @@ namespace ShortRent.Service
             container.RegisterType<PersonService>().As<IPersonService>();
             container.RegisterType<RoleService>().As<IRoleService>();
             container.RegisterType<PermissionService>().As<IPermissionService>();
+            container.RegisterType<HistoryOperatorService>().As<IHistoryOperatorService>();
         }
     }
 }
