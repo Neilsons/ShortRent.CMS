@@ -20,6 +20,7 @@ namespace ShortRent.Service
         //主键
         private const string PermissionCacheKey = nameof(PermissionService) + nameof(Permission);
         #endregion
+
         #region Construction
         public PermissionService(IRepository<Permission> permissionReopsitory,ILogger logger,ICacheManager cacheManager)
         {
@@ -28,6 +29,7 @@ namespace ShortRent.Service
             this._cacheManager = cacheManager;
         }
         #endregion
+
         #region Methods
         /// <summary>
         /// 获取后台的所有权限

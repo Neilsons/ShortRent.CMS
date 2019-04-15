@@ -66,15 +66,15 @@ namespace ShortRent.WebCore.MVC
             sBuild.Append(pro.GetValue(model));
             foreach (var property in type.GetProperties())
             {
-                sBuild.Append(";");
                 if (property.Name == "ID")
                     continue;
+                sBuild.Append(" ; ");
                 string key = type.Name + property.Name;
                 sBuild.Append(ResourceManagers.getHumentData(key));
                 sBuild.Append("=>(编辑之前："); 
                 sBuild.Append(property.GetValue(oldModel));
                 sBuild.Append(" ; ");
-                sBuild.Append("编辑之后:");
+                sBuild.Append("编辑之后: ");
                 sBuild.Append(property.GetValue(model));
                 sBuild.Append(" ; )");
 
