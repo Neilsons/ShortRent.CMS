@@ -56,15 +56,15 @@ namespace ShortRent.Web.Controllers
         /// <param name="pageSize"></param>
         /// <param name="pageNumber"></param>
         /// <returns></returns>
-        public JsonResult Index(int pageSize = 5, int pageNumber = 1, string roleName = "")
+        public JsonResult Index(int? pageSize, int? pageNumber, string roleName = "")
         {
             List<RoleViewModelIndex> list = null;
             //返回的数据
-            RolePageListViewModel pageList = new RolePageListViewModel();
+            PagedListViewModel<RoleViewModelIndex> pageList = new PagedListViewModel<RoleViewModelIndex>();
             try
             {
                 int total;
-                var roles = _roleService.GetRoles(pageSize, pageNumber, roleName, out total);
+                var roles = _roleService.GetRoles(pageSize??0, pageNumber??0, roleName, out total);
                 if (roles.Any())
                 {
                     list = _mapper.Map<List<RoleViewModelIndex>>(roles);

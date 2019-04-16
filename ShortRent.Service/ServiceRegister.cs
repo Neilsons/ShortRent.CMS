@@ -20,6 +20,7 @@ namespace ShortRent.Service
             container.RegisterType<RoleService>().As<IRoleService>();
             container.RegisterType<PermissionService>().As<IPermissionService>();
             container.RegisterType<HistoryOperatorService>().As<IHistoryOperatorService>();
+            container.RegisterType<LogInfoService>().As<ILogInfoService>();
         }
     }
 }

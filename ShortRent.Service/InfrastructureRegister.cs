@@ -20,7 +20,7 @@ namespace ShortRent.Service
             //注册缓存
             container.RegisterType<MemoryCacheManager>().As<ICacheManager>();
             //注册日志
-            container.RegisterType<NullLogger>().As<ILogger>();
+            container.RegisterType<NLogLogger>().As<ILogger>();
         }
     }
 }

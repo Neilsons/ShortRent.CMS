@@ -48,6 +48,8 @@
     <Compile Include="HistoryOperator\HistoryOperatorService.cs" />
     <Compile Include="HistoryOperator\IHistoryOperatorService.cs" />
     <Compile Include="InfrastructureRegister.cs" />
+    <Compile Include="LogerInfo\ILogInfoService.cs" />
+    <Compile Include="LogerInfo\LogInfoService.cs" />
     <Compile Include="Permission\IPermissionService.cs" />
     <Compile Include="Permission\PermissionService.cs" />
     <Compile Include="Persons\IPersonService.cs" />

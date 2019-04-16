@@ -51,8 +51,8 @@ namespace ShortRent.Web.Controllers
             catch(Exception e)
             {
                 list = new List<PersonViewModel>();
-                _logger.Debug(e.Message);
-                throw new Exception(e.Message);
+                _logger.Debug("获得列表时出现错误",e);
+                throw e;
             }
             return View(list.AsEnumerable());
         }

@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/BootstraTable")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">               
+            </div>
+            <div class="box-body table-responsive">
+                <div id="toolbar" class="btn-group">
+                    <select id="sel_exportoption" class="form-control">
+                        <option value="basic">导出当前页</option>
+                        <option value="all">导出所有</option>
+                    </select>
+                </div>
+                <table id="LogTable" class="table col-xs-12 col-sm-12 col-lg-12 text-nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @Scripts.Render("~/Scripts/TableExport")
+    @Scripts.Render("~/Scripts/BootstrapTableExport")
+    @*本页面要用到的js*@
+    @Scripts.Render("~/Scripts/LogInfoIndex")
+
+}

@@ -101,18 +101,33 @@ namespace ShortRent.Service
                 if (_cacheManager.Contains(RoleCacheKey))
                 {
                     var cache = _cacheManager.Get<List<Role>>(RoleCacheKey).Where(expression.Compile());
-                    roles = cache.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                    if(pageSize==0&&pageNumber==0)
+                    {
+                        roles = cache.ToList();
+                    }
+                    else
+                    {
+                        roles = cache.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                    }
                     total = cache.Count();
                 }
                 else
                 {
                     var list = _roleRepository.Entitys;
+                    list = list.OrderByDescending(c => c.CreateTime).Where(c => c.IsDelete == false).ToList();
                     if (list.Any())
                     {
-                        list = list.OrderByDescending(c=>c.CreateTime).Where(c => c.IsDelete == false).ToList();
                         int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
-                        roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-                        total = list.Count();
+                        if (pageSize == 0 && pageNumber == 0)
+                        {
+                            roles = list.Where(expression.Compile()).ToList();
+                            total = list.Where(expression.Compile()).Count();
+                        }
+                        else
+                        {
+                            roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                            total = list.Where(expression.Compile()).Count();
+                        }
                         _cacheManager.Set(RoleCacheKey, list, TimeSpan.FromMinutes(cacheTime));
                     }
                     else
@@ -184,10 +199,9 @@ namespace ShortRent.Service
                 }
                 else
                 {
-                    var list = GetRole(id,true).Permissions;
-                    if (list.Any())
+                    permissions = GetRole(id,true).Permissions.ToList();
+                    if (permissions.Any())
                     {
-                        permissions = list.ToList();
                         int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
                         _cacheManager.Set(PermissionsCacheKey, permissions, TimeSpan.FromMinutes(cacheTime));
                     }
