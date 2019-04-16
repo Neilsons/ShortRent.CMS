@@ -1,0 +1,57 @@
+﻿body {
+    font-family: "Verdana";
+    font-weight: normal;
+    font-size: .7em;
+    color: black;
+}
+
+p {
+    font-family: "Verdana";
+    font-weight: normal;
+    color: black;
+    margin-top: -5px
+}
+
+b {
+    font-family: "Verdana";
+    font-weight: bold;
+    color: black;
+    margin-top: -5px
+}
+
+H2 {
+    font-family: "Verdana";
+    font-weight: normal;
+    font-size: 14pt;
+    color: maroon
+}
+
+td {
+    font-family: "Consolas","Lucida Console",Monospace;
+    font-size: 11pt;
+    padding: 0.5em;
+    line-height: 14pt;
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    color: #333333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #ffffcc;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+@media screen and (max-width: 639px) {
+    pre {
+        width: 440px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    pre {
+        width: 280px;
+    }
+}

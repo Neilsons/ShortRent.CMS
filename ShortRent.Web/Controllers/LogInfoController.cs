@@ -63,22 +63,29 @@ namespace ShortRent.Web.Controllers
             }
             return Json(pageList,JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 获取详情信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Detail(int id)
         {
-            LogDetailViewModel logDetailVm = null;
+            ViewBag.Title = "系统管理";
+            ViewBag.Content = "日志详情";
+            LogDetailViewModel logDetailVm = new LogDetailViewModel();
             try
             {
                 var loginfo = _logInfoService.GetDetail(id);             
                 LogDetailChange logChange =_mapper.Map<LogDetailChange>(loginfo);
                 logDetailVm.StachTrace = logChange.StachTrace;
-                LogInfoException exception;
+                logDetailVm.Exception = GetObjectByJson<LogInfoException>(logChange.Exception);
             }
             catch(Exception e)
             {
                 _logger.Debug("获取日志详情信息出错",e);
                 throw e;
             }
-            return View();
+            return View(logDetailVm);
         }
         #endregion
 

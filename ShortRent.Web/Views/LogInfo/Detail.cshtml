@@ -1,0 +1,54 @@
+﻿@model LogDetailViewModel
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+   @Styles.Render("~/Styles/LogDetail")    
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @if (Model != null)
+                {
+                    <span>
+                        <h2> <i>@Model.Exception.Message</i> </h2>
+                    </span>
+
+                    <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+                        <b> 说明: </b>执行当前 Web 请求期间，出现未经处理的异常。请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+
+                        <br><br>
+
+                        <b> 异常详细信息: </b>@Model.Exception.Type:@Model.Exception.Message<br><br>
+
+                        <b>堆栈:</b> <br>@Model.StachTrace<br>
+                        <br>
+
+                        <b>堆栈跟踪:</b> <br><br>
+
+                        <table>
+                            <tr>
+                                <td>
+                                        源信息：@Model.Exception.Source<br />
+                                        分配给特定异常的编码数值:@Model.Exception.HResult<br />
+                                        所涉及的方法全名:@Model.Exception.TargetSite<br />
+                                        详细的堆栈信息:@Model.Exception.StackTrace<br />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <hr width=100% size=1 color=silver>
+
+                        <b>@Html.ActionLink("返回", "List", null, new { @class = "btn btn-primary" })</b>
+                    </font>
+                }
+            </div>`
+        </div>
+    </div>
+</div>
+
+

@@ -1,14 +1,42 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/Shared/AdminMaster.cshtml";
 }
 @section Styles{
     @Styles.Render("~/Styles/BootstraTable")
+    @Styles.Render("~/Styles/LayerDate")
 }
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            <div class="box-header">               
+            <div class="box-header">
+                    <div class="row">
+                        <label class="control-label text-right col-sm-2" for="txt_search_machine"><span>机器名称</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="txt_search_machine">
+                        </div>
+                        <label class="control-label text-right col-sm-2" for="txt_search_type"><span>分类目录</span></label>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="txt-search_type">
+                                <option value="0">请选择</option>
+                                <option value="Debug">Debug</option>
+                                <option value="Error">Error</option>
+                                <option value="Fatal">Fatal</option>
+                                <option value="Info">Info</option>
+                                <option value="Warn">Warn</option>
+                            </select>
+                        </div>
+                        <label class="control-label text-right col-sm-2 marTOrd-xs_min" for="txt_search_stratTime"><span>开始时间</span></label>
+                        <div class="col-sm-4 marTOrd-xs_min">
+                            <input type="text" class="form-control" id="txt_search_stratTime">
+                        </div>
+                        <label class="control-label text-right col-sm-2 marTOrd-xs_min" for="txt_search_endTime"><span>结束时间</span></label>
+                        <div class="col-sm-4 marTOrd-xs_min">
+                            <input type="text" class="form-control" id="txt_search_endTime">
+                        </div>
+                        <div class="col-xs-12 marTOrd-xs text-right">
+                            <button type="button" id="btn_query" class="btn btn-primary btn-sm">查询</button>
+                        </div>
+                    </div>
             </div>
             <div class="box-body table-responsive">
                 <div id="toolbar" class="btn-group">
@@ -28,6 +56,7 @@
     @Scripts.Render("~/Scripts/BootstrapTable_zh")
     @Scripts.Render("~/Scripts/TableExport")
     @Scripts.Render("~/Scripts/BootstrapTableExport")
+    @Scripts.Render("~/Scripts/LayDate")
     @*本页面要用到的js*@
     @Scripts.Render("~/Scripts/LogInfoIndex")
 

@@ -1,6 +1,8 @@
 ﻿$(function () {
     var OTable = new TableInit();
     OTable.Init();
+    InitDateInput("#txt_search_stratTime");
+    InitDateInput("#txt_search_endTime");
     //条件查询click事件注册
     $("#btn_query").click(function () {
         $("#LogTable").bootstrapTable('destroy');
@@ -14,7 +16,14 @@
     });
     //导出数据的title更改
     $(".export").children("button").attr("title", "导出数据");
+
 });
+function InitDateInput(value) {
+    laydate.render({
+        elem: value
+        , format: 'yyyy-MM-dd'
+    });
+}
 //数字
 function doOnMsoNumberFormat(cell, row, col) {
     var result = "";
@@ -118,7 +127,7 @@ var TableInit = function () {
             queryParamsType: 'undefined',
             queryParams: OTableInit.Query,
             // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
-            pageList: [10, 20, 50],//可供选择的每页的行数（*）
+            pageList: [5,10, 20, 50],//可供选择的每页的行数（*）
             sidePagination: "server",   //分页方式：client客户端分页，server服务端分页（*）
             minimumCountColumns: 2,    //最少允许的列数
         });

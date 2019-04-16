@@ -115,7 +115,7 @@ var TableInit = function () {
             queryParamsType: 'undefined',
             queryParams: OTableInit.Query,
             // 设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber
-            pageList: [10,20,50],//可供选择的每页的行数（*）
+            pageList: [5,10,20,50],//可供选择的每页的行数（*）
             sidePagination: "server",   //分页方式：client客户端分页，server服务端分页（*）
             minimumCountColumns: 2,    //最少允许的列数
         });

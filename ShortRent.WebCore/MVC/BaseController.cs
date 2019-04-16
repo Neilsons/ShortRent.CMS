@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using ShortRent.Resource;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace ShortRent.WebCore.MVC
 {
@@ -82,6 +83,10 @@ namespace ShortRent.WebCore.MVC
             sBuild.Append(")");
             return sBuild.ToString();
 
+        }
+        protected T GetObjectByJson<T>(string value) where T:class
+        {
+            return JsonConvert.DeserializeObject<T>(value);
         }
         //protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         //{
