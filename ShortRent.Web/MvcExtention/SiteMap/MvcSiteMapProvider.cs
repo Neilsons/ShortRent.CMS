@@ -41,7 +41,6 @@ namespace ShortRent.Web.MvcExtention
                     ControllerName = current.ControllerName,
                     ActionName = current.ActionName
                 });
-                current=current;
             }
             return breadcrumb;
          
