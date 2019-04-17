@@ -8,6 +8,9 @@ using ShortRent.Service;
 using ShortRent.WebCore.MVC;
 using ShortRent.Web.Models;
 using AutoMapper;
+using ShortRent.Core.Domain;
+using ShortRent.Core;
+using System.Net;
 
 namespace ShortRent.Web.Controllers
 {
@@ -15,15 +18,17 @@ namespace ShortRent.Web.Controllers
     {
         #region Fields
         private readonly ILogInfoService _logInfoService;
+        private readonly IHistoryOperatorService _historyOperatorService;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _mapperConfig;
         #endregion
         #region Construction
-        public LogInfoController(ILogInfoService logInfoService,ILogger logger,IMapper mapper,MapperConfiguration mapperConfig)
+        public LogInfoController(ILogInfoService logInfoService,IHistoryOperatorService historyOperatorService,ILogger logger,IMapper mapper,MapperConfiguration mapperConfig)
         {
             this._logger = logger;
             this._logInfoService = logInfoService;
+            this._historyOperatorService = historyOperatorService;
             this._mapper = mapper;
             this._mapperConfig = mapperConfig;
         }
@@ -41,14 +46,14 @@ namespace ShortRent.Web.Controllers
         /// <param name="pageSize"></param>
         /// <param name="pageNumber"></param>
         /// <returns></returns>
-        public ActionResult Index(int? pageSize, int? pageNumber)
+        public ActionResult Index(int? pageSize, int? pageNumber,string machineName,string catalog,DateTime? startTime,DateTime? endTime)
         {
             List<LogViewModelIndex> list = null;
             PagedListViewModel<LogViewModelIndex> pageList =new PagedListViewModel<LogViewModelIndex>();
             try
             {
                 int total;
-                var logInfos = _logInfoService.GetLogPagedListInfo(pageNumber??0,pageSize??0, out total);
+                var logInfos = _logInfoService.GetLogPagedListInfo(pageNumber??0,pageSize??0,machineName,catalog,startTime,endTime, out total);
                 if (logInfos.Any())
                 {
                     list = _mapper.Map<List<LogViewModelIndex>>(logInfos);
@@ -86,6 +91,33 @@ namespace ShortRent.Web.Controllers
                 throw e;
             }
             return View(logDetailVm);
+        }
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                //删除这个日志之后得到这个日志信息
+                var logInfo = _logInfoService.DeleteById(id);
+                //删除一个角色之后就需要往历史记录中插入一条历史
+                //得到要展示的那个实体
+                LogHumanModel logHuman = _mapper.Map<LogHumanModel>(logInfo);
+                HistoryOperator historyOperator = new HistoryOperator()
+                {
+                    CreateTime = DateTime.Now,
+                    DetailDescirption = GetDescription<LogHumanModel>("删除了一个日志记录，详情", logHuman),
+                    EntityModule = "系统管理",
+                    Operates = "删除",
+                    PersonId = 1,
+                };
+                //插入记录
+                _historyOperatorService.CreateHistoryOperator(historyOperator);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("删除日志信息出错",e);
+                throw e;
+            }
+           return Json(new AjaxJson() { HttpCodeResult=(int)HttpStatusCode.OK,Message="删除日志成功"},JsonRequestBehavior.AllowGet);
         }
         #endregion
 

@@ -5,21 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using ShortRent.Service;
+using ShortRent.Web.Models;
 
 namespace ShortRent.Web.MvcExtention
 {
     public class MvcSiteMapProvider : IMvcSiteMapProvider
     {
         #region  Field
-        private IEnumerable<MvcSiteMapNode> AllNodes { get; set; }
-        private IEnumerable<MvcSiteMapNode> NodeTree { get; set; }
+        private IEnumerable<ManagerBread> AllNodes { get; set; }
+        private IEnumerable<ManagerBread> NodeTree { get; set; }
         #endregion
         #region Contructor
-        public MvcSiteMapProvider(string path, IMvcSiteMapParser parse)
+        public MvcSiteMapProvider(IManagerService managerService)
         {
-            XElement siteMap = XElement.Load(path);
-            NodeTree = parse.GetNodeTree(siteMap);
-            AllNodes = ToList(NodeTree);
+           
         }
         #endregion
         /// <summary>
@@ -27,21 +27,21 @@ namespace ShortRent.Web.MvcExtention
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public IEnumerable<MvcSiteMapNode> GetBreadCrumb(ViewContext context)
+        public IEnumerable<ManagerBread> GetBreadCrumb(ViewContext context)
         {
             string action = context.RouteData.Values["action"] as string;
             string controller = context.RouteData.Values["controller"] as string;
-            MvcSiteMapNode current = AllNodes.SingleOrDefault(node => string.Equals(node.Action, action, StringComparison.OrdinalIgnoreCase)
-            && string.Equals(node.Controller, controller, StringComparison.OrdinalIgnoreCase));
-            List<MvcSiteMapNode> breadcrumb = new List<MvcSiteMapNode>();
+            ManagerBread current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, action, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(node.ControllerName, controller, StringComparison.OrdinalIgnoreCase));
+            List<ManagerBread> breadcrumb = new List<ManagerBread>();
             while(current!=null)
             {
-                breadcrumb.Insert(0,new MvcSiteMapNode() {
-                    IconClass=current.IconClass,
-                    Controller=current.Controller,
-                    Action=current.Action
+                breadcrumb.Insert(0,new ManagerBread() {
+                    ClassIcons = current.ClassIcons,
+                    ControllerName = current.ControllerName,
+                    ActionName = current.ActionName
                 });
-                current = current.Parent;
+                current=current;
             }
             return breadcrumb;
          
@@ -49,9 +49,9 @@ namespace ShortRent.Web.MvcExtention
 
         public IEnumerable<MvcSiteMapNode> GetSiteMap(ViewContext context)
         {
-            string action = context.RouteData.Values["action"] as string;
-            string controller = context.RouteData.Values["controller"] as string;
-            IEnumerable<MvcSiteMapNode> nodes = CopyAndSetState(NodeTree,controller,action);
+            //string action = context.RouteData.Values["action"] as string;
+            //string controller = context.RouteData.Values["controller"] as string;
+            //IEnumerable<MvcSiteMapNode> nodes = CopyAndSetState(NodeTree,controller,action);
             throw new NotImplementedException();
         }
         private IEnumerable<MvcSiteMapNode> ToList(IEnumerable<MvcSiteMapNode> nodes)

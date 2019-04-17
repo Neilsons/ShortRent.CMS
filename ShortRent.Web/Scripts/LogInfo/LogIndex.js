@@ -18,6 +18,41 @@
     $(".export").children("button").attr("title", "导出数据");
 
 });
+//删除日志的操作
+function DeleteLogById(id) {
+    layer.alert("确认要删除吗？",{
+        closeBtn: 1,
+        btn: ["取消", "确认"],
+        btn1: function (index, lay) {
+            layer.close(index);
+        },
+        btn2: function (index, lay) {
+            $.get("/LogInfo/Delete", { id:id }, function (data) {
+                if (data.httpCodeResult == 200) {
+                        layer.alert(data.message, {
+                            closeBtn: 1    // 是否显示关闭按钮
+                            , yes: function (index,lay) {
+                                var OTable = new TableInit();
+                                $("#LogTable").bootstrapTable('destroy');
+                                OTable.Init();
+                                layer.close(index);
+                            }
+                            , cancel: function () {
+                                var OTable = new TableInit();
+                                $("#LogTable").bootstrapTable('destroy');
+                                OTable.Init();
+                                layer.close(index);
+                            }
+
+                        });
+                }
+            });
+        },
+        cancel: function (index,lay) {
+            layer.close(index);
+        }
+    });
+}
 function InitDateInput(value) {
     laydate.render({
         elem: value
@@ -114,7 +149,7 @@ var TableInit = function () {
                 formatter: function (value, row, index) {
                     var result = "";
                     result += "<a href='/LogInfo/Detail/" + value + "'>查看详情</a><span>&nbsp;|&nbsp;</span>";
-                    result += "<a href='/LogInfo/Delete/" + value + "'>删除</a>";
+                    result += "<a href='javascript:DeleteLogById(" + value + ");'>删除</a>";
                     return result;
                 }
             }
@@ -135,7 +170,11 @@ var TableInit = function () {
     OTableInit.Query = function (params) {
         var temp = {
             pageSize: params.pageSize,
-            pageNumber: params.pageNumber
+            pageNumber: params.pageNumber,
+            machineName: $("#txt_search_machine").val(),
+            catalog: $("#txt-search_type option:selected").val(),
+            startTime: $("#txt_search_stratTime").val(),
+            endTime: $("#txt_search_endTime").val()
         }
         return temp;
     }

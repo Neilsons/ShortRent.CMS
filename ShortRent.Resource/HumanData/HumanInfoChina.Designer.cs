@@ -61,6 +61,105 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 分类目录 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelCatalogue {
+            get {
+                return ResourceManager.GetString("LogHumanModelCatalogue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelCreateTime {
+            get {
+                return ResourceManager.GetString("LogHumanModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 异常详情 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelException {
+            get {
+                return ResourceManager.GetString("LogHumanModelException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelID {
+            get {
+                return ResourceManager.GetString("LogHumanModelID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 机器名称 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelMachineName {
+            get {
+                return ResourceManager.GetString("LogHumanModelMachineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 错误信息 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelMessage {
+            get {
+                return ResourceManager.GetString("LogHumanModelMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 方法全名 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelMethodFullName {
+            get {
+                return ResourceManager.GetString("LogHumanModelMethodFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 进程ID 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelProcessId {
+            get {
+                return ResourceManager.GetString("LogHumanModelProcessId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 进程名称 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelProcessName {
+            get {
+                return ResourceManager.GetString("LogHumanModelProcessName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 堆栈信息 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelStachTrace {
+            get {
+                return ResourceManager.GetString("LogHumanModelStachTrace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 线程ID 的本地化字符串。
+        /// </summary>
+        public static string LogHumanModelThreadId {
+            get {
+                return ResourceManager.GetString("LogHumanModelThreadId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 数据库编号 的本地化字符串。
         /// </summary>
         public static string RoleHumanModelID {

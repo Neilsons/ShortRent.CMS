@@ -9,10 +9,10 @@ namespace ShortRent.Service
 {
     public interface ILogInfoService
     {
-        void Delete(LogInfo info);
         List<LogInfo> GetLogInfos();
-        List<LogInfo> GetLogPagedListInfo(int pagedIndex, int pagedSize, out int total);
+        List<LogInfo> GetLogPagedListInfo(int pagedIndex, int pagedSize,string machineName, string catalog, DateTime? startTime, DateTime? endTime, out int total);
         LogInfo GetDetail(int id);
+        LogInfo DeleteById(int id);
 
 
     }

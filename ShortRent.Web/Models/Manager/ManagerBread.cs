@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace ShortRent.Core.Domain
+namespace ShortRent.Web.Models
 {
-    public class Manager:BaseEntity
+    public class ManagerBread
     {
         /// <summary>
         /// 菜单名称
@@ -24,7 +22,6 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 是否活动 false 活动 true 不活动
         /// </summary>
-        [DefaultValue(false)]
         public bool Activity { get; set; }
         /// <summary>
         /// 图标
@@ -34,14 +31,8 @@ namespace ShortRent.Core.Domain
         /// 图标颜色
         /// </summary>
         public string Color { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-
         public int Pid { get; set; }
-
-        public virtual Manager Parent { get; set; }
-        public virtual ICollection<Manager> Childrens { get; set; }
+        public ManagerBread Parent { get; set; }
+        public ICollection<ManagerBread> Childrens { get; set; }
     }
 }

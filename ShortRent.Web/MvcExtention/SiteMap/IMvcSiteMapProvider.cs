@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShortRent.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace ShortRent.Web.MvcExtention
     public interface IMvcSiteMapProvider
     {
         IEnumerable<MvcSiteMapNode> GetSiteMap(ViewContext context);
-        IEnumerable<MvcSiteMapNode> GetBreadCrumb(ViewContext context);
+        IEnumerable<ManagerBread> GetBreadCrumb(ViewContext context);
     }
 }

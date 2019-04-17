@@ -50,6 +50,10 @@ namespace ShortRent.Data
             {
                 throw new ArgumentNullException(nameof(entity));
             }
+            if(this._dbContext.Entry<T>(entity).State==EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
             this.DbSet.Remove(entity);
             this._dbContext.SaveChanges();
         }
@@ -69,7 +73,10 @@ namespace ShortRent.Data
             {
                 throw new ArgumentNullException(nameof(entity));
             }
-            this.DbSet.Attach(entity);
+            if (this._dbContext.Entry<T>(entity).State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
             this._dbContext.Entry<T>(entity).State = EntityState.Modified;
             this._dbContext.SaveChanges();
         }

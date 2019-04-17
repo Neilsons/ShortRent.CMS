@@ -8,6 +8,7 @@ using ShortRent.Core.Data;
 using ShortRent.Core.Domain;
 using ShortRent.Core.Log;
 using ShortRent.Core;
+using System.Linq.Expressions;
 
 namespace ShortRent.Service
 {
@@ -30,14 +31,6 @@ namespace ShortRent.Service
         #endregion
         #region  Methods
         /// <summary>
-        /// 删除一个日志
-        /// </summary>
-        /// <param name="info"></param>
-        public void Delete(LogInfo info)
-        {
-            _logInfoReopsitory.Delete(info);
-        }
-        /// <summary>
         /// 获得所有的
         /// </summary>
         /// <param name="total"></param>
@@ -45,7 +38,7 @@ namespace ShortRent.Service
         public List<LogInfo> GetLogInfos()
         {
             int total;
-            return GetLogPagedListInfo(0,0,out total);
+            return GetLogPagedListInfo(0,0,null,null,null,null,out total);
         }
         /// <summary>
         /// 获得分页的
@@ -54,14 +47,31 @@ namespace ShortRent.Service
         /// <param name="pagedSize"></param>
         /// <param name="total"></param>
         /// <returns></returns>
-        public List<LogInfo> GetLogPagedListInfo(int pagedIndex, int pagedSize, out int total)
+        public List<LogInfo> GetLogPagedListInfo(int pagedIndex, int pagedSize, string machineName, string catalog, DateTime? startTime, DateTime? endTime, out int total)
         {
             List<LogInfo> models = null;
             try
             {
+                Expression<Func<LogInfo, bool>> expression = logInfo => true;
+                if(!string.IsNullOrWhiteSpace(machineName))
+                {
+                    expression = expression.And(c=>c.MachineName.Contains(machineName));
+                }
+                if(!string.IsNullOrWhiteSpace(catalog)&&catalog!="0")
+                {
+                    expression = expression.And(c=>c.Catalogue==catalog);
+                }
+                if(startTime!=null)
+                {
+                    expression = expression.And(c=>c.CreateTime>=startTime);
+                }
+                if(endTime!=null)
+                {
+                    expression = expression.And(c=>c.CreateTime<=endTime);
+                }
                 if (_cacheManager.Contains(LoginfoCacheKey))
                 {
-                    var list = _cacheManager.Get<List<LogInfo>>(LoginfoCacheKey);
+                    var list = _cacheManager.Get<List<LogInfo>>(LoginfoCacheKey).Where(expression.Compile());
                     if (pagedIndex == 0 && pagedSize == 0)
                         models = list.ToList();
                     else
@@ -73,11 +83,11 @@ namespace ShortRent.Service
                     var list = _logInfoReopsitory.Entitys.OrderByDescending(c => c.CreateTime).ToList();
                     if (pagedIndex == 0 && pagedSize == 0)
                     {
-                        models = list;
+                        models = list.Where(expression.Compile()).ToList();
                     }
                     else
                     {
-                        models = list.Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
+                        models = list.Where(expression.Compile()).Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
                     }
                     total = list.Count();
                     _cacheManager.Set(LoginfoCacheKey, list, TimeSpan.FromMinutes(GetTimeFromConfig((int)CacheTimeLev.lev1)));
@@ -90,6 +100,11 @@ namespace ShortRent.Service
             }
             return models;
         }
+        /// <summary>
+        /// 得到日志的详情信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public LogInfo GetDetail(int id)
         {
             LogInfo logInfo = null;
@@ -107,6 +122,29 @@ namespace ShortRent.Service
             catch(Exception e)
             {
                 _logger.Error("从数据库获得详情出错",e);
+                throw e;
+            }
+            return logInfo;
+        }
+        /// <summary>
+        /// 删除某一个日志
+        /// </summary>
+        /// <param name="id"></param>
+        public LogInfo DeleteById(int id)
+        {
+            LogInfo logInfo = null;
+            try
+            {
+                //得到要删除的那个实体
+                logInfo = GetDetail(id);
+                //删除该项
+                _logInfoReopsitory.Delete(logInfo);
+                //要将缓存清除
+                _cacheManager.Remove(LoginfoCacheKey);
+            }
+            catch(Exception e)
+            {
+                _logger.Error("从数据库删除出错",e);
                 throw e;
             }
             return logInfo;

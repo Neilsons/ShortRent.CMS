@@ -117,6 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LogHumanModelCatalogue" xml:space="preserve">
+    <value>分类目录</value>
+  </data>
+  <data name="LogHumanModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="LogHumanModelException" xml:space="preserve">
+    <value>异常详情</value>
+  </data>
+  <data name="LogHumanModelID" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="LogHumanModelMachineName" xml:space="preserve">
+    <value>机器名称</value>
+  </data>
+  <data name="LogHumanModelMessage" xml:space="preserve">
+    <value>错误信息</value>
+  </data>
+  <data name="LogHumanModelMethodFullName" xml:space="preserve">
+    <value>方法全名</value>
+  </data>
+  <data name="LogHumanModelProcessId" xml:space="preserve">
+    <value>进程ID</value>
+  </data>
+  <data name="LogHumanModelProcessName" xml:space="preserve">
+    <value>进程名称</value>
+  </data>
+  <data name="LogHumanModelStachTrace" xml:space="preserve">
+    <value>堆栈信息</value>
+  </data>
+  <data name="LogHumanModelThreadId" xml:space="preserve">
+    <value>线程ID</value>
+  </data>
   <data name="RoleHumanModelID" xml:space="preserve">
     <value>数据库编号</value>
   </data>

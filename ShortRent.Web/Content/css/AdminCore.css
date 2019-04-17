@@ -22,6 +22,9 @@
     .marTop-xs{
         margin-top:2%;
     }
+    .pad-bottom-xs {
+        padding-bottom:5px;
+    }
     body{
         font-size:12px !important;
     }
@@ -29,6 +32,9 @@
 @media (min-width:768px) {
     .marTOrd-xs {
         margin: 0%;
+    }
+    .pad-bottom-xs {
+        padding-bottom:0;
     }
     .marTOrd-xs_min {
         margin: 1% 0;

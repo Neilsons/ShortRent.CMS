@@ -16,7 +16,7 @@ namespace ShortRent.Data.ShortRentMap
             this.HasKey(c=>c.ID);
             this.Property(c => c.EntityModule).IsRequired().HasMaxLength(50);
             this.Property(c => c.Operates).IsRequired().HasMaxLength(50);
-            this.Property(c => c.DetailDescirption).IsOptional().HasMaxLength(500);
+            this.Property(c => c.DetailDescirption).IsOptional().HasColumnType("ntext");
             this.HasRequired(c => c.Person).WithMany(c=>c.HistoryOperators).HasForeignKey(c =>c.PersonId);
         }
     }

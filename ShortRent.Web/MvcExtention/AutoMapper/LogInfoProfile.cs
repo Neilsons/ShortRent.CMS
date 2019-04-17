@@ -14,6 +14,7 @@ namespace ShortRent.Web.MvcExtention.AutoMapper
         {
             this.CreateMap<LogInfo, LogViewModelIndex>();
             this.CreateMap<LogInfo, LogDetailChange>();
+            this.CreateMap<LogInfo, LogHumanModel>();
         }
     }
 }
