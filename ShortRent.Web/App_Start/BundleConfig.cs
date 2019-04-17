@@ -18,6 +18,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/BootstraTable", "https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.css").Include("~/Content/css/bootstrap-table.css"));
             bundles.Add(new StyleBundle("~/Styles/LayAlert").Include("~/Content/layer/theme/default/layer.css"));
             bundles.Add(new StyleBundle("~/Styles/LayerDate").Include("~/Content/laydate/theme/default/laydate.css"));
+            bundles.Add(new StyleBundle("~/Styles/jqueryTreeGrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.css"));
             //异步加载进度指示条
             bundles.Add(new StyleBundle("~/Styles/Pace").Include("~/Content/pace/pace.min.css"));
             //日志详情的自定义css
@@ -38,6 +39,8 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/LayAlert").Include("~/Content/layer/layer.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Pace").Include("~/Content/pace/pace.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/LayDate").Include("~/Content/laydate/laydate.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/bootstrapTableTreeGrid").Include("~/Content/bootstrapTableTreeGrid/bootstrap-table-treegrid.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Jquerytreegrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.js"));
             //公共的JS库的引用结束
 
             //role用到的js 自定义的开始

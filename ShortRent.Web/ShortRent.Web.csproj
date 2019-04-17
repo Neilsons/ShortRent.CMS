@@ -141,6 +141,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapTableTreeGrid\bootstrap-table-treegrid.js" />
+    <Content Include="Content\bootstrapTableTreeGrid\img\collapse.png" />
+    <Content Include="Content\bootstrapTableTreeGrid\img\expand.png" />
+    <Content Include="Content\bootstrapTableTreeGrid\jquery.treegrid.min.css" />
+    <Content Include="Content\bootstrapTableTreeGrid\jquery.treegrid.min.js" />
     <Content Include="Content\css\AdminCore.css" />
     <Content Include="Content\css\AdminLTE.min.css" />
     <Content Include="Content\css\bootstrap-table.css" />
@@ -282,6 +287,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutofacRegister\AutoMapperRegister.cs" />
     <Compile Include="Controllers\LogInfoController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -293,11 +299,13 @@
     <Compile Include="Models\LogInfo\LogInfoException.cs" />
     <Compile Include="Models\LogInfo\LogViewModelIndex.cs" />
     <Compile Include="Models\Manager\ManagerBread.cs" />
+    <Compile Include="Models\Manager\ManagerViewIndex.cs" />
     <Compile Include="Models\PagedListViewModel.cs" />
     <Compile Include="Models\Person\PersonViewModel.cs" />
     <Compile Include="Models\Role\RoleHumanModel.cs" />
     <Compile Include="Models\Role\RoleViewModelIndex.cs" />
     <Compile Include="MvcExtention\AutoMapper\LogInfoProfile.cs" />
+    <Compile Include="MvcExtention\AutoMapper\ManagerProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\PersonProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\RoleProfile.cs" />
     <Compile Include="MvcExtention\CustomModelMetadataProvider.cs" />
@@ -362,6 +370,7 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\LogInfo\List.cshtml" />
     <Content Include="Views\LogInfo\Detail.cshtml" />
+    <Content Include="Views\Manager\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
