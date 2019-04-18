@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using AutoMapper;
 using ShortRent.Service;
 using ShortRent.Web.Models;
 
@@ -17,9 +18,10 @@ namespace ShortRent.Web.MvcExtention
         private IEnumerable<ManagerBread> NodeTree { get; set; }
         #endregion
         #region Contructor
-        public MvcSiteMapProvider(IManagerService managerService)
+        public MvcSiteMapProvider(IManagerService managerService,IMapper mapper)
         {
-           
+            AllNodes =mapper.Map<List<ManagerBread>>(managerService.GetManagers().AsEnumerable());
+            NodeTree= mapper.Map<List<ManagerBread>>(managerService.GetTreeViewManagers().AsEnumerable());
         }
         #endregion
         /// <summary>
@@ -38,56 +40,63 @@ namespace ShortRent.Web.MvcExtention
             {
                 breadcrumb.Insert(0,new ManagerBread() {
                     ClassIcons = current.ClassIcons,
+                    Color=current.Color,
                     ControllerName = current.ControllerName,
                     ActionName = current.ActionName
                 });
+                current = current.Parent;
             }
             return breadcrumb;
          
         }
 
-        public IEnumerable<MvcSiteMapNode> GetSiteMap(ViewContext context)
+        public IEnumerable<ManagerBread> GetSiteMap(ViewContext context)
         {
-            //string action = context.RouteData.Values["action"] as string;
-            //string controller = context.RouteData.Values["controller"] as string;
-            //IEnumerable<MvcSiteMapNode> nodes = CopyAndSetState(NodeTree,controller,action);
-            throw new NotImplementedException();
+            int account = 1;
+            string action = context.RouteData.Values["action"] as string;
+            string controller = context.RouteData.Values["controller"] as string;
+            List<ManagerBread> nodes = CopyAndSetState(NodeTree.ToList(), controller, action);
+            return GetAuthorizedNodes(account, nodes);
         }
-        private IEnumerable<MvcSiteMapNode> ToList(IEnumerable<MvcSiteMapNode> nodes)
+        private List<ManagerBread> CopyAndSetState(List<ManagerBread> nodes,string controller,string action)
         {
-            List<MvcSiteMapNode> list = new List<MvcSiteMapNode>();
-            foreach (MvcSiteMapNode node in nodes)
+            List<ManagerBread> copies = new List<ManagerBread>();
+            foreach(ManagerBread node in nodes)
             {
-                list.Add(node);
-                list.AddRange(ToList(node.Children));
-            }
-            return list;
-        }
-        private IEnumerable<MvcSiteMapNode> CopyAndSetState(IEnumerable<MvcSiteMapNode> nodes,string controller,string action)
-        {
-            List<MvcSiteMapNode> copies = new List<MvcSiteMapNode>();
-            foreach(MvcSiteMapNode node in nodes)
-            {
-                MvcSiteMapNode copy = new MvcSiteMapNode();
-                copy.IconClass = node.IconClass;
+                ManagerBread copy = new ManagerBread();
+                copy.ClassIcons = node.ClassIcons;
                 copy.Color = node.Color;
-                copy.IsMenu = node.IsMenu;
 
-                copy.Controller = node.Controller;
-                copy.Action = node.Action;
-                copy.HasActiveChildren = node.Children.Any(child => child.IsActive || child.HasActiveChildren);
-                copy.IsActive = copy.Children.Any(child => child.IsActive && !child.IsMenu) || (
-                    string.Equals(node.Action,action,StringComparison.OrdinalIgnoreCase)&&
-                    string.Equals(node.Controller,controller,StringComparison.OrdinalIgnoreCase)                    
+                copy.ControllerName = node.ControllerName;
+                copy.ActionName = node.ActionName;
+                copy.HasActiveChildren = node.Childrens.Any(child => child.Activity || (child.HasActiveChildren??false));
+                copy.Activity = node.Childrens.Any(child => child.Activity && !(child.ControllerName==null&&child.ActionName==null)) || (
+                    string.Equals(node.ActionName,action,StringComparison.OrdinalIgnoreCase)&&
+                    string.Equals(node.ControllerName,controller,StringComparison.OrdinalIgnoreCase)                    
                     );
-                copy.Children=CopyAndSetState(node.Children,controller,action);
+                copy.Childrens=CopyAndSetState(node.Childrens,controller,action);
                 copies.Add(copy);
             }
             return copies;
         }
-        private bool IsEmpty(MvcSiteMapNode node)
+        private IEnumerable<ManagerBread> GetAuthorizedNodes(Int32? accountId, IEnumerable<ManagerBread> nodes)
         {
-            return node.Action == null && !node.Children.Any();
+            List<ManagerBread> authorized = new List<ManagerBread>();
+            //foreach (MvcSiteMapNode node in nodes)
+            //{
+            //    node.Children = GetAuthorizedNodes(accountId, node.Children);
+
+            //    if (node.IsMenu && IsAuthorizedToView(accountId, node.Area, node.Controller, node.Action) && !IsEmpty(node))
+            //        authorized.Add(node);
+            //    else
+            //        authorized.AddRange(node.Children);
+            //}
+
+            return authorized;
+        }
+        private bool IsEmpty(ManagerBread node)
+        {
+            return node.ActionName == null && !node.Childrens.Any();
         }
 
     }

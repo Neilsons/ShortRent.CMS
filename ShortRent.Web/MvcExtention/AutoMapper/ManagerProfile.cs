@@ -12,6 +12,7 @@ namespace ShortRent.Web.MvcExtention.AutoMapper
         public ManagerProfile()
         {
             this.CreateMap<Manager, ManagerViewIndex>().ForMember(c=>c.IconInfo,m=>m.MapFrom(c=>c.ClassIcons+"|"+c.Color));
+            this.CreateMap<Manager, ManagerBread>();
         }
     }
 }

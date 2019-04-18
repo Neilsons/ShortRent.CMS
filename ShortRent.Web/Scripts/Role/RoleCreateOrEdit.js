@@ -14,7 +14,6 @@
 }
 function SuccessCreateRole(data) {
     if (data.httpCodeResult == 200) {
-        Pace.on("done", function () {
             layer.alert(data.message, {
                 closeBtn: 1    // 是否显示关闭按钮
                 , yes: function () {
@@ -25,7 +24,6 @@ function SuccessCreateRole(data) {
                 }
 
             });
-        });
     }
 }
 $(function () {

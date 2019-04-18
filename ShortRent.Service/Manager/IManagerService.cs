@@ -10,5 +10,6 @@ namespace ShortRent.Service
     public interface IManagerService
     {
         List<Manager> GetManagers();
+        List<Manager> GetTreeViewManagers();
     }
 }

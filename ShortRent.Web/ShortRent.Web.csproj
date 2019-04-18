@@ -94,7 +94,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Optimization">
-      <HintPath>..\ShortRent.Api\bin\System.Web.Optimization.dll</HintPath>
+      <HintPath>F:\graduation\ShortRent.Api\bin\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -270,6 +270,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LogInfo\LogIndex.js" />
+    <Content Include="Scripts\Manager\ManagerIndex.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Role\RoleCreateOrEdit.js" />
     <Content Include="Scripts\Role\RoleIndex.js" />
@@ -299,6 +300,7 @@
     <Compile Include="Models\LogInfo\LogInfoException.cs" />
     <Compile Include="Models\LogInfo\LogViewModelIndex.cs" />
     <Compile Include="Models\Manager\ManagerBread.cs" />
+    <Compile Include="Models\Manager\ManagerCreteModel.cs" />
     <Compile Include="Models\Manager\ManagerViewIndex.cs" />
     <Compile Include="Models\PagedListViewModel.cs" />
     <Compile Include="Models\Person\PersonViewModel.cs" />
@@ -313,8 +315,8 @@
     <Compile Include="MvcExtention\HtmlHelper\MvcHtmlhelperExtention.cs" />
     <Compile Include="MvcExtention\SiteMap\IMvcSiteMapProvider.cs" />
     <Compile Include="MvcExtention\SiteMap\MvcSiteMap.cs" />
-    <Compile Include="MvcExtention\SiteMap\MvcSiteMapNode.cs" />
     <Compile Include="MvcExtention\SiteMap\MvcSiteMapProvider.cs" />
+    <Compile Include="MvcExtention\SiteMap\SiteMapRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IPermissionProvider.cs" />
     <Compile Include="Security\PermissionProvider.cs" />
@@ -438,7 +440,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted E:\graduation\ShortRent.CMS\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

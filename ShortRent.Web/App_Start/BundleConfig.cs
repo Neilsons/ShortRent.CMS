@@ -25,7 +25,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/LogDetail").Include("~/Content/css/LogInfo/LogDetail.css"));
              //公共的引用CSS结束
             //公共的JS库的引用开始
-            bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-3.3.1.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate", "https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.min.js").Include("~/Scripts/jquery.validate.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate-unobtrusive", "https://cdn.bootcss.com/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js").Include("~/Scripts/jquery.validate.unobtrusive.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Ajax-unobtrusive").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
@@ -51,6 +51,8 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/TableExport").Include("~/Scripts/tableexport-1.10.3.js"));
             //loginfo用到的js库自定义的开始
             bundles.Add(new ScriptBundle("~/Scripts/LogInfoIndex").Include("~/Scripts/LogInfo/LogIndex.js"));
+            //manager用到的js库自定义开始
+            bundles.Add(new ScriptBundle("~/Scripts/ManagerIndex").Include("~/Scripts/Manager/ManagerIndex.js"));
         }
     }
 }

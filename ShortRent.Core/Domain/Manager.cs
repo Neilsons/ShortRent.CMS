@@ -39,7 +39,7 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public DateTime CreateTime { get; set; }
 
-        public int Pid { get; set; }
+        public int? Pid { get; set; }
 
         public virtual Manager Parent { get; set; }
         public virtual ICollection<Manager> Childrens { get; set; }

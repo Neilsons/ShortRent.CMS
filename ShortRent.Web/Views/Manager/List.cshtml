@@ -2,10 +2,15 @@
 @{
     Layout = "~/Views/Shared/AdminMaster.cshtml";
 }
+@section Styles{
+    @Styles.Render("~/Styles/jqueryTreeGrid")
+    @Styles.Render("~/Styles/BootstraTable")
+}
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
+
             </div>
             <div class="box-body table-responsive">
                 <table id="ManagerTable" class="table col-xs-12 col-sm-12 col-lg-12 text-nowrap"></table>
@@ -14,3 +19,10 @@
     </div>
 </div>
 
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @Scripts.Render("~/Scripts/bootstrapTableTreeGrid")
+    @Scripts.Render("~/Scripts/Jquerytreegrid")
+    @Scripts.Render("~/Scripts/ManagerIndex")
+}

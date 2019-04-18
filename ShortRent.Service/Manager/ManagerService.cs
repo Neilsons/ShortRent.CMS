@@ -34,6 +34,10 @@ namespace ShortRent.Service
         #endregion
 
         #region Methods
+        /// <summary>
+        /// 返回所有的菜单
+        /// </summary>
+        /// <returns></returns>
         public List<Manager> GetManagers()
         {
             List<Manager> managers = null;
@@ -60,6 +64,25 @@ namespace ShortRent.Service
                 throw e;
             }
             return managers;
+        }
+
+        public List<Manager> GetTreeViewManagers()
+        {
+            List<Manager> treeView = null;
+            try
+            {
+                var list = GetManagers();
+                if(list.Any())
+                {
+                    treeView = list.Where(c=>c.Pid==null).ToList();
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Error("创建菜单树形结构出错",e);
+                throw e;
+            }
+            return treeView;
         }
         #endregion
     }

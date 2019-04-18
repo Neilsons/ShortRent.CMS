@@ -10,7 +10,7 @@ namespace ShortRent.Web.MvcExtention
 {
     public interface IMvcSiteMapProvider
     {
-        IEnumerable<MvcSiteMapNode> GetSiteMap(ViewContext context);
+        IEnumerable<ManagerBread> GetSiteMap(ViewContext context);
         IEnumerable<ManagerBread> GetBreadCrumb(ViewContext context);
     }
 }
