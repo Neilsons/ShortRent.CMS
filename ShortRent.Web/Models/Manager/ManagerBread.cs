@@ -7,6 +7,7 @@ namespace ShortRent.Web.Models
 {
     public class ManagerBread
     {
+        public int ID { get; set; }
         /// <summary>
         /// 菜单名称
         /// </summary>

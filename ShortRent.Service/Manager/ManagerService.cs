@@ -49,7 +49,7 @@ namespace ShortRent.Service
                 }
                 else
                 {
-                    var list = _managerRepository.Entitys.OrderByDescending(c =>c.CreateTime).ToList();
+                    var list = _managerRepository.IncludeEntitys("Childrens").OrderByDescending(c =>c.CreateTime).ToList();
                     if(list.Any())
                     {
                         managers = list;

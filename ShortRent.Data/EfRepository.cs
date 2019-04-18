@@ -80,7 +80,10 @@ namespace ShortRent.Data
             this._dbContext.Entry<T>(entity).State = EntityState.Modified;
             this._dbContext.SaveChanges();
         }
-
+        public IEnumerable<T> IncludeEntitys(string path)
+        {
+            return this.DbSet.Include<T>(path);
+        }
         #endregion
 
     }

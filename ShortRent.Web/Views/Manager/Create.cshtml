@@ -1,0 +1,41 @@
+﻿@model ManagerCreteModel
+
+@using ShortRent.Web.Models
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@if (Model == null)
+{
+    using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerSuccess" }))
+    {
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                    <div class="form-group col-md-12">
+                        <select class="form-control">
+                            <option value="0">|--根节点</option>
+                            @DropInit((List<ManagerBread>)ViewBag.DropData,"|--")
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="row text-center marTop-xs">
+                            <input type="submit" value="添加" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>`
+            </div>
+    }
+}
+
+@helper DropInit(List<ManagerBread> breads,string root)
+{
+    string span = "&nbsp;&nbsp;&nbsp;&nbsp;" + root;
+    foreach (ManagerBread bread in breads)
+    {
+        <option value="@bread.ID" data-Menu="@(string.IsNullOrWhiteSpace(bread.ControllerName) ==true &&string.IsNullOrWhiteSpace(bread.ActionName)==true)">@Html.Raw(span + bread.Name)</option>
+        if(bread.Childrens.Any())
+        {
+            @DropInit(bread.Childrens, span);
+        }
+    }
+}

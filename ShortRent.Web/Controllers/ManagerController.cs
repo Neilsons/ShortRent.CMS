@@ -64,6 +64,7 @@ namespace ShortRent.Web.Controllers
             {
                 var list = _managerService.GetTreeViewManagers();
                 List<ManagerBread> breads = _mapper.Map<List<ManagerBread>>(list);
+                //下拉列表框值
                 ViewBag.DropData = GetManagerBreads(breads);
             }
             catch(Exception e)
@@ -102,13 +103,15 @@ namespace ShortRent.Web.Controllers
         /// <returns></returns>
         private List<ManagerBread> GetManagerBreads(List<ManagerBread> nodes)
         {
-            List<ManagerBread> managerBreads = null;
+            List<ManagerBread> managerBreads = new List<ManagerBread>();
             foreach (ManagerBread node in nodes)
             {
                 ManagerBread copy = new ManagerBread();
                 copy.ClassIcons = node.ClassIcons;
                 copy.Color = node.Color;
-
+                copy.Name = node.Name;
+                copy.ID = node.ID;
+                copy.Pid = node.ID;
                 copy.ControllerName = node.ControllerName;
                 copy.ActionName = node.ActionName;
                 copy.HasActiveChildren = node.Childrens.Any(child => child.Activity || (child.HasActiveChildren ?? false));

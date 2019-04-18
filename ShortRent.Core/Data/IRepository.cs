@@ -25,5 +25,7 @@ namespace ShortRent.Core.Data
         void Delete(T entity);
      
         IEnumerable<T> Entitys { get; }
+
+        IEnumerable<T> IncludeEntitys(string path);
     }
 }
