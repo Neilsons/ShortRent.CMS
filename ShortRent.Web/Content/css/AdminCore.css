@@ -11,6 +11,9 @@
 .gray-bg {
     background-color: #FFF;
 }
+.iconHeader-color {
+    background-color: #1A90BC;
+}
 /*媒体查询开始*/
 @media (max-width:768px) {
     .marTOrd-xs_min {

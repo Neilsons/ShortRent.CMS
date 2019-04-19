@@ -31,6 +31,6 @@ namespace ShortRent.Web.Models
         /// </summary>
         public DateTime CreateTime { get; set; }
 
-        public int Pid { get; set; }
+        public int? Pid { get; set; }
     }
 }

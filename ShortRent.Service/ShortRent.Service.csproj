@@ -47,6 +47,8 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="HistoryOperator\HistoryOperatorService.cs" />
     <Compile Include="HistoryOperator\IHistoryOperatorService.cs" />
+    <Compile Include="IconsInfo\IconsInfoService.cs" />
+    <Compile Include="IconsInfo\IIconsInfoService.cs" />
     <Compile Include="InfrastructureRegister.cs" />
     <Compile Include="LogerInfo\ILogInfoService.cs" />
     <Compile Include="LogerInfo\LogInfoService.cs" />

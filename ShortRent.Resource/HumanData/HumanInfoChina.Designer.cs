@@ -160,6 +160,69 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 方法 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelActionName {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelActionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelActivity {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图标Class 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelClassIcons {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelClassIcons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图标颜色 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelColor {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 控制器 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelControllerName {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelControllerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 菜单名称 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelName {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 父级名称 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelPidName {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelPidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 数据库编号 的本地化字符串。
         /// </summary>
         public static string RoleHumanModelID {

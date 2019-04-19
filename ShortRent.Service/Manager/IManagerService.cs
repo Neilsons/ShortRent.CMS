@@ -11,5 +11,8 @@ namespace ShortRent.Service
     {
         List<Manager> GetManagers();
         List<Manager> GetTreeViewManagers();
+        void CreateManager(Manager manager);
+        Manager GetManager(int? id);
+        void UpdateManager(Manager model);
     }
 }

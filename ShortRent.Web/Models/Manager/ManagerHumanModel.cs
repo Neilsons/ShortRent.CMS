@@ -5,12 +5,8 @@ using System.Web;
 
 namespace ShortRent.Web.Models
 {
-    public class ManagerCreteModel
+    public class ManagerHumanModel
     {
-        public int ID { get; set; }
-        /// <summary>
-        /// 菜单名称
-        /// </summary>
         public string Name { get; set; }
         /// <summary>
         /// 控制器名称
@@ -23,7 +19,7 @@ namespace ShortRent.Web.Models
         /// <summary>
         /// 是否活动 true 活动 false 不活动
         /// </summary>
-        public bool Activity { get; set; }
+        public string Activity { get; set; }
         /// <summary>
         /// 图标
         /// </summary>
@@ -32,7 +28,6 @@ namespace ShortRent.Web.Models
         /// 图标颜色
         /// </summary>
         public string Color { get; set; }
-        public int? Pid { get; set; }
-      
+        public string PidName { get; set; }
     }
 }

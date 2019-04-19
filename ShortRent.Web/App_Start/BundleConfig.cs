@@ -19,6 +19,8 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/LayAlert").Include("~/Content/layer/theme/default/layer.css"));
             bundles.Add(new StyleBundle("~/Styles/LayerDate").Include("~/Content/laydate/theme/default/laydate.css"));
             bundles.Add(new StyleBundle("~/Styles/jqueryTreeGrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.css"));
+            bundles.Add(new StyleBundle("~/Styles/ColorPicker").Include("~/Content/bootstrapColorPicker/css/bootstrap-colorpicker.min.css"));
+
             //异步加载进度指示条
             bundles.Add(new StyleBundle("~/Styles/Pace").Include("~/Content/pace/pace.min.css"));
             //日志详情的自定义css
@@ -41,6 +43,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/LayDate").Include("~/Content/laydate/laydate.js"));
             bundles.Add(new ScriptBundle("~/Scripts/bootstrapTableTreeGrid").Include("~/Content/bootstrapTableTreeGrid/bootstrap-table-treegrid.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquerytreegrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/ColorPicker").Include("~/Content/bootstrapColorPicker/js/bootstrap-colorpicker.min.js"));
             //公共的JS库的引用结束
 
             //role用到的js 自定义的开始
@@ -53,6 +56,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/LogInfoIndex").Include("~/Scripts/LogInfo/LogIndex.js"));
             //manager用到的js库自定义开始
             bundles.Add(new ScriptBundle("~/Scripts/ManagerIndex").Include("~/Scripts/Manager/ManagerIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/ManagerCreateOrEdit").Include("~/Scripts/Manager/ManagerCreateOrEdit.js"));
         }
     }
 }

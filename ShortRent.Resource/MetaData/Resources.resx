@@ -174,4 +174,25 @@
   <data name="Scope" xml:space="preserve">
     <value>{PropertyName}的长度是{MinLength}-{MaxLength}个字符</value>
   </data>
+  <data name="ManagerCreteModelActionNameDisplayName" xml:space="preserve">
+    <value>方法</value>
+  </data>
+  <data name="ManagerCreteModelActivityDisplayName" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="ManagerCreteModelClassIconsDisplayName" xml:space="preserve">
+    <value>图标类别</value>
+  </data>
+  <data name="ManagerCreteModelColorDisplayName" xml:space="preserve">
+    <value>图标颜色</value>
+  </data>
+  <data name="ManagerCreteModelControllerNameDisplayName" xml:space="preserve">
+    <value>控制器</value>
+  </data>
+  <data name="ManagerCreteModelNameDisplayName" xml:space="preserve">
+    <value>菜单名称</value>
+  </data>
+  <data name="ManagerCreteModelPidDisplayName" xml:space="preserve">
+    <value>父级列表</value>
+  </data>
 </root>

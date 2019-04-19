@@ -141,6 +141,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapColorPicker\css\bootstrap-colorpicker.css" />
+    <Content Include="Content\bootstrapColorPicker\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\bootstrapColorPicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Content\bootstrapColorPicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Content\bootstrapColorPicker\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Content\bootstrapColorPicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="Content\bootstrapColorPicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\bootstrapColorPicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Content\bootstrapColorPicker\js\bootstrap-colorpicker.min.js" />
     <Content Include="Content\bootstrapTableTreeGrid\bootstrap-table-treegrid.js" />
     <Content Include="Content\bootstrapTableTreeGrid\img\collapse.png" />
     <Content Include="Content\bootstrapTableTreeGrid\img\expand.png" />
@@ -167,11 +176,22 @@
     <Content Include="Content\layer\theme\default\loading-2.gif" />
     <Content Include="Content\pace\pace.min.css" />
     <Content Include="Content\pace\pace.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\extensions\export\bootstrap-table-export.js" />
     <Content Include="Scripts\extensions\jquery.unobtrusive.table.js" />
     <Content Include="Content\laydate\theme\default\font\iconfont.eot" />
     <Content Include="Content\laydate\theme\default\font\iconfont.ttf" />
     <Content Include="Content\laydate\theme\default\font\iconfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrapColorPicker\css\bootstrap-colorpicker.css.map" />
+    <Content Include="Content\bootstrapColorPicker\css\bootstrap-colorpicker.min.css.map" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\IconsInfo\IconInfo.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
@@ -270,7 +290,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LogInfo\LogIndex.js" />
+    <Content Include="Scripts\Manager\ManagerCreateOrEdit.js" />
     <Content Include="Scripts\Manager\ManagerIndex.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Role\RoleCreateOrEdit.js" />
     <Content Include="Scripts\Role\RoleIndex.js" />
@@ -287,6 +309,7 @@
     <Compile Include="App_Start\MVC\ExensionActivator.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutofacRegister\AutoMapperRegister.cs" />
+    <Compile Include="Controllers\IconsInfoController.cs" />
     <Compile Include="Controllers\LogInfoController.cs" />
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -294,6 +317,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IconsInfo\IconViewModel.cs" />
     <Compile Include="Models\LogInfo\LogDetailChange.cs" />
     <Compile Include="Models\LogInfo\LogDetailViewModel.cs" />
     <Compile Include="Models\LogInfo\LogHumanModel.cs" />
@@ -301,11 +325,13 @@
     <Compile Include="Models\LogInfo\LogViewModelIndex.cs" />
     <Compile Include="Models\Manager\ManagerBread.cs" />
     <Compile Include="Models\Manager\ManagerCreteModel.cs" />
+    <Compile Include="Models\Manager\ManagerHumanModel.cs" />
     <Compile Include="Models\Manager\ManagerViewIndex.cs" />
     <Compile Include="Models\PagedListViewModel.cs" />
     <Compile Include="Models\Person\PersonViewModel.cs" />
     <Compile Include="Models\Role\RoleHumanModel.cs" />
     <Compile Include="Models\Role\RoleViewModelIndex.cs" />
+    <Compile Include="MvcExtention\AutoMapper\IconsInfoProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\LogInfoProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\ManagerProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\PersonProfile.cs" />
@@ -321,6 +347,7 @@
     <Compile Include="Security\IPermissionProvider.cs" />
     <Compile Include="Security\PermissionProvider.cs" />
     <Compile Include="Validator\AutofacValidatorFactory.cs" />
+    <Compile Include="Validator\Managers\ManagerValidator.cs" />
     <Compile Include="Validator\Persons\PersonValidator.cs" />
     <Compile Include="Validator\Roles\RoleViewModelIndexValidator.cs" />
     <Compile Include="Validator\ValidatorRegister.cs" />
@@ -374,6 +401,7 @@
     <Content Include="Views\LogInfo\Detail.cshtml" />
     <Content Include="Views\Manager\List.cshtml" />
     <Content Include="Views\Manager\Create.cshtml" />
+    <Content Include="Views\IconsInfo\GetIconsInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -441,7 +469,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted E:\graduation\ShortRent.CMS\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -33,7 +33,7 @@ namespace ShortRent.Web.Models
         /// </summary>
         public string Color { get; set; }
         public bool? HasActiveChildren { get; set; }
-        public int Pid { get; set; }
+        public int? Pid { get; set; }
         public ManagerBread Parent { get; set; }
         public List<ManagerBread> Childrens { get; set; }
     }

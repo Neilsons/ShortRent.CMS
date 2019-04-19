@@ -24,7 +24,10 @@ namespace ShortRent.Service
         #endregion
 
         #region  Construction
-        public ManagerService(IRepository<Manager> managerRepository, ICacheManager cacheManager, ILogger logger, ApplicationConfig config)
+        public ManagerService(IRepository<Manager> managerRepository,
+                              ICacheManager cacheManager,
+                              ILogger logger,
+                              ApplicationConfig config)
         {
             this._managerRepository = managerRepository;
             this._cacheManager = cacheManager;
@@ -83,6 +86,80 @@ namespace ShortRent.Service
                 throw e;
             }
             return treeView;
+        }
+        /// <summary>
+        /// 创建一个菜单
+        /// </summary>
+        /// <param name="manager"></param>
+        public void CreateManager(Manager manager)
+        {
+            try
+            {
+                if(manager==null)
+                {
+                    throw new NullReferenceException();
+                }
+                _managerRepository.Insert(manager);
+                //清空缓存
+                _cacheManager.Remove(ManagerCancheKey);
+            }
+            catch(Exception e)
+            {
+                _logger.Error("创建用户操作数据库过程中出错。",e);
+                throw e;
+            }
+        }
+        /// <summary>
+        /// 根据id得到一个manager
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Manager GetManager(int? id)
+        {
+            Manager model = null;
+            try
+            {
+                if (_cacheManager.Contains(ManagerCancheKey))
+                {
+                    model = _cacheManager.Get<List<Manager>>(ManagerCancheKey).Find(c=>c.ID==id);
+                }
+                else
+                {
+                    var list = _managerRepository.Entitys;
+                    if (list.Any())
+                    {
+                        model = list.Where(c=>c.ID==id).FirstOrDefault();
+                    }
+                    else
+                    {
+                        model = new Manager();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Error("获取某一个菜单失败！", e);
+                throw e;
+            }
+            return model;
+        }
+        /// <summary>
+        /// 更新一个菜单
+        /// </summary>
+        /// <param name="id"></param>
+        public void UpdateManager(Manager model)
+        {
+            try
+            {
+                //得到实体之后更新
+                _managerRepository.Update(model);
+                _cacheManager.Remove(ManagerCancheKey);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("更新表单出错，数据库方面",e);
+                throw e;
+            }
         }
         #endregion
     }

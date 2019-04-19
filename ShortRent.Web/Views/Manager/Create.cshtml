@@ -3,37 +3,269 @@
 @using ShortRent.Web.Models
 @{
     Layout = "~/Views/Shared/AdminMaster.cshtml";
+    List<SelectListItem> selectListItems = new List<SelectListItem>() {
+new SelectListItem(){Selected=true,Text="启用",Value="True" },
+new SelectListItem(){ Selected=false,Text="禁用",Value="False"}
+};
+}
+@section Styles
+{
+    @Styles.Render("~/Styles/ColorPicker")
 }
 @if (Model == null)
 {
-    using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerSuccess" }))
+    using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerSuccess", OnBegin = "ManagerBegin" }))
     {
+        @Html.AntiForgeryToken()
         <div class="form-horizontal box">
             <div class="box-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-error" })
-                    <div class="form-group col-md-12">
-                        <select class="form-control">
-                            <option value="0">|--根节点</option>
-                            @DropInit((List<ManagerBread>)ViewBag.DropData,"|--")
-                        </select>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <div class="row text-center marTop-xs">
-                            <input type="submit" value="添加" class="btn btn-success" />
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Pid, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <select class="form-control" name="pid">
+                                    <option value="0" data-Menu="True">|--根节点</option>
+                                    @DropInit((List<ManagerBread>)ViewBag.DropData, "|--")
+                                </select>
+                            </div>
                         </div>
+
                     </div>
-                </div>`
-            </div>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.ControllerName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ActionName, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.ActionName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.ActionName, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Activity, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.DropDownListFor(model => model.Activity, (IEnumerable<SelectListItem>)selectListItems, new { @class = "form-control col-md-8" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <div class="input-group col-md-12">
+                                    @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ClassIcons, new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <div class="input-group input-group-sm">
+                                    @Html.TextBoxFor(model => model.ClassIcons, new { @class = "form-control" })
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#IconModel">选择图标</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.ClassIcons, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="submit" value="添加" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>`
+        </div>
     }
 }
+else
+{
+    using (Ajax.BeginForm("Edit",new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerEditSuccess", OnBegin = "ManagerEditBegin" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                @Html.HiddenFor(c=>c.ID)
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Pid, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <select class="form-control" name="pid">
+                                    <option value="0" data-Menu="True">|--根节点</option>
+                                    @DropInit((List<ManagerBread>)ViewBag.DropData, "|--")
+                                </select>
+                                <input id="hidPid" value="@Model.Pid" />
+                            </div>
+                        </div>
+                    </div>
 
-@helper DropInit(List<ManagerBread> breads,string root)
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.ControllerName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidController" value="@Model.ControllerName" />
+                                @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ActionName, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.ActionName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidAction" value="@Model.ActionName" />
+                                @Html.ValidationMessageFor(model => model.ActionName, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Activity, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.DropDownListFor(model => model.Activity, (IEnumerable<SelectListItem>)selectListItems, new { @class = "form-control col-md-8" })
+                                <input id="hidActivity" value="@Model.Activity" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidName" value="@Model.Name" />
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <div class="input-group col-md-12">
+                                    @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
+                                    <input id="hidColor" value="@Model.Color" />
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ClassIcons, new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                <div class="input-group input-group-sm">
+                                    @Html.TextBoxFor(model => model.ClassIcons, new { @class = "form-control" })
+                                    <input id="hidClassIcon" value="@Model.ClassIcons" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#IconModel">选择图标</button>
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.ClassIcons, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="submit" value="修改" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>`
+        </div>
+    }
+}
+@Html.Action("GetIconsInfo", "IconsInfo")
+@section Scripts{
+    @Scripts.Render("~/Scripts/ManagerCreateOrEdit")
+    @Scripts.Render("~/Scripts/ColorPicker")
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+}
+@helper DropInit(List<ManagerBread> breads, string root)
 {
     string span = "&nbsp;&nbsp;&nbsp;&nbsp;" + root;
     foreach (ManagerBread bread in breads)
     {
         <option value="@bread.ID" data-Menu="@(string.IsNullOrWhiteSpace(bread.ControllerName) ==true &&string.IsNullOrWhiteSpace(bread.ActionName)==true)">@Html.Raw(span + bread.Name)</option>
-        if(bread.Childrens.Any())
+        if (bread.Childrens.Any())
         {
             @DropInit(bread.Childrens, span);
         }

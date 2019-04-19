@@ -54,5 +54,7 @@ namespace ShortRent.Data
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<EntityPermission> EntityPermissions { get; set; }
         public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<IconsInfo> IconsInfos { get; set; }
     }
 }

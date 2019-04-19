@@ -47,6 +47,15 @@ namespace ShortRent.Data.Migrations
                 new Manager() { ID = 5, Name = "用户管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = null },
                 new Manager() { ID = 6, Name = "用户管理", ActionName = "List", ControllerName = "Person", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 5 }
                 );
+            context.IconsInfos.AddOrUpdate(
+                new IconsInfo { ID=1,prefix="fa",Content= "fa-birthday-cake" },
+                new IconsInfo { ID = 2, prefix = "fa", Content = "fa-facebook" },
+                new IconsInfo { ID = 3, prefix = "fa", Content = "fa-address-book-o" },
+                new IconsInfo { ID = 4, prefix = "fa", Content = "fa-apple" },
+                new IconsInfo { ID = 5, prefix = "fa", Content = "fa-adjust" }
+                );
         }
+
+       
     }
 }

@@ -109,6 +109,7 @@
     <Compile Include="Domain\EntityPermission.cs" />
     <Compile Include="Domain\HistoryOperator.cs" />
     <Compile Include="Domain\HistoryRecord.cs" />
+    <Compile Include="Domain\IconsInfo.cs" />
     <Compile Include="Domain\LogInfo.cs" />
     <Compile Include="Domain\Manager.cs" />
     <Compile Include="Domain\Permission.cs" />

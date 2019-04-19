@@ -1,0 +1,21 @@
+﻿@model List<IconViewModel>
+<div class="modal fade" id="IconModel" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header iconHeader-color">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    图标列表
+                </h4>
+            </div>
+            <div class="modal-body">
+                @foreach (var item in Model)
+                {
+                    <a class="btn" onclick="btn_edit(this)" style="width:30px;"><i class="@item.prefix @item.Content"></i></a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

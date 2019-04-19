@@ -150,6 +150,27 @@
   <data name="LogHumanModelThreadId" xml:space="preserve">
     <value>线程ID</value>
   </data>
+  <data name="ManagerHumanModelActionName" xml:space="preserve">
+    <value>方法</value>
+  </data>
+  <data name="ManagerHumanModelActivity" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="ManagerHumanModelClassIcons" xml:space="preserve">
+    <value>图标Class</value>
+  </data>
+  <data name="ManagerHumanModelColor" xml:space="preserve">
+    <value>图标颜色</value>
+  </data>
+  <data name="ManagerHumanModelControllerName" xml:space="preserve">
+    <value>控制器</value>
+  </data>
+  <data name="ManagerHumanModelName" xml:space="preserve">
+    <value>菜单名称</value>
+  </data>
+  <data name="ManagerHumanModelPidName" xml:space="preserve">
+    <value>父级名称</value>
+  </data>
   <data name="RoleHumanModelID" xml:space="preserve">
     <value>数据库编号</value>
   </data>

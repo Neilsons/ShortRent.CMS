@@ -115,6 +115,69 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 方法 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelActionNameDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelActionNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelActivityDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelActivityDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图标类别 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelClassIconsDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelClassIconsDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图标颜色 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelColorDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelColorDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 控制器 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelControllerNameDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelControllerNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 菜单名称 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 父级列表 的本地化字符串。
+        /// </summary>
+        public static string ManagerCreteModelPidDisplayName {
+            get {
+                return ResourceManager.GetString("ManagerCreteModelPidDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}不能为空 的本地化字符串。
         /// </summary>
         public static string notempty_error {
