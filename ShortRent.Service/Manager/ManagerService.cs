@@ -116,6 +116,10 @@ namespace ShortRent.Service
         /// <returns></returns>
         public Manager GetManager(int? id)
         {
+            if(id==null)
+            {
+                id = 0;
+            }
             Manager model = null;
             try
             {
@@ -130,16 +134,16 @@ namespace ShortRent.Service
                     {
                         model = list.Where(c=>c.ID==id).FirstOrDefault();
                     }
-                    else
-                    {
-                        model = new Manager();
-                    }
                 }
             }
             catch(Exception e)
             {
                 _logger.Error("获取某一个菜单失败！", e);
                 throw e;
+            }
+            if(model==null)
+            {
+                model = new Manager();
             }
             return model;
         }

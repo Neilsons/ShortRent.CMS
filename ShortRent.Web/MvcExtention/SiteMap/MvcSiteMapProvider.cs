@@ -36,16 +36,43 @@ namespace ShortRent.Web.MvcExtention
             ManagerBread current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, action, StringComparison.OrdinalIgnoreCase)
             && string.Equals(node.ControllerName, controller, StringComparison.OrdinalIgnoreCase));
             List<ManagerBread> breadcrumb = new List<ManagerBread>();
+            if(action!="Home")
+            {
+                if (current == null)
+                {
+                    current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, "List", StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(node.ControllerName, controller, StringComparison.OrdinalIgnoreCase));
+                    if (action == "Create")
+                        breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-plus", Color = "#000000", Name = "创建" });
+                    if (action == "Edit")
+                        breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-pencil", Color = "#000000", Name = "编辑" });
+                    if (action == "Detail")
+                        breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-info-circle", Color = "#000000", Name = "详情" });
+                }
+            }
             while(current!=null)
             {
-                breadcrumb.Insert(0,new ManagerBread() {
-                    ClassIcons = current.ClassIcons,
-                    Color=current.Color,
-                    ControllerName = current.ControllerName,
-                    ActionName = current.ActionName
-                });
+                if(current.ControllerName!=null&& current.ActionName!=null)
+                {
+                    breadcrumb.Insert(0, new ManagerBread()
+                    {
+                        ClassIcons = current.ClassIcons,
+                        Color = current.Color,
+                        ControllerName = current.ControllerName,
+                        ActionName = current.ActionName,
+                        Name=current.Name
+                    });
+                }
                 current = current.Parent;
             }
+            breadcrumb.Insert(0, new ManagerBread()
+            {
+                ClassIcons = "fa fa-home",
+                Color = "#000000",
+                ControllerName = "Person",
+                ActionName = "Home",
+                Name="家"
+            });
             return breadcrumb;
          
         }

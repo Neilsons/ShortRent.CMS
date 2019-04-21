@@ -9,14 +9,18 @@ using System.Web.Mvc;
 using ShortRent.Resource;
 using System.Reflection;
 using Newtonsoft.Json;
+using ShortRent.WebCore.MVC;
+using ShortRent.Web.MvcExtention;
 
-namespace ShortRent.WebCore.MVC
+namespace ShortRent.Web
 {
     public class BaseController:Controller
     {
         public BaseController()
         {
             //GlobalManager.languages = ServiceContainer.Resolve<ILanguages>();
+            ViewBag.MvcSiteMap = ServiceContainer.Resolve<IMvcSiteMapProvider>();
+            
         }
         /// <summary>
         /// 替换微软的JsonResult

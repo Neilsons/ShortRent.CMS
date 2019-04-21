@@ -70,7 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\WebTypeFinder.cs" />
-    <Compile Include="MVC\BaseController.cs" />
     <Compile Include="MVC\JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

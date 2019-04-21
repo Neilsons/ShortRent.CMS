@@ -131,7 +131,7 @@ new SelectListItem(){ Selected=false,Text="禁用",Value="False"}
 }
 else
 {
-    using (Ajax.BeginForm("Edit",new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerEditSuccess", OnBegin = "ManagerEditBegin" }))
+    using (Ajax.BeginForm("Edit",new AjaxOptions { HttpMethod = "Post", OnSuccess = "ManagerSuccess", OnBegin = "ManagerEditBegin" }))
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal box">
@@ -147,7 +147,7 @@ else
                                     <option value="0" data-Menu="True">|--根节点</option>
                                     @DropInit((List<ManagerBread>)ViewBag.DropData, "|--")
                                 </select>
-                                <input id="hidPid" value="@Model.Pid" />
+                                <input type="hidden" id="hidPid" value="@Model.Pid" />
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ else
                         <div class="col-xs-12 col-md-8">
                             <div class="row clear-margin">
                                 @Html.EditorFor(model => model.ControllerName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                                <input id="hidController" value="@Model.ControllerName" />
+                                <input type="hidden" id="hidController" value="@Model.ControllerName" />
                                 @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-error" })
                             </div>
                         </div>
@@ -174,7 +174,7 @@ else
                         <div class="col-xs-12 col-md-8">
                             <div class="row clear-margin">
                                 @Html.EditorFor(model => model.ActionName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                                <input id="hidAction" value="@Model.ActionName" />
+                                <input type="hidden" id="hidAction" value="@Model.ActionName" />
                                 @Html.ValidationMessageFor(model => model.ActionName, "", new { @class = "text-error" })
                             </div>
                         </div>
@@ -188,7 +188,7 @@ else
                         <div class="col-xs-12 col-md-8">
                             <div class="row clear-margin">
                                 @Html.DropDownListFor(model => model.Activity, (IEnumerable<SelectListItem>)selectListItems, new { @class = "form-control col-md-8" })
-                                <input id="hidActivity" value="@Model.Activity" />
+                                <input type="hidden" id="hidActivity" value="@Model.Activity.ToString()" />
                             </div>
                         </div>
 
@@ -201,7 +201,7 @@ else
                         <div class="col-xs-12 col-md-8">
                             <div class="row clear-margin">
                                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                                <input id="hidName" value="@Model.Name" />
+                                <input type="hidden" id="hidName" value="@Model.Name" />
                                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
                             </div>
                         </div>
@@ -216,7 +216,7 @@ else
                             <div class="row clear-margin">
                                 <div class="input-group col-md-12">
                                     @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
-                                    <input id="hidColor" value="@Model.Color" />
+                                    <input type="hidden" id="hidColor" value="@Model.Color" />
                                 </div>
                                 @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-error" })
                             </div>
@@ -232,7 +232,7 @@ else
                             <div class="row clear-margin">
                                 <div class="input-group input-group-sm">
                                     @Html.TextBoxFor(model => model.ClassIcons, new { @class = "form-control" })
-                                    <input id="hidClassIcon" value="@Model.ClassIcons" />
+                                    <input type="hidden" id="hidClassIcon" value="@Model.ClassIcons" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#IconModel">选择图标</button>
                                     </span>

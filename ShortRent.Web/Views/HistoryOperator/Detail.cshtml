@@ -1,0 +1,42 @@
+﻿@model HistoryOperatorDetail
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/HistoryDetail")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-horizontal box">
+            <div class="box-body row">
+                @if (Model != null)
+                {
+                    <div class="margins col-xs-12">
+                        <b>@Html.LabelFor(c => c.EntityModule):</b>
+                        @Model.EntityModule
+                    </div>
+                    <div class="margins col-xs-12">
+                        <b>@Html.LabelFor(c => c.Operates):</b>
+                        @Model.Operates
+                    </div>
+                    <div class="margins col-xs-12">
+                        <b>@Html.LabelFor(c => c.pName):</b>@Model.pName
+                    </div>
+                    <div class="margins col-xs-12">
+                        <b>@Html.LabelFor(c => c.DetailDescirption):</b>
+                        @Model.DetailDescirption
+                    </div>
+                    <div class="margins col-xs-12">
+                        <b>@Html.LabelFor(c => c.CreateTime):</b>
+                        @Model.CreateTime
+                    </div>
+                    <div class="margins col-xs-12">
+                        @Html.ActionLink("返回", "List", null, new { @class = "btn btn-primary margins" })
+                    </div>
+                }
+            </div>`
+        </div>
+    </div>
+</div>
+

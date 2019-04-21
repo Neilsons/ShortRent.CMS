@@ -121,13 +121,12 @@ namespace ShortRent.Service
                         if (pageSize == 0 && pageNumber == 0)
                         {
                             roles = list.Where(expression.Compile()).ToList();
-                            total = list.Where(expression.Compile()).Count();
                         }
                         else
                         {
                             roles = list.Where(expression.Compile()).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-                            total = list.Where(expression.Compile()).Count();
                         }
+                        total = list.Where(expression.Compile()).Count();
                         _cacheManager.Set(RoleCacheKey, list, TimeSpan.FromMinutes(cacheTime));
                     }
                     else

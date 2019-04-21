@@ -61,6 +61,33 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 内容 的本地化字符串。
+        /// </summary>
+        public static string IconHumanContent {
+            get {
+                return ResourceManager.GetString("IconHumanContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string IconHumanID {
+            get {
+                return ResourceManager.GetString("IconHumanID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 前缀 的本地化字符串。
+        /// </summary>
+        public static string IconHumanPrefix {
+            get {
+                return ResourceManager.GetString("IconHumanPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 分类目录 的本地化字符串。
         /// </summary>
         public static string LogHumanModelCatalogue {
@@ -201,6 +228,15 @@ namespace ShortRent.Resource.HumanData {
         public static string ManagerHumanModelControllerName {
             get {
                 return ResourceManager.GetString("ManagerHumanModelControllerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string ManagerHumanModelID {
+            get {
+                return ResourceManager.GetString("ManagerHumanModelID", resourceCulture);
             }
         }
         

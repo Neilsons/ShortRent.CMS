@@ -195,4 +195,28 @@
   <data name="ManagerCreteModelPidDisplayName" xml:space="preserve">
     <value>父级列表</value>
   </data>
+  <data name="IconViewModelContentDisplayName" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="IconViewModelIDDisplayName" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="IconViewModelPrefixDisplayName" xml:space="preserve">
+    <value>前缀</value>
+  </data>
+  <data name="HistoryOperatorDetailCreateTimeDisplayName" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="HistoryOperatorDetailDetailDescirptionDisplayName" xml:space="preserve">
+    <value>详细描述</value>
+  </data>
+  <data name="HistoryOperatorDetailEntityModuleDisplayName" xml:space="preserve">
+    <value>模块名称</value>
+  </data>
+  <data name="HistoryOperatorDetailOperatesDisplayName" xml:space="preserve">
+    <value>具体操作</value>
+  </data>
+  <data name="HistoryOperatorDetailpNameDisplayName" xml:space="preserve">
+    <value>操作人</value>
+  </data>
 </root>

@@ -1,5 +1,8 @@
 ﻿$(function () {
     $('#Color').colorpicker();
+    if ($("#hidPid").val()) {
+        $("select[name='pid']").val($("#hidPid").val());
+    }
 });
 
 function btn_edit(v1) {
@@ -15,6 +18,23 @@ function ManagerBegin() {
     }
     $("input[type='submit']").prop("disabled", true);
     return true;
+}
+function ManagerEditBegin() {
+    if (!($("select[name='pid'] option:Selected").data("menu") == "True")) {
+        layer.alert("父级列表请选择菜单");
+        return false;
+    }
+    if (($("select[name='pid']").val() == $("#hidPid").val() || ($("select[name='pid']").val() == "0" && $("#hidPid").val()==""))
+        && $("#hidController").val() == $("#ControllerName").val()
+        && $("#ActionName").val() == $("#hidAction").val()
+        && $("#Activity").val() == $("#hidActivity").val()
+        && $("#Name").val() == $("#hidName").val()
+        && $("#Color").val() == $("#hidColor").val()
+        && $("#ClassIcons").val() == $("#hidClassIcon").val()) {
+        layer.alert("请修改后再提交！");
+        return false;
+    }
+    $("input[type='submit']").prop("disabled", true);
 }
 function ManagerSuccess(data) {
     if (data.httpCodeResult == 200) {

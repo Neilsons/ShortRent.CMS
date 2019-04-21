@@ -14,6 +14,7 @@ namespace ShortRent.Web
         {
             this.CreateMap<PersonViewModel,Person>();
             this.CreateMap<Person, PersonViewModel>();
+            this.CreateMap<PersonLoginModel, Person>();
         }
     }
 }

@@ -142,6 +142,24 @@ namespace ShortRent.Resource.Mvc {
         }
         
         /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        public static string PersonLoginModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("PersonLoginModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string PersonLoginModelPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PersonLoginModelPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}不符合指定的条件 的本地化字符串。
         /// </summary>
         public static string predicate_error {

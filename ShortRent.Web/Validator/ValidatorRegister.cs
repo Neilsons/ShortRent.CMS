@@ -17,6 +17,8 @@ namespace ShortRent.Web.Validator
     {
         public void RegisterTypes(ContainerBuilder container)
         {
+            //注册身份认证
+            container.RegisterType<AuthenticationProvider>().As<IAutnenticationProvider>();
             var validatorTypes = this.GetType().Assembly.GetTypes().Where(t => t.GetInterfaces().Any(i => i.IsGenericType&&i.GetGenericTypeDefinition() == typeof(IValidator<>)));
             //设置资源
             FluentValidation.Mvc.FluentValidationModelValidatorProvider.Configure();

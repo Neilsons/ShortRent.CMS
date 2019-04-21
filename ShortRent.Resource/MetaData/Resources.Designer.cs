@@ -70,6 +70,78 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string HistoryOperatorDetailCreateTimeDisplayName {
+            get {
+                return ResourceManager.GetString("HistoryOperatorDetailCreateTimeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 详细描述 的本地化字符串。
+        /// </summary>
+        public static string HistoryOperatorDetailDetailDescirptionDisplayName {
+            get {
+                return ResourceManager.GetString("HistoryOperatorDetailDetailDescirptionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 模块名称 的本地化字符串。
+        /// </summary>
+        public static string HistoryOperatorDetailEntityModuleDisplayName {
+            get {
+                return ResourceManager.GetString("HistoryOperatorDetailEntityModuleDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 具体操作 的本地化字符串。
+        /// </summary>
+        public static string HistoryOperatorDetailOperatesDisplayName {
+            get {
+                return ResourceManager.GetString("HistoryOperatorDetailOperatesDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 操作人 的本地化字符串。
+        /// </summary>
+        public static string HistoryOperatorDetailpNameDisplayName {
+            get {
+                return ResourceManager.GetString("HistoryOperatorDetailpNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 内容 的本地化字符串。
+        /// </summary>
+        public static string IconViewModelContentDisplayName {
+            get {
+                return ResourceManager.GetString("IconViewModelContentDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string IconViewModelIDDisplayName {
+            get {
+                return ResourceManager.GetString("IconViewModelIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 前缀 的本地化字符串。
+        /// </summary>
+        public static string IconViewModelPrefixDisplayName {
+            get {
+                return ResourceManager.GetString("IconViewModelPrefixDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}必须在{From}和{To}之间 的本地化字符串。
         /// </summary>
         public static string inclusivebetween_error {

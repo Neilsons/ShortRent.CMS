@@ -221,7 +221,7 @@
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="~/Content/Images/Admin.jpg" class="user-image" alt="User Image">
-                    <span class="hidden-xs">姓名</span>
+                    <span class="hidden-xs">@User.Identity.Name</span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- User image -->
@@ -229,7 +229,7 @@
                         <img src="~/Content/Images/Admin.jpg" class="img-circle" alt="User Image">
 
                         <p>
-                           姓名
+                            @User.Identity.Name
                             <small>成员创建时间</small>
                         </p>
                     </li>

@@ -39,9 +39,19 @@
                     <small>@ViewBag.Content</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li><a href="#">Forms</a></li>
-                    <li class="active">General Elements</li>
+                    @{ManagerBread[] breadcrumb = ((IMvcSiteMapProvider)ViewBag.MvcSiteMap).GetBreadCrumb(ViewContext).ToArray(); }
+                    @for (int i = 0; i < breadcrumb.Length; i++)
+                    {
+                        ManagerBread manager = breadcrumb[i];
+                        if (i == breadcrumb.Length - 1)
+                        {
+                            <li class="active"><i class="@manager.ClassIcons" style="color:@manager.Color;"></i>&nbsp;&nbsp;@manager.Name</li>
+                        }
+                        else
+                        {
+                            <li><a href="/@manager.ControllerName/@manager.ActionName"><i class="@manager.ClassIcons" style="color:@manager.Color;"></i>&nbsp;&nbsp;@manager.Name</a></li>
+                        }
+                    }
                 </ol>
             </section>
 

@@ -20,14 +20,21 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/LayerDate").Include("~/Content/laydate/theme/default/laydate.css"));
             bundles.Add(new StyleBundle("~/Styles/jqueryTreeGrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.css"));
             bundles.Add(new StyleBundle("~/Styles/ColorPicker").Include("~/Content/bootstrapColorPicker/css/bootstrap-colorpicker.min.css"));
+            bundles.Add(new StyleBundle("~/Styles/IcheckSkins").Include("~/Content/Icheck/skins/square/_all.css"));
 
             //异步加载进度指示条
             bundles.Add(new StyleBundle("~/Styles/Pace").Include("~/Content/pace/pace.min.css"));
             //日志详情的自定义css
             bundles.Add(new StyleBundle("~/Styles/LogDetail").Include("~/Content/css/LogInfo/LogDetail.css"));
-             //公共的引用CSS结束
+            //历史操作详情的自定义css
+            bundles.Add(new StyleBundle("~/Styles/HistoryDetail").Include("~/Content/css/History/HistoryDetail.css"));
+            //登陆自定义css
+            bundles.Add(new StyleBundle("~/Styles/animat").Include("~/Content/Login/animate.css"));
+            bundles.Add(new StyleBundle("~/Styles/login").Include("~/Content/Login/login.css"));
+            bundles.Add(new StyleBundle("~/Styles/Loginstyle").Include("~/Content/Login/style.css"));
+            //公共的引用CSS结束
             //公共的JS库的引用开始
-            bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-3.3.1.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-3.3.1.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate", "https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.min.js").Include("~/Scripts/jquery.validate.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate-unobtrusive", "https://cdn.bootcss.com/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js").Include("~/Scripts/jquery.validate.unobtrusive.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Ajax-unobtrusive").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
@@ -44,6 +51,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/bootstrapTableTreeGrid").Include("~/Content/bootstrapTableTreeGrid/bootstrap-table-treegrid.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquerytreegrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/ColorPicker").Include("~/Content/bootstrapColorPicker/js/bootstrap-colorpicker.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Icheck").Include("~/Content/Icheck/icheck.min.js"));
             //公共的JS库的引用结束
 
             //role用到的js 自定义的开始
@@ -57,6 +65,13 @@ namespace ShortRent.Web.App_Start
             //manager用到的js库自定义开始
             bundles.Add(new ScriptBundle("~/Scripts/ManagerIndex").Include("~/Scripts/Manager/ManagerIndex.js"));
             bundles.Add(new ScriptBundle("~/Scripts/ManagerCreateOrEdit").Include("~/Scripts/Manager/ManagerCreateOrEdit.js"));
+            //IconInfo用到的js自定义开始
+            bundles.Add(new ScriptBundle("~/Scripts/IconIndex").Include("~/Scripts/IconsInfo/IconInfo.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/IconCreate").Include("~/Scripts/IconsInfo/IconCreateOrUpdate.js"));
+            //历史操作要引用的js自定义开始
+            bundles.Add(new ScriptBundle("~/Scripts/HistoryIndex").Include("~/Scripts/HistoryOperator/HistoryIndex.js"));
+            //用户登陆要引用的js自定义开始
+            bundles.Add(new ScriptBundle("~/Scripts/PersonLogin").Include("~/Scripts/Person/PersonLogin.js"));
         }
     }
 }

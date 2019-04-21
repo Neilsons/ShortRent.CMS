@@ -157,6 +157,7 @@ namespace ShortRent.Web.Controllers
                     Manager manager = _mapper.Map<Manager>(creteModel);
                     //先获取之前的那个模型
                     Manager oldManager = _managerService.GetManager(creteModel.ID);
+                    manager.CreateTime = oldManager.CreateTime;
                     string oldPName=_managerService.GetManager(oldManager.Pid).Name;
                     string pName = _managerService.GetManager(manager.Pid).Name;
                     //更新现有的模型
@@ -174,6 +175,7 @@ namespace ShortRent.Web.Controllers
                         Operates = "菜单编辑",
                         PersonId = 1
                     };
+                    _historyOperatorService.CreateHistoryOperator(historyOperator);
                 }
                 else
                 {

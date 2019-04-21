@@ -10,7 +10,7 @@ namespace ShortRent.Web.Models
         //编号
         public int ID { get; set; }
         //前缀
-        public string prefix { get; set; }
+        public string Prefix { get; set; }
         //内容
         public string Content { get; set; }
     }

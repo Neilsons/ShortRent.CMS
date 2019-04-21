@@ -165,4 +165,10 @@
   <data name="RoleViewModelIndexTypeDisplayName" xml:space="preserve">
     <value>用户类型</value>
   </data>
+  <data name="PersonLoginModelNameDisplayName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="PersonLoginModelPassWordDisplayName" xml:space="preserve">
+    <value>密码</value>
+  </data>
 </root>

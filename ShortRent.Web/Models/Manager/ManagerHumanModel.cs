@@ -7,6 +7,7 @@ namespace ShortRent.Web.Models
 {
     public class ManagerHumanModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         /// <summary>
         /// 控制器名称

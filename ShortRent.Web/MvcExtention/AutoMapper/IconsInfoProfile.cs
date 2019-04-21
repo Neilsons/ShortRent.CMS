@@ -13,6 +13,10 @@ namespace ShortRent.Web.MvcExtention
         public IconsInfoProfile()
         {
             this.CreateMap<IconsInfo,IconViewModel>();
+            this.CreateMap<IconsInfo, IconInfoShowModel>().ForMember(c => c.IconInfo, m => m.MapFrom(c => c.prefix + " " + c.Content));
+            this.CreateMap<IconViewModel, IconsInfo>();
+            this.CreateMap<IconsInfo, IconHuman>();
+
         }
          
     }

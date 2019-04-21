@@ -9,6 +9,11 @@ namespace ShortRent.Service
 {
     public interface IIconsInfoService
     {
+        List<IconsInfo> GetIconsInfosByTotal(int pageSize, int pageNumber, string contentName,out int total);
         List<IconsInfo> GetIconsInfos();
+        void CreateIcon(IconsInfo model);
+        IconsInfo GetIconsById(int id);
+        void UpdateIcon(IconsInfo model);
+        void Delete(IconsInfo model);
     }
 }
