@@ -77,6 +77,8 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/PersonLogin").Include("~/Scripts/Person/PersonLogin.js"));
             //后台用户编辑用到的js
             bundles.Add(new ScriptBundle("~/Scripts/AdminEdit").Include("~/Scripts/Person/AdminEdit.js"));
+            //后台 用户列表用到的js
+            bundles.Add(new ScriptBundle("~/Scripts/AdminIndex").Include("~/Scripts/Person/PersonIndex.js"));
 
 
 

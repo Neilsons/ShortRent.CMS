@@ -42,28 +42,38 @@ namespace ShortRent.Web.Controllers
         }
         #endregion
         #region Method
-        public ActionResult Index()
+        public ActionResult List()
         {
-            List<PersonViewModel> list = null;
+            ViewBag.Title = "后台用户管理";
+            ViewBag.Content = "列表";
+            return View();
+        }
+        public ActionResult Index(int? pageSize,int? pageNumber,string AdminName)
+        {
+            List<PersonAdminIndexModel> list = null;
+            PagedListViewModel<PersonAdminIndexModel> paged = new PagedListViewModel<PersonAdminIndexModel>();
             try
             {
-                var persons = _personService.GetPersons();
-                if (persons.Any())
+                int total;
+                var persons = _personService.GetTypePerson(pageSize ?? 0, pageNumber ?? 0,AdminName, 1, out total);
+                if(persons.Any())
                 {
-                    list = _mapper.Map<List<PersonViewModel>>(persons);
+                    list = _mapper.Map<List<PersonAdminIndexModel>>(persons);
                 }
                 else
                 {
-                    list = new List<PersonViewModel>();
+                    list = new List<PersonAdminIndexModel>();
                 }
+                paged.Rows = list;
+                paged.Total = total;
             }
             catch(Exception e)
             {
-                list = new List<PersonViewModel>();
+                list = new List<PersonAdminIndexModel>();
                 _logger.Debug("获得列表时出现错误",e);
                 throw e;
             }
-            return View(list.AsEnumerable());
+            return Json(paged,JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetJson()
         {
@@ -165,6 +175,15 @@ namespace ShortRent.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PersonAdminDetail(PersonAdminEditModel model, HttpPostedFileBase headPhoto)
         {
+            try
+            {
+
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("修改详情出错",e);
+                throw e;
+            }
             return View();
         }
         #endregion

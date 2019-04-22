@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+@section Styles{
+    @Styles.Render("~/Styles/BootstraTable")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="col-xs-12 col-sm-3 col-lg-2 col-md-3">
+                    @Html.ActionLinkAdd("创建", "Create", new { @class = "btn btn-primary btn-sm" })
+                </div>
+                <div class="col-xs-12 col-sm-9 col-lg-10 col-md-9 marTOrd-xs">
+                    <div class="row">
+                        <label class="control-label col-sm-offset-3  col-sm-3 col-md-offset-3 col-md-3 col-lg-offset-5 col-lg-2 text-right" for="txt_search_rolename"><span>后台用户名称</span></label>
+                        <div class="col-sm-4 col-md-4 col-lg-3">
+                            <input type="text" class="form-control" id="txt_search_AdminName">
+                        </div>
+                        <div class="col-sm-2 col-xs-12 col-md-2 col-lg-2 marTOrd-xs text-right">
+                            <button type="button" id="btn_query" class="btn btn-primary btn-sm">查询</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <div id="toolbar" class="btn-group">
+                    <select id="sel_exportoption" class="form-control">
+                        <option value="basic" selected="selected">导出当前页</option>
+                        <option value="all">导出所有</option>
+                    </select>
+                </div>
+                <table id="AdminTable" class="table col-xs-12 col-sm-12 col-lg-12 text-nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @Scripts.Render("~/Scripts/TableExport")
+    @Scripts.Render("~/Scripts/BootstrapTableExport")
+    @*本页面要用到的js*@
+    @Scripts.Render("~/Scripts/AdminIndex")
+
+}

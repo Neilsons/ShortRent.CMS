@@ -28,7 +28,7 @@ $(function () {
     $(document).on("click", "input[type='button']", function () {
         $("#frmSave").ajaxSubmit({
             dataType: 'json',
-            beforeSend: function (xhr) {
+            beforeSubmit: function () {
                 if ($("#Name").val() == $("#hidName").val()
                     && $("#Position").val() == $("#hidPosition").val()
                     && $("#Qq").val() == $("#hidQQ").val()
@@ -36,7 +36,7 @@ $(function () {
                     && $("#PersonDetail").val() == $("#hidDetail").val()
                     && $("#hidImage").val() == $("#headPhoto").attr("src")) {
                     layer.alert("请修改后再提交！");
-                    return;
+                    return false;
                 }
                 $("input[type='button']").prop("disabled", true);
             },

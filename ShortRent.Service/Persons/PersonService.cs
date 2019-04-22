@@ -9,6 +9,7 @@ using ShortRent.Core.Data;
 using ShortRent.Core.Domain;
 using ShortRent.Core.Log;
 using ShortRent.Core;
+using System.Linq.Expressions;
 
 namespace ShortRent.Service
 {
@@ -44,6 +45,68 @@ namespace ShortRent.Service
         public void DeletePerson(Person person)
         {
             _personRepository.Delete(person);
+        }
+        public List<Person> GetTypePerson(int pageSize, int pageNumber,string AdminName,int? Type, out int total)
+        {
+            Expression<Func<Person, bool>> expression = test => true;
+            if(Type!=null)
+            {
+                expression=expression.And(c => c.Type);
+            }
+            if(!string.IsNullOrEmpty(AdminName))
+            {
+                expression = expression.And(c => c.Name.Contains(AdminName));
+            }
+            List<Person> persons = null;
+            try
+            {
+                if (_cacheManager.Contains(PersonsCacheKey))
+                {
+                    IEnumerable<Person> list=null;
+                    if (pageSize==0&&pageNumber==0)
+                    {
+                        list=_cacheManager.Get<List<Person>>(PersonsCacheKey).Where(expression.Compile());
+                        persons =list.ToList();
+                    }
+                    else
+                    {
+                        list = _cacheManager.Get<List<Person>>(PersonsCacheKey).Where(expression.Compile());
+                        persons = list.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+                    }
+                    total = list.Count();
+                }
+                else
+                {
+                    var list = _personRepository.Entitys.OrderByDescending(c => c.CreateTime).ToList();
+                    if (list.Any())
+                    {
+                        var models = list.Where(expression.Compile());
+                        if (pageSize==0&&pageNumber==0)
+                        {
+                            persons =models.ToList();
+                        }
+                        else
+                        {
+                            persons = models.Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+                        }
+                        total = models.Count();                         
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
+                        //缓存半个小时
+                        _cacheManager.Set(PersonsCacheKey, list, TimeSpan.FromMinutes((int)CacheTimeLev.lev1));
+                    }
+                    else
+                    {
+                        persons = new List<Person>();
+                        total = 0;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.Debug("获取特定的用户", e);
+                throw e;
+            }
+            return persons;
         }
         /// <summary>
         /// 得到特定的人
