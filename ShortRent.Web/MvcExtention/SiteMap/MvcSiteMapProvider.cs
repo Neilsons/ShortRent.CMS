@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using AutoMapper;
+using ShortRent.Core.Cache;
 using ShortRent.Service;
 using ShortRent.Web.Models;
 
@@ -14,12 +15,16 @@ namespace ShortRent.Web.MvcExtention
     public class MvcSiteMapProvider : IMvcSiteMapProvider
     {
         #region  Field
+        private readonly ICacheManager _cacheManager;
         private IEnumerable<ManagerBread> AllNodes { get; set; }
         private IEnumerable<ManagerBread> NodeTree { get; set; }
+        //缓存其中的菜单列表
+        private const string mvcSiteMapProviderCacheKey = nameof(MvcSiteMapProvider) + nameof(MvcSiteMapProvider.GetSiteMap);
         #endregion
         #region Contructor
-        public MvcSiteMapProvider(IManagerService managerService,IMapper mapper)
+        public MvcSiteMapProvider(IManagerService managerService,IMapper mapper,ICacheManager cacheManager)
         {
+            this._cacheManager = cacheManager;
             AllNodes =mapper.Map<List<ManagerBread>>(managerService.GetManagers().AsEnumerable());
             NodeTree= mapper.Map<List<ManagerBread>>(managerService.GetTreeViewManagers().AsEnumerable());
         }
@@ -38,7 +43,16 @@ namespace ShortRent.Web.MvcExtention
             List<ManagerBread> breadcrumb = new List<ManagerBread>();
             if(action!="Home")
             {
-                if (current == null)
+                if(action== "PersonAdminDetail")
+                {
+                    breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-database", Color = "#000000", Name = "个人资料",ControllerName="Person",ActionName= "PersonalData" });
+                    breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-pencil", Color = "#000000", Name = "编辑" });
+                }
+                else if(action=="PersonalData")
+                {
+                    breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-database", Color = "#000000", Name = "个人资料" });
+                }
+                else if (current == null)
                 {
                     current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, "List", StringComparison.OrdinalIgnoreCase)
                     && string.Equals(node.ControllerName, controller, StringComparison.OrdinalIgnoreCase));
@@ -79,32 +93,43 @@ namespace ShortRent.Web.MvcExtention
 
         public IEnumerable<ManagerBread> GetSiteMap(ViewContext context)
         {
-            int account = 1;
+            int account = WorkContext.CurrentPerson.ID;
             string action = context.RouteData.Values["action"] as string;
             string controller = context.RouteData.Values["controller"] as string;
             List<ManagerBread> nodes = CopyAndSetState(NodeTree.ToList(), controller, action);
-            return GetAuthorizedNodes(account, nodes);
+            return nodes;
+            //return GetAuthorizedNodes(account, nodes);
         }
         private List<ManagerBread> CopyAndSetState(List<ManagerBread> nodes,string controller,string action)
         {
             List<ManagerBread> copies = new List<ManagerBread>();
-            foreach(ManagerBread node in nodes)
+            if(action=="Create"||action=="Edit"||action=="Detail"||action=="Delete")
             {
-                ManagerBread copy = new ManagerBread();
-                copy.ClassIcons = node.ClassIcons;
-                copy.Color = node.Color;
-
-                copy.ControllerName = node.ControllerName;
-                copy.ActionName = node.ActionName;
-                copy.HasActiveChildren = node.Childrens.Any(child => child.Activity || (child.HasActiveChildren??false));
-                copy.Activity = node.Childrens.Any(child => child.Activity && !(child.ControllerName==null&&child.ActionName==null)) || (
-                    string.Equals(node.ActionName,action,StringComparison.OrdinalIgnoreCase)&&
-                    string.Equals(node.ControllerName,controller,StringComparison.OrdinalIgnoreCase)                    
-                    );
-                copy.Childrens=CopyAndSetState(node.Childrens,controller,action);
-                copies.Add(copy);
+                return _cacheManager.Get<List<ManagerBread>>(mvcSiteMapProviderCacheKey);
             }
-            return copies;
+            else
+            {
+                foreach (ManagerBread node in nodes)
+                {
+                    ManagerBread copy = new ManagerBread();
+                    copy.ClassIcons = node.ClassIcons;
+                    copy.Color = node.Color;
+                    copy.Name = node.Name;
+                    copy.ControllerName = node.ControllerName;
+                    copy.ActionName = node.ActionName;
+                    copy.HasActiveChildren = node.Childrens.Any(c => c.Activity &&
+                             (string.Equals(c.ActionName.Trim(), action.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                              string.Equals(c.ControllerName.Trim(), controller.Trim(), StringComparison.OrdinalIgnoreCase)))
+                            || (string.Equals(node.ActionName.Trim(), action.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                            string.Equals(node.ControllerName.Trim(), controller.Trim(), StringComparison.OrdinalIgnoreCase));
+                    copy.Activity = node.Activity;
+                    copy.Childrens = CopyAndSetState(node.Childrens, controller, action);
+                    copies.Add(copy);
+                }
+                _cacheManager.Remove(mvcSiteMapProviderCacheKey);
+                _cacheManager.Set(mvcSiteMapProviderCacheKey, copies, TimeSpan.FromDays(10));
+                return copies;
+            }
         }
         private IEnumerable<ManagerBread> GetAuthorizedNodes(Int32? accountId, IEnumerable<ManagerBread> nodes)
         {

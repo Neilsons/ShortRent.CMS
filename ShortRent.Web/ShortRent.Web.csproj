@@ -163,6 +163,7 @@
     <Content Include="Content\css\History\HistoryDetail.css" />
     <Content Include="Content\css\ionicons.css" />
     <Content Include="Content\css\LogInfo\LogDetail.css" />
+    <Content Include="Content\css\Person\PersonData.css" />
     <Content Include="Content\Icheck\icheck.js" />
     <Content Include="Content\Icheck\icheck.min.js" />
     <Content Include="Content\Icheck\skins\all.css" />
@@ -278,6 +279,28 @@
     <Content Include="Content\Icheck\skins\square\yellow.css" />
     <Content Include="Content\Icheck\skins\square\yellow.png" />
     <Content Include="Content\Icheck\skins\square\_all.css" />
+    <Content Include="Content\jQuery.FileUpload\canvas-to-blob.min.js" />
+    <Content Include="Content\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
+    <Content Include="Content\jQuery.FileUpload\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload.css" />
+    <Content Include="Content\jQuery.FileUpload\img\loading.gif" />
+    <Content Include="Content\jQuery.FileUpload\img\progressbar.gif" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-angular.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-image.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload-video.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.fileupload.js" />
+    <Content Include="Content\jQuery.FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Content\jQuery.FileUpload\load-image.all.min.js" />
+    <Content Include="Content\jQuery.FileUpload\tmpl.min.js" />
+    <Content Include="Content\jQuery.FileUpload\vendor\jquery.ui.widget.js" />
     <Content Include="Content\laydate\laydate.js" />
     <Content Include="Content\laydate\theme\default\font\iconfont.svg" />
     <Content Include="Content\laydate\theme\default\laydate.css" />
@@ -318,6 +341,7 @@
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\locale\bootstrap-table-af-ZA.js" />
@@ -371,7 +395,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\ionicons.svg" />
-    <Content Include="Content\Images\Admin.jpg" />
+    <Content Include="Content\Images\AdminImg\admin.jpg" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -417,6 +441,8 @@
     <Content Include="Scripts\Manager\ManagerIndex.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Person\AdminEdit.js" />
+    <Content Include="Scripts\Person\PersonData.js" />
     <Content Include="Scripts\Person\PersonLogin.js" />
     <Content Include="Scripts\Role\RoleCreateOrEdit.js" />
     <Content Include="Scripts\Role\RoleIndex.js" />
@@ -458,6 +484,7 @@
     <Compile Include="Models\Manager\ManagerHumanModel.cs" />
     <Compile Include="Models\Manager\ManagerViewIndex.cs" />
     <Compile Include="Models\PagedListViewModel.cs" />
+    <Compile Include="Models\Person\PersonAdminEditModel.cs" />
     <Compile Include="Models\Person\PersonLoginModel.cs" />
     <Compile Include="Models\Person\PersonViewModel.cs" />
     <Compile Include="Models\Role\RoleHumanModel.cs" />
@@ -485,6 +512,7 @@
     <Compile Include="Validator\AutofacValidatorFactory.cs" />
     <Compile Include="Validator\IconsInfo\IconsInfoValidator.cs" />
     <Compile Include="Validator\Managers\ManagerValidator.cs" />
+    <Compile Include="Validator\Persons\PersonAdminValidator.cs" />
     <Compile Include="Validator\Persons\PersonLoginValidator.cs" />
     <Compile Include="Validator\Persons\PersonValidator.cs" />
     <Compile Include="Validator\Roles\RoleViewModelIndexValidator.cs" />
@@ -546,6 +574,8 @@
     <Content Include="Views\HistoryOperator\Detail.cshtml" />
     <Content Include="Views\Person\Login.cshtml" />
     <Content Include="Views\Person\Home.cshtml" />
+    <Content Include="Views\Person\PersonalData.cshtml" />
+    <Content Include="Views\Person\PersonAdminDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -613,7 +643,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted D:\AAAAAAAA这是所有的练习\ShortRent\ShortRent.Web\App_Data\create-permissions.ps1
+    <PostBuildEvent>powershell –NonInteractive –ExecutionPolicy Unrestricted E:\graduation\ShortRent.CMS\ShortRent.Web\App_Data\create-permissions.ps1
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

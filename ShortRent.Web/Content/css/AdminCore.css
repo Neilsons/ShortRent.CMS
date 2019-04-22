@@ -8,6 +8,20 @@
 .text-error {
     color: #dd4b39;
 }
+.display-block{
+    display:block;
+}
+.margin-bottom {
+    padding-bottom: 2%;
+}
+.clear-padding{
+    padding:0 !important;
+}
+.images-response {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 .gray-bg {
     background-color: #FFF;
 }

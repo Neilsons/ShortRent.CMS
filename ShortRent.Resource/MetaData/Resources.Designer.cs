@@ -277,6 +277,69 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelIDDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 头像 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelPerImageDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelPerImageDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 职位描述 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelPersonDetailDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelPersonDetailDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 职位 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelPositionDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelPositionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 QQ 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelQqDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelQqDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 微信 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelWeChatDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelWeChatDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 出生日期 的本地化字符串。
         /// </summary>
         public static string PersonViewModelBirthdayDisplayName {

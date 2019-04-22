@@ -106,7 +106,7 @@ namespace ShortRent.Web.Controllers
                 var person = _personService.GetPersons().Where(c=>c.Type==true).SingleOrDefault(c => c.Name == model.Name && c.PassWord == model.PassWord);
                 if(person!=null)
                 {
-                    var singnPer = _mapper.Map<Person>(model);
+                    var singnPer = person;
                     //身份登陆成功
                     _authenticationProvider.SignIn(singnPer, model.ReadMe);
                     HistoryOperator history = new HistoryOperator()
@@ -137,6 +137,35 @@ namespace ShortRent.Web.Controllers
         {
             _authenticationProvider.SignOut();
             throw new HttpException((int)HttpStatusCode.Unauthorized,"");
+        }
+        public ActionResult PersonalData()
+        {
+            ViewBag.Title = "个人资料";
+            ViewBag.Content = "详情";
+            return View();
+        }
+        public ActionResult PersonAdminDetail()
+        {
+            ViewBag.Title = "个人资料编辑";
+            ViewBag.Content = "编辑";
+            PersonAdminEditModel admin = null;
+            try
+            {
+                //得到当前人的信息
+                admin = _mapper.Map<PersonAdminEditModel>(WorkContext.CurrentPerson);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("后台人员修改个人资料出错");
+                throw e;
+            }
+            return View(admin);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PersonAdminDetail(PersonAdminEditModel model, HttpPostedFileBase headPhoto)
+        {
+            return View();
         }
         #endregion
     }

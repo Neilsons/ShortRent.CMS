@@ -44,6 +44,11 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string IdCard { get; set; }
         /// <summary>
+        /// 职位
+        /// </summary>
+        public string Position { get; set; }
+        public string PersonDetail { get; set; }
+        /// <summary>
         /// 用户排序
         /// </summary>
         public int PerOrder { get; set; }

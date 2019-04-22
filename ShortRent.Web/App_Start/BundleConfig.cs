@@ -32,12 +32,15 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/animat").Include("~/Content/Login/animate.css"));
             bundles.Add(new StyleBundle("~/Styles/login").Include("~/Content/Login/login.css"));
             bundles.Add(new StyleBundle("~/Styles/Loginstyle").Include("~/Content/Login/style.css"));
+            //个人资料自定义css
+            bundles.Add(new StyleBundle("~/Styles/PersonData").Include("~/Content/css/Person/PersonData.css"));
             //公共的引用CSS结束
             //公共的JS库的引用开始
             bundles.Add(new ScriptBundle("~/Scripts/Jquery", "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js").Include("~/Scripts/jquery-3.3.1.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate", "https://cdn.bootcss.com/jquery-validate/1.19.0/jquery.validate.min.js").Include("~/Scripts/jquery.validate.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Validate-unobtrusive", "https://cdn.bootcss.com/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js").Include("~/Scripts/jquery.validate.unobtrusive.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Jquery-Ajax-unobtrusive").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Jquery-Form").Include("~/Scripts/jquery.form.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Bootstrap", "https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js").Include("~/Scripts/bootstrap.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/FastClick", "https://cdn.bootcss.com/fastclick/1.0.5/fastclick.min.js").Include("~/Scripts/fastclick.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Adminlte").Include("~/Scripts/AdminMaster/adminlte.min.js"));
@@ -72,6 +75,41 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/HistoryIndex").Include("~/Scripts/HistoryOperator/HistoryIndex.js"));
             //用户登陆要引用的js自定义开始
             bundles.Add(new ScriptBundle("~/Scripts/PersonLogin").Include("~/Scripts/Person/PersonLogin.js"));
+            //后台用户编辑用到的js
+            bundles.Add(new ScriptBundle("~/Scripts/AdminEdit").Include("~/Scripts/Person/AdminEdit.js"));
+
+
+
+
+
+
+            //jqueryUpload上传插件的绑定
+            bundles.Add(new StyleBundle("~/Content/jQuery-File-Upload").Include(
+                 "~/Content/jQuery.FileUpload/css/jquery.fileupload.css",
+                "~/Content/jQuery.FileUpload/css/jquery.fileupload-ui.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/jQuery-File-Upload").Include(
+                   //<!-- The Templates plugin is included to render the upload/download listings -->
+                   "~/Content/jQuery.FileUpload/vendor/jquery.ui.widget.js",
+                     "~/Content/jQuery.FileUpload/tmpl.min.js",
+                    //<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+                    "~/Content/jQuery.FileUpload/load-image.all.min.js",
+                    //<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+                    "~/Content/jQuery.FileUpload/canvas-to-blob.min.js",
+                    //"~/Content/file-upload/jquery.blueimp-gallery.min.js",
+                    //<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+                    "~/Content/jQuery.FileUpload/jquery.iframe-transport.js",
+                    //<!-- The basic File Upload plugin -->
+                    "~/Content/jQuery.FileUpload/jquery.fileupload.js",
+                    //<!-- The File Upload processing plugin -->
+                    "~/Content/jQuery.FileUpload/jquery.fileupload-process.js",
+                    //<!-- The File Upload image preview & resize plugin -->
+                    "~/Content/jQuery.FileUpload/jquery.fileupload-image.js",
+                    //<!-- The File Upload validation plugin -->
+                    "~/Content/jQuery.FileUpload/jquery.fileupload-validate.js",
+                    //!-- The File Upload user interface plugin -->
+                    "~/Content/jQuery.FileUpload/jquery.fileupload-ui.js"
+            ));
         }
     }
 }

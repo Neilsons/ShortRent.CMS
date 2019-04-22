@@ -19,7 +19,9 @@ namespace ShortRent.Data.ShortRentMap
             this.Property(c=>c.IdCard).HasMaxLength(18).IsRequired();
             this.Property(c=>c.PassWord).HasMaxLength(120);
             this.Property(c=>c.PerImage).HasMaxLength(200);
+            this.Property(c => c.Position).HasMaxLength(50);
             this.Property(c=>c.PerOrder).IsOptional();
+            this.Property(c => c.PersonDetail).HasMaxLength(500);
             this.Property(c => c.Qq).HasMaxLength(50);
             this.Property(c => c.WeChat).HasMaxLength(50);
             this.HasMany(c => c.Roles).WithMany().Map(m=> {

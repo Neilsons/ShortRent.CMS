@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/PersonData")
+}
+<div class="col-sm-3 clear-padding">
+    <div class="box float-e-margins">
+        <div>
+            <div class="box-body profile-content">
+                <div class="no-padding border-left-right margin-bottom col-lg-12">
+                    <img alt="image" class="img-responsive" src="~/Content/Images/AdminImg/@WorkContext.CurrentPerson.PerImage">
+                </div>
+                <h4><strong>职位</strong></h4>
+                <p><i class="fa fa-address-book-o"></i> &nbsp;&nbsp;@WorkContext.CurrentPerson.Position</p>
+                <h4><strong>工作介绍</strong></h4>
+                <p>
+                    <i class="glyphicon glyphicon-exclamation-sign"></i> &nbsp;&nbsp; @WorkContext.CurrentPerson.PersonDetail
+                </p>
+                <h4><strong>QQ</strong></h4>
+                <p>
+                    <i class="fa fa-qq"></i> &nbsp;&nbsp;  @WorkContext.CurrentPerson.Qq
+                </p>
+                <h4><strong>微信</strong></h4>
+                <p>
+                    <i class="fa fa-weixin"></i>  &nbsp;&nbsp; @WorkContext.CurrentPerson.WeChat
+                </p>
+                <div class="row margin-top">
+                    <div class="col-sm-12 text-center">
+                        <button type="button" onclick="javascript:window.location.href='/Person/PersonAdminDetail'" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"></i> 编辑个人资料</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

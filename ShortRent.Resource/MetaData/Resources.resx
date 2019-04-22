@@ -219,4 +219,25 @@
   <data name="HistoryOperatorDetailpNameDisplayName" xml:space="preserve">
     <value>操作人</value>
   </data>
+  <data name="PersonAdminEditModelIDDisplayName" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PersonAdminEditModelNameDisplayName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="PersonAdminEditModelPerImageDisplayName" xml:space="preserve">
+    <value>头像</value>
+  </data>
+  <data name="PersonAdminEditModelPersonDetailDisplayName" xml:space="preserve">
+    <value>职位描述</value>
+  </data>
+  <data name="PersonAdminEditModelPositionDisplayName" xml:space="preserve">
+    <value>职位</value>
+  </data>
+  <data name="PersonAdminEditModelQqDisplayName" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="PersonAdminEditModelWeChatDisplayName" xml:space="preserve">
+    <value>微信</value>
+  </data>
 </root>
