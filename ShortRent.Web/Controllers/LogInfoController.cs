@@ -82,8 +82,13 @@ namespace ShortRent.Web.Controllers
             {
                 var loginfo = _logInfoService.GetDetail(id);             
                 LogDetailChange logChange =_mapper.Map<LogDetailChange>(loginfo);
+                if(logChange.Exception=="")
+                {
+                    return Content("<script>alert('该日志下没有详情信息');window.location.href='/LogInfo/List';</Script>");
+                }
                 logDetailVm.StachTrace = logChange.StachTrace;
                 logDetailVm.Exception = GetObjectByJson<LogInfoException>(logChange.Exception);
+
             }
             catch(Exception e)
             {

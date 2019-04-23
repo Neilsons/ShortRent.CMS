@@ -52,6 +52,11 @@ namespace ShortRent.Web.MvcExtention
                 {
                     breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-database", Color = "#000000", Name = "个人资料" });
                 }
+                else if(action== "EditPassWord")
+                {
+                    breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-database", Color = "#000000", Name = "个人资料", ControllerName = "Person", ActionName = "PersonalData" });
+                    breadcrumb.Add(new ManagerBread() { ClassIcons = "fa fa-assistive-listening-systems", Color = "#000000", Name = "修改密码" });
+                }
                 else if (current == null)
                 {
                     current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, "List", StringComparison.OrdinalIgnoreCase)
@@ -93,7 +98,8 @@ namespace ShortRent.Web.MvcExtention
 
         public IEnumerable<ManagerBread> GetSiteMap(ViewContext context)
         {
-            int account = WorkContext.CurrentPerson.ID;
+            WorkContext workContext = new WorkContext();
+            int account = workContext.CurrentPerson.ID;
             string action = context.RouteData.Values["action"] as string;
             string controller = context.RouteData.Values["controller"] as string;
             List<ManagerBread> nodes = CopyAndSetState(NodeTree.ToList(), controller, action);

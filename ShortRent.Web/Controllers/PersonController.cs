@@ -8,6 +8,7 @@ using ShortRent.Web.Models;
 using ShortRent.WebCore.MVC;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -75,29 +76,55 @@ namespace ShortRent.Web.Controllers
             }
             return Json(paged,JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetJson()
-        {
-            return Json(_personService.GetPersons(),JsonRequestBehavior.AllowGet);
-        }
+       
         public ActionResult Create()
         {
+            ViewBag.Title = "后台用户管理";
+            ViewBag.Content = "后台用户创建";
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Person model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PersonAdminEditModel personAdminEditModel)
         {
-            if(ModelState.IsValid)
+            try
             {
-                _personService.CreatePerson(model);
-                return RedirectToAction(nameof(Index));
+                if(ModelState.IsValid)
+                {
+                    var person = _mapper.Map<Person>(personAdminEditModel);
+                    person.CreateTime = DateTime.Now;
+                    person.IdCard = "000000";
+                    person.Type =true;
+                    person.Birthday = DateTime.Now.AddYears(-18);
+                    person.CreditScore = 0;
+                    _personService.CreatePerson(person);
+                    PersonAdminHumanEditModel human = _mapper.Map<PersonAdminHumanEditModel>(personAdminEditModel);
+                    //将修改的信息加入记录中去
+                    HistoryOperator history = new HistoryOperator()
+                    {
+                        CreateTime = DateTime.Now,
+                        DetailDescirption = GetDescription<PersonAdminHumanEditModel>("创建了一个后台用户，详情", human),
+                        EntityModule = "用户管理",
+                        Operates = "后台用户创建",
+                        PersonId = GetCurrentPerson().ID
+                    };
+                    _historyOperatorService.CreateHistoryOperator(history);
+                }
+                else
+                {
+                    return View(personAdminEditModel);
+                }
             }
-            return View(model);
+            catch(Exception e)
+            {
+                _logger.Debug("创建用户失败",e);
+                throw e;
+            }
+            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "创建后台用户成功！", Url = Url.Action(nameof(PersonController.List)) });
         }
-        public ActionResult Test()
+        public ActionResult ReSetPassWord(int id)
         {
-            ViewBag.Title = "测试成功";
-            ViewBag.Data = RouteData.DataTokens["language"].ToString();
-            return View();
+            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "重置密码成功！", Url = Url.Action(nameof(PersonController.List)) });
         }
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -159,10 +186,12 @@ namespace ShortRent.Web.Controllers
             ViewBag.Title = "个人资料编辑";
             ViewBag.Content = "编辑";
             PersonAdminEditModel admin = null;
+            
             try
             {
-                //得到当前人的信息
-                admin = _mapper.Map<PersonAdminEditModel>(WorkContext.CurrentPerson);
+                WorkContext workContext = new WorkContext();
+                    //得到当前人的信息
+                    admin = _mapper.Map<PersonAdminEditModel>(workContext.CurrentPerson);
             }
             catch(Exception e)
             {
@@ -177,14 +206,115 @@ namespace ShortRent.Web.Controllers
         {
             try
             {
-
+                if(ModelState.IsValid)
+                {
+                    Dictionary<string, string> str = new Dictionary<string, string>();//上传成功后返回文件的信息
+                    if (headPhoto != null)
+                    {
+                        //上传文件到服务器
+                        str = UploadImg(headPhoto, "/Content/Images/AdminImg");
+                        if (str["Result"].ToString() == "0")
+                        {
+                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "上传文件格式不正确，请重新上传，所修改数据未被保留！", Url = Url.Action(nameof(PersonController.PersonAdminDetail)) });
+                        }
+                        Person person = _mapper.Map<Person>(model);
+                        person.PerImage = str["ImagePath"];
+                        person.IdCard = "000000";
+                        person.Birthday = DateTime.Now.AddYears(-18);
+                        //更新用户
+                        _personService.UpdatePerson(person);
+                    }
+                    else
+                    {
+                        Person person = _mapper.Map<Person>(model);
+                        person.IdCard = "000000";
+                        person.Birthday = DateTime.Now.AddYears(-18);
+                        _personService.UpdatePerson(person);
+                    }
+                }
+                else
+                {
+                    return View(model);
+                }
+                return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "个人资料修改成功！", Url = Url.Action(nameof(PersonController.PersonalData)) });
             }
             catch(Exception e)
             {
                 _logger.Debug("修改详情出错",e);
                 throw e;
             }
+        }
+        public ActionResult EditPassWord()
+        {
+            ViewBag.Title = "个人资料";
+            ViewBag.Content = "密码修改";
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPassWord(PassWordEditModel model)
+        {
+            try
+            {
+                //先将该用户从数据库中查出来
+                Person person = _personService.GetPersons().SingleOrDefault(c => c.ID == model.ID && c.PassWord == model.OldPassWord);
+                if(person!=null)
+                {
+                    if(model.PassWord==person.PassWord)
+                    {
+                        return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "新密码不能和旧密码相同，请重新输入", Url = Url.Action(nameof(PersonController.EditPassWord)) });
+                    }
+                    //将用户放到adminPerson作为缓冲
+                    PersonAdminUpdate adminPerson = _mapper.Map<PersonAdminUpdate>(person);
+                    //查到之后修改该人的密码
+                    adminPerson.PassWord = model.PassWord;
+                    Person updatePerson = _mapper.Map<Person>(adminPerson);
+                    //保存起来
+                    _personService.UpdatePerson(updatePerson);
+                }
+                else
+                {
+                    return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "旧密码输入错误，请输入登录时的密码！", Url = Url.Action(nameof(PersonController.EditPassWord)) });
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("修改密码出错！");
+                throw e;
+            }
+            return Json(new AjaxJson() { HttpCodeResult=(int)HttpStatusCode.OK,Message="修改密码成功！",Url=Url.Action(nameof(PersonController.PersonalData)) });
+        }
+        private Dictionary<string,string> UploadImg(HttpPostedFileBase file,string dir)
+        {
+            string Image_path = null;//保存文件的路径
+            Dictionary<string, string> DicInfo = new Dictionary<string, string>();//返回的文件信息
+            string fileName = Path.GetFileName(file.FileName); //获取文件名
+            string fileExt = Path.GetExtension(fileName);      //获取扩展名
+            if (fileExt == ".jpg" || fileExt == ".gif" || fileExt == ".png")
+            {
+                string NewDay = DateTime.Now.ToString("yyyy-MM-dd");
+                dir = dir + "/" + NewDay + "/";
+                if (!Directory.Exists(Request.MapPath(dir)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(Request.MapPath(dir)));
+                }
+                //创建文件夹
+                //需要对上传的文件进行重命名
+                string newfileName = Guid.NewGuid().ToString();
+                //构建文件完整路径
+                string fullDir = dir + newfileName + fileExt;
+                file.SaveAs(Request.MapPath(fullDir));  //保存文件  
+                //将上传成功的图片的路径存到数据库中
+                Image_path = NewDay + "/"+newfileName + fileExt;
+                DicInfo.Add("ImagePath", Image_path);
+                DicInfo.Add("Result", "1");
+            }
+            else
+            {
+                DicInfo.Add("ImagePath", "");
+                DicInfo.Add("Result", "0");
+            }
+            return DicInfo;
         }
         #endregion
     }

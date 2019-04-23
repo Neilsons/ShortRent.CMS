@@ -17,6 +17,7 @@ namespace ShortRent.Web
             this.RuleFor(p => p.WeChat).Length(1, 50).NotNull();
             this.RuleFor(p => p.PersonDetail).Length(1,500).NotNull();
             this.RuleFor(p=>p.Position).Length(1,50).NotNull();
+            this.RuleFor(p => p.PassWord).Length(1, 120).NotNull();
         }
     }
 }

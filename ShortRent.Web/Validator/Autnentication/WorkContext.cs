@@ -8,18 +8,18 @@ using System.Web;
 
 namespace ShortRent.Web
 {
-    public static class WorkContext
+    public class WorkContext
     {
         #region
-        public static readonly IPersonService _personService;
+        public readonly IPersonService _personService;
         #endregion
         #region  Construction
-        static WorkContext()
+        public WorkContext()
         {
             _personService = ServiceContainer.Resolve<IPersonService>();
         }
         #endregion
-        public static Person CurrentPerson
+        public Person CurrentPerson
         {
             get
             {

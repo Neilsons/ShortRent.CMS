@@ -18,15 +18,12 @@ namespace ShortRent.Service
         //日志信息不加入缓存
         private readonly IRepository<LogInfo> _logInfoReopsitory;
         private readonly ILogger _logger;
-        private readonly ICacheManager _cacheManager;
-        private const string LoginfoCacheKey= nameof(LogInfoService) + nameof(LogInfo);
         #endregion
         #region Construction
-        public LogInfoService(IRepository<LogInfo> repository,ILogger logger,ICacheManager cachemanager)
+        public LogInfoService(IRepository<LogInfo> repository,ILogger logger)
         {
             this._logInfoReopsitory = repository;
             this._logger = logger;
-            this._cacheManager = cachemanager;
         }
         #endregion
         #region  Methods
@@ -69,29 +66,17 @@ namespace ShortRent.Service
                 {
                     expression = expression.And(c=>c.CreateTime<=endTime);
                 }
-                if (_cacheManager.Contains(LoginfoCacheKey))
+                var list = _logInfoReopsitory.Entitys.OrderByDescending(c => c.CreateTime).ToList();
+                if (pagedIndex == 0 && pagedSize == 0)
                 {
-                    var list = _cacheManager.Get<List<LogInfo>>(LoginfoCacheKey).Where(expression.Compile());
-                    if (pagedIndex == 0 && pagedSize == 0)
-                        models = list.ToList();
-                    else
-                        models = list.Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
-                    total = list.Count();
+                    models = list.Where(expression.Compile()).ToList();
                 }
                 else
                 {
-                    var list = _logInfoReopsitory.Entitys.OrderByDescending(c => c.CreateTime).ToList();
-                    if (pagedIndex == 0 && pagedSize == 0)
-                    {
-                        models = list.Where(expression.Compile()).ToList();
-                    }
-                    else
-                    {
-                        models = list.Where(expression.Compile()).Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
-                    }
-                    total = list.Count();
-                    _cacheManager.Set(LoginfoCacheKey, list, TimeSpan.FromMinutes(GetTimeFromConfig((int)CacheTimeLev.lev1)));
+                    models = list.Where(expression.Compile()).Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
                 }
+                total = list.Count();
+                   
             }
             catch (Exception e)
             {
@@ -110,14 +95,7 @@ namespace ShortRent.Service
             LogInfo logInfo = null;
             try
             {
-                if(_cacheManager.Contains(LoginfoCacheKey))
-                {
-                    logInfo = _cacheManager.Get<List<LogInfo>>(LoginfoCacheKey).Find(c=>c.ID==id);
-                }
-                else
-                {
                     logInfo = _logInfoReopsitory.Entitys.Where(c => c.ID == id).FirstOrDefault();
-                }
             }
             catch(Exception e)
             {
@@ -139,8 +117,6 @@ namespace ShortRent.Service
                 logInfo = GetDetail(id);
                 //删除该项
                 _logInfoReopsitory.Delete(logInfo);
-                //要将缓存清除
-                _cacheManager.Remove(LoginfoCacheKey);
             }
             catch(Exception e)
             {

@@ -15,17 +15,19 @@ $(function () {
         $("#frmSave").ajaxSubmit({
             dataType: 'json',
             beforeSubmit: function () {
-                if ($("#Name").val() == $("#hidName").val()
-                    && $("#Position").val() == $("#hidPosition").val()
-                    && $("#Qq").val() == $("#hidQQ").val()
-                    && $("#WeChat").val() == $("#hidWeChat").val()
-                    && $("#PersonDetail").val() == $("#hidDetail").val()
-                    && $("#hidImage").val() == $("#headPhoto").attr("src")) {
-                    layer.alert("请修改后再提交！");
-                    return false;
+                if ($("#hidName")) {
+                    if ($("#Name").val() == $("#hidName").val()
+                        && $("#Position").val() == $("#hidPosition").val()
+                        && $("#Qq").val() == $("#hidQQ").val()
+                        && $("#WeChat").val() == $("#hidWeChat").val()
+                        && $("#PersonDetail").val() == $("#hidDetail").val()
+                        && $("#hidImage").val() == $("#headPhoto").attr("src")) {
+                        layer.alert("请修改后再提交！");
+                        return false;
+                    }
                 }
                 var file = $("input[type='file']").val();
-                if (file!="") {
+                if (file != "") {
                     //允许上传的文件类型 
                     var typeAllow = ["gif", "jpg", "png"];
                     //获取上传文件类型 
@@ -36,18 +38,22 @@ $(function () {
                         return false;
                     }
                 }
+                else {
+                    layer.alert("请上传头像");
+                    return false;
+                }
                 $("input[type='button']").prop("disabled", true);
             },
             success: function (data) {
-                    layer.alert(data.message, {
-                        closeBtn: 1    // 是否显示关闭按钮
-                        , yes: function () {
-                            window.location.href = data.url;
-                        }
-                        , cancel: function () {
-                            window.location.href = data.url;
-                        }
-                    });
+                layer.alert(data.message, {
+                    closeBtn: 1    // 是否显示关闭按钮
+                    , yes: function () {
+                        window.location.href = data.url;
+                    }
+                    , cancel: function () {
+                        window.location.href = data.url;
+                    }
+                });
             }
         });
 

@@ -217,27 +217,31 @@
                     </li>
                 </ul>
             </li>*@
+            @{
+                WorkContext workContext = new WorkContext();
+                var currentPerson = workContext.CurrentPerson;
+            }
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="~/Content/Images/AdminImg/@WorkContext.CurrentPerson.PerImage" class="user-image" alt="User Image">
+                    <img src="~/Content/Images/AdminImg/@currentPerson.PerImage" class="user-image" alt="User Image">
                     <span class="hidden-xs">@User.Identity.Name</span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header">
-                        <img src="~/Content/Images/AdminImg/admin.jpg" class="img-circle" alt="User Image">
+                        <img src="~/Content/Images/AdminImg/@currentPerson.PerImage" class="img-circle" alt="User Image">
 
                         <p>
                             @User.Identity.Name
-                            <small>@WorkContext.CurrentPerson.CreateTime</small>
+                            <small>@currentPerson.CreateTime</small>
                         </p>
                     </li>
                     <!-- Menu Body -->
                     <li class="user-body">
                         <div class="row">
                             <div class="col-xs-12 text-center">
-                                <a href="#">@WorkContext.CurrentPerson.Position</a>
+                                <a href="#">@currentPerson.Position</a>
                             </div>
                         </div>
                         <!-- /.row -->

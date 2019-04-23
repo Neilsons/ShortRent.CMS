@@ -277,6 +277,42 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 确认密码 的本地化字符串。
+        /// </summary>
+        public static string PassWordEditModelConfirmPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PassWordEditModelConfirmPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string PassWordEditModelIDDisplayName {
+            get {
+                return ResourceManager.GetString("PassWordEditModelIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 旧密码 的本地化字符串。
+        /// </summary>
+        public static string PassWordEditModelOldPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PassWordEditModelOldPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 新密码 的本地化字符串。
+        /// </summary>
+        public static string PassWordEditModelPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PassWordEditModelPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 编号 的本地化字符串。
         /// </summary>
         public static string PersonAdminEditModelIDDisplayName {
@@ -291,6 +327,15 @@ namespace ShortRent.Resource.MetaData {
         public static string PersonAdminEditModelNameDisplayName {
             get {
                 return ResourceManager.GetString("PersonAdminEditModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminEditModelPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PersonAdminEditModelPassWordDisplayName", resourceCulture);
             }
         }
         

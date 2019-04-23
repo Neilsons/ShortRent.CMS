@@ -98,7 +98,7 @@ namespace ShortRent.Service
                 }
                 else
                 {
-                    var list = _historyOperatorRepository.IncludeEntitys("Person").ToList();
+                    var list = _historyOperatorRepository.IncludeEntitys("Person").OrderByDescending(c=>c.CreateTime).ToList();
                     if (list.Any())
                     {
                         if (pageNumber == 0 && pageSize == 0)

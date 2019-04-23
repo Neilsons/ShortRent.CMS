@@ -16,7 +16,12 @@ namespace ShortRent.Web
             this.CreateMap<Person, PersonViewModel>();
             this.CreateMap<PersonLoginModel, Person>();
             this.CreateMap<Person, PersonAdminEditModel>();
+            this.CreateMap<PersonAdminEditModel, Person>();
             this.CreateMap<Person, PersonAdminIndexModel>();
+            this.CreateMap<PersonAdminEditModel, Person>();
+            this.CreateMap<Person, PersonAdminUpdate>();
+            this.CreateMap<PersonAdminUpdate,Person>();
+            this.CreateMap<PersonAdminEditModel, PersonAdminHumanEditModel>();
         }
     }
 }

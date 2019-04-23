@@ -11,6 +11,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using ShortRent.WebCore.MVC;
 using ShortRent.Web.MvcExtention;
+using ShortRent.Core.Domain;
 
 namespace ShortRent.Web
 {
@@ -57,6 +58,11 @@ namespace ShortRent.Web
             sBuild.Append(")");
             return sBuild.ToString();
 
+        }
+        protected Person GetCurrentPerson()
+        {
+            WorkContext workContext = new WorkContext();
+            return workContext.CurrentPerson;
         }
         protected string GetDescription<T>(string Title, T model,T oldModel) where T : class
         {

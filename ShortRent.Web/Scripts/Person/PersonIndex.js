@@ -95,7 +95,10 @@ var TableInit = function () {
                 field: 'id',
                 align: 'center',
                 formatter: function (value, row, index) {
-                   var result = "<a href=" + value + ">分配角色</a>";
+                    var result = "";
+                    result += "<a href='/Person/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
+                    result += "<a href='/Person/ReSetPassWord/" + value + "'>重置密码</a><span>&nbsp;|&nbsp;</span>";
+                    result += "<a href=" + value + ">分配角色</a>";
                     return result;
                 }
             }],

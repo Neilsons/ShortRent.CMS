@@ -240,4 +240,19 @@
   <data name="PersonAdminEditModelWeChatDisplayName" xml:space="preserve">
     <value>微信</value>
   </data>
+  <data name="PassWordEditModelConfirmPassWordDisplayName" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="PassWordEditModelIDDisplayName" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PassWordEditModelOldPassWordDisplayName" xml:space="preserve">
+    <value>旧密码</value>
+  </data>
+  <data name="PassWordEditModelPassWordDisplayName" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="PersonAdminEditModelPassWordDisplayName" xml:space="preserve">
+    <value>密码</value>
+  </data>
 </root>

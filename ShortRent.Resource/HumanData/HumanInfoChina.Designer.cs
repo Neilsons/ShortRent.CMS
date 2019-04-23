@@ -259,6 +259,87 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelCreateTime {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelID {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 后台用户名 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelName {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelPassWord {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelPassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户图片路径 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelPerImage {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelPerImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 职位详情 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelPersonDetail {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelPersonDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 职位 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelPosition {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 QQ 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelQq {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelQq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 微信 的本地化字符串。
+        /// </summary>
+        public static string PersonAdminHumanEditModelWeChat {
+            get {
+                return ResourceManager.GetString("PersonAdminHumanEditModelWeChat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 数据库编号 的本地化字符串。
         /// </summary>
         public static string RoleHumanModelID {

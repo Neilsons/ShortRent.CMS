@@ -40,6 +40,7 @@ namespace ShortRent.Service
         public void CreatePerson(Person person)
         {
             _personRepository.Insert(person);
+            _cacheManager.Remove(PersonsCacheKey);
         }
 
         public void DeletePerson(Person person)
@@ -219,6 +220,7 @@ namespace ShortRent.Service
         public void UpdatePerson(Person person)
         {
             _personRepository.Update(person);
+            _cacheManager.Remove(PersonsCacheKey);
         }
         #endregion
 

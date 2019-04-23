@@ -183,6 +183,33 @@
   <data name="ManagerHumanModelPidName" xml:space="preserve">
     <value>父级名称</value>
   </data>
+  <data name="PersonAdminHumanEditModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="PersonAdminHumanEditModelID" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PersonAdminHumanEditModelName" xml:space="preserve">
+    <value>后台用户名</value>
+  </data>
+  <data name="PersonAdminHumanEditModelPassWord" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PersonAdminHumanEditModelPerImage" xml:space="preserve">
+    <value>用户图片路径</value>
+  </data>
+  <data name="PersonAdminHumanEditModelPersonDetail" xml:space="preserve">
+    <value>职位详情</value>
+  </data>
+  <data name="PersonAdminHumanEditModelPosition" xml:space="preserve">
+    <value>职位</value>
+  </data>
+  <data name="PersonAdminHumanEditModelQq" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="PersonAdminHumanEditModelWeChat" xml:space="preserve">
+    <value>微信</value>
+  </data>
   <data name="RoleHumanModelID" xml:space="preserve">
     <value>数据库编号</value>
   </data>
