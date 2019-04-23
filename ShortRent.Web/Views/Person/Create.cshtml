@@ -5,112 +5,222 @@
 @section Styles{
     @Styles.Render("~/Content/jQuery-File-Upload")
 }
-@using (Html.BeginForm("Create", "Person", FormMethod.Post, new { enctype = "multipart/form-data", ID = "frmSave", Name = "frmSave" }))
+@if (Model == null)
 {
-    <div class="form-horizontal box">
-        <div class="box-body">
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true, "", new { @class = "text-error" })
-            <div class="form-group col-md-6">
-                <div class="row">
-                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
-                    <div class="col-xs-12 col-md-8">
-                        <div class="row clear-margin">
-                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+    using (Html.BeginForm("Create", "Person", FormMethod.Post, new { enctype = "multipart/form-data", ID = "frmSave", Name = "frmSave" }))
+    {
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group col-md-6">
-                <div class="row">
-                    @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
-                    <div class="col-xs-12 col-md-8">
-                        <div class="row clear-margin">
-                            @Html.PasswordFor(model => model.PassWord, htmlAttributes: new { @class = "form-control col-md-8" })
-                            @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.PasswordFor(model => model.PassWord, htmlAttributes: new { @class = "form-control col-md-8" })
+                                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-error" })
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group col-md-6">
-                <div class="row">
-                    @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
-                    <div class="col-xs-12 col-md-8">
-                        <div class="row clear-margin">
-                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-error" })
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group col-md-6">
-                <div class="row">
-                    @Html.LabelFor(model => model.Qq, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
-                    <div class="col-xs-12 col-md-8">
-                        <div class="row clear-margin">
-                            @Html.EditorFor(model => model.Qq, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                            @Html.ValidationMessageFor(model => model.Qq, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Qq, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Qq, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Qq, "", new { @class = "text-error" })
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-
-            <div class="form-group col-md-6">
-                <div class="row">
-                    @Html.LabelFor(model => model.WeChat, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
-                    <div class="col-xs-12 col-md-8">
-                        <div class="row clear-margin">
-                            @Html.EditorFor(model => model.WeChat, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                            @Html.ValidationMessageFor(model => model.WeChat, "", new { @class = "text-error" })
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="form-group col-md-12">
-                <div class="row">
-                    @Html.LabelFor(model => model.PersonDetail, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-                    <div class="col-xs-12 col-md-10">
-                        <div class="row clear-margin">
-                            @Html.TextAreaFor(model => model.PersonDetail, htmlAttributes: new { @class = "form-control col-md-12", rows = "5" })
-                            @Html.ValidationMessageFor(model => model.PersonDetail, "", new { @class = "text-error" })
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="form-group col-md-12">
-                <div class="row">
-                    @Html.LabelFor(model => model.PerImage, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
-                    <div class="col-xs-4 col-sm-1">
-                        <div class="row clear-margin ">
-                            <img id="headPhoto" class="images-response" src="" />
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <span class="btn btn-success fileinput-button">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            <span>选择图片</span>
-                            <input type="file" name="headPhoto" onchange="ShowImage()">
-                        </span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group col-md-12">
-                <div class="row text-center marTop-xs">
-                    <input type="button" value="提交" class="btn btn-success" />
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.WeChat, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.WeChat, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.WeChat, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        @Html.LabelFor(model => model.PersonDetail, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+                        <div class="col-xs-12 col-md-10">
+                            <div class="row clear-margin">
+                                @Html.TextAreaFor(model => model.PersonDetail, htmlAttributes: new { @class = "form-control col-md-12", rows = "5" })
+                                @Html.ValidationMessageFor(model => model.PersonDetail, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        @Html.LabelFor(model => model.PerImage, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
+                        <div class="col-xs-4 col-sm-1">
+                            <div class="row clear-margin ">
+                                <img id="headPhoto" class="images-response" src="" />
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>选择图片</span>
+                                <input type="hidden" name="PerImage" value="admin.png" />
+                                <input type="file" name="headPhoto" onchange="ShowImage()">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="button" value="提交" class="btn btn-success" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 }
+else
+{
+    using (Html.BeginForm("Edit", "Person", FormMethod.Post, new { enctype = "multipart/form-data", ID = "frmSave", Name = "frmSave" }))
+    {
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(c=>c.ID)
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input type="hidden" id="hidName" value="@Model.Name" />
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input type="hidden" id="hidPosition" value="@Model.Position" />
+                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Qq, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Qq, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input type="hidden" id="hidQq" value="@Model.Qq" />
+                                @Html.ValidationMessageFor(model => model.Qq, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.WeChat, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.WeChat, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input type="hidden" id="hidWeChat" value="@Model.WeChat" />
+                                @Html.ValidationMessageFor(model => model.WeChat, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        @Html.LabelFor(model => model.PersonDetail, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+                        <div class="col-xs-12 col-md-10">
+                            <div class="row clear-margin">
+                                @Html.TextAreaFor(model => model.PersonDetail, htmlAttributes: new { @class = "form-control col-md-12", rows = "5" })
+                                <input type="hidden" id="hidPersonDetail" value="@Model.PersonDetail" />
+                                @Html.ValidationMessageFor(model => model.PersonDetail, "", new { @class = "text-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row">
+                        @Html.LabelFor(model => model.PerImage, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
+                        <div class="col-xs-4 col-sm-1">
+                            <div class="row clear-margin ">
+                                <img id="headPhoto" class="images-response" src="~/Content/Images/AdminImg/@Model.PerImage" />
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>选择图片</span>
+                                <input type="hidden" name="PerImage" value="admin.png" />
+                                <input type="hidden" id="PerImage" value="~/Content/Images/AdminImg/@Model.PerImage" />
+                                <input type="file" name="headPhoto" onchange="ShowImage()">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="button" value="提交" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
 @section Scripts
 {
     @Scripts.Render("~/Scripts/Jquery-Form")

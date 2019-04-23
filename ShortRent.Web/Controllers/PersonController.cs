@@ -85,19 +85,34 @@ namespace ShortRent.Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PersonAdminEditModel personAdminEditModel)
+        public ActionResult Create(PersonAdminEditModel personAdminEditModel, HttpPostedFileBase headPhoto)
         {
             try
             {
                 if(ModelState.IsValid)
                 {
-                    var person = _mapper.Map<Person>(personAdminEditModel);
+                    Person person = new Person();
+                    Dictionary<string, string> str = new Dictionary<string, string>();//上传成功后返回文件的信息
+                    if (headPhoto != null)
+                    {
+                        //上传文件到服务器
+                        str = UploadImg(headPhoto, "/Content/Images/AdminImg");
+                        if (str["Result"].ToString() == "0")
+                        {
+                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "上传文件格式不正确，请重新上传，所修改数据未被保留！", Url = Url.Action(nameof(PersonController.PersonAdminDetail)) });
+                        }
+                    }
+                    person = _mapper.Map<Person>(personAdminEditModel);
                     person.CreateTime = DateTime.Now;
+                    if(str["ImagePath"]!=null)
+                    {
+                        person.PerImage = str["ImagePath"];
+                    }
                     person.IdCard = "000000";
-                    person.Type =true;
+                    person.Type = true;
                     person.Birthday = DateTime.Now.AddYears(-18);
                     person.CreditScore = 0;
-                    _personService.CreatePerson(person);
+                    _personService.CreatePerson(person);                   
                     PersonAdminHumanEditModel human = _mapper.Map<PersonAdminHumanEditModel>(personAdminEditModel);
                     //将修改的信息加入记录中去
                     HistoryOperator history = new HistoryOperator()
@@ -121,6 +136,23 @@ namespace ShortRent.Web.Controllers
                 throw e;
             }
             return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "创建后台用户成功！", Url = Url.Action(nameof(PersonController.List)) });
+        }
+
+        public ActionResult Edit(int id)
+        {
+            ViewBag.Title = "后台用户管理";
+            ViewBag.Content = "后台用户编辑";
+            PersonAdminEditModel person = new PersonAdminEditModel();
+            try
+            {
+                person = _mapper.Map<PersonAdminEditModel>(_personService.GetPerson(id));
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("显示编辑出错！",e);
+                throw e;
+            }
+            return View("Create",person);
         }
         public ActionResult ReSetPassWord(int id)
         {

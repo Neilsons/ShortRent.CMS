@@ -12,16 +12,19 @@
 }
 $(function () {
     $(document).on("click", "input[type='button']", function () {
+        if (!$("#frmSave").valid()) {
+            return false;
+        }
         $("#frmSave").ajaxSubmit({
             dataType: 'json',
             beforeSubmit: function () {
                 if ($("#hidName")) {
                     if ($("#Name").val() == $("#hidName").val()
                         && $("#Position").val() == $("#hidPosition").val()
-                        && $("#Qq").val() == $("#hidQQ").val()
+                        && $("#Qq").val() == $("#hidQq").val()
                         && $("#WeChat").val() == $("#hidWeChat").val()
-                        && $("#PersonDetail").val() == $("#hidDetail").val()
-                        && $("#hidImage").val() == $("#headPhoto").attr("src")) {
+                        && $("#PersonDetail").val() == $("#hidPersonDetail").val()
+                        && $("#PerImage").val() == $("#headPhoto").attr("src")) {
                         layer.alert("请修改后再提交！");
                         return false;
                     }
@@ -56,6 +59,5 @@ $(function () {
                 });
             }
         });
-
     });
 });
