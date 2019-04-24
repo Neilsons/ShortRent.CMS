@@ -42,8 +42,10 @@ $(function () {
                     }
                 }
                 else {
-                    layer.alert("请上传头像");
-                    return false;
+                    if (!$("#hidName").val()) {
+                        layer.alert("请上传头像");
+                        return false;
+                    }
                 }
                 $("input[type='button']").prop("disabled", true);
             },

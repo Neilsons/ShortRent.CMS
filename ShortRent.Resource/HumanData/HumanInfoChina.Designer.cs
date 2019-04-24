@@ -261,6 +261,42 @@ namespace ShortRent.Resource.HumanData {
         /// <summary>
         ///   查找类似 创建时间 的本地化字符串。
         /// </summary>
+        public static string PerOrComIntroGuidanceHumanModelCreateTime {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceHumanModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数据库编号 的本地化字符串。
+        /// </summary>
+        public static string PerOrComIntroGuidanceHumanModelID {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceHumanModelID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 介绍问题内容 的本地化字符串。
+        /// </summary>
+        public static string PerOrComIntroGuidanceHumanModelQuestionMsg {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceHumanModelQuestionMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 问题类型 的本地化字符串。
+        /// </summary>
+        public static string PerOrComIntroGuidanceHumanModelType {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceHumanModelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
         public static string PersonAdminHumanEditModelCreateTime {
             get {
                 return ResourceManager.GetString("PersonAdminHumanEditModelCreateTime", resourceCulture);

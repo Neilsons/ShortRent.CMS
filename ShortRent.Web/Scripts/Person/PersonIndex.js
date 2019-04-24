@@ -22,6 +22,21 @@ function DoAfterSaveToFile(cell, row, col, data) {
     OTable.Init();
     $("#sel_exportoption").val("basic");
 }
+function ResetPassWord(id) {
+    if (id) {
+        $.get("/Person/ReSetPassWord/", { id: id }, function (data) {
+            layer.alert(data.message, {
+                closeBtn: 1    // 是否显示关闭按钮
+                , yes: function () {
+                    window.location.href = data.url;
+                }
+                , cancel: function () {
+                    window.location.href = data.url;
+                }
+            });
+        });
+    }
+}
 var TableInit = function () {
     var OTableInit = new Object();
     var $table = $("#AdminTable");
@@ -38,6 +53,7 @@ var TableInit = function () {
                 fileName: '后台用户列表',  //文件名称设置  
                 worksheetName: 'sheet1',  //表格工作区名称  
                 tableName: '用户列表',
+                onAfterSaveToFile: DoAfterSaveToFile,
             },
             columns: [{
                 title: '编号',
@@ -97,7 +113,7 @@ var TableInit = function () {
                 formatter: function (value, row, index) {
                     var result = "";
                     result += "<a href='/Person/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
-                    result += "<a href='/Person/ReSetPassWord/" + value + "'>重置密码</a><span>&nbsp;|&nbsp;</span>";
+                    result += "<a href='javascript:ResetPassWord(" + value + ")'>重置密码</a><span>&nbsp;|&nbsp;</span>";
                     result += "<a href=" + value + ">分配角色</a>";
                     return result;
                 }

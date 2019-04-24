@@ -84,6 +84,10 @@ namespace ShortRent.Web.App_Start
             //后台 用户创建或者编辑用到的js
             bundles.Add(new ScriptBundle("~/Scripts/PersonCreateOrEdit").Include("~/Scripts/Person/PersonCreateOrEdit.js"));
 
+            //后台 用户或公司介绍问题列表用到的js
+            bundles.Add(new ScriptBundle("~/Scripts/PerOrComIntroGuidanceIndex").Include("~/Scripts/PerOrComIntroGuidance/PerOrComIntroGuidanceIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/PerOrComIntroGuidanceCreateOrEdit").Include("~/Scripts/PerOrComIntroGuidance/PerOrComIntroGuidanceCreteOrEdit.js"));
+
 
 
 

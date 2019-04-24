@@ -132,7 +132,7 @@ namespace ShortRent.Web.Controllers
                         DetailDescirption = GetDescription<RoleHumanModel>("创建了一个角色，详情", hisModel),
                         EntityModule = "角色管理",
                         Operates = "创建",
-                        PersonId = 1
+                        PersonId = GetCurrentPerson().ID
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
                     return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "角色创建成功", Url = Url.Action(nameof(RoleController.List)) });
@@ -194,7 +194,7 @@ namespace ShortRent.Web.Controllers
                         DetailDescirption = GetDescription<RoleHumanModel>("编辑了一个角色，详情", hisModel,oldRoleHum),
                         EntityModule = "角色管理",
                         Operates = "编辑",
-                        PersonId = 1,
+                        PersonId = GetCurrentPerson().ID,
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
                     return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "角色编辑成功", Url = Url.Action(nameof(RoleController.List)) });

@@ -104,7 +104,7 @@ namespace ShortRent.Web.Controllers
                         DetailDescirption = GetDescription<ManagerHumanModel>("创建了一个菜单，详情", human),
                         EntityModule = "系统管理",
                         Operates = "菜单创建",
-                        PersonId = 1
+                        PersonId = GetCurrentPerson().ID
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
                 }
@@ -173,7 +173,7 @@ namespace ShortRent.Web.Controllers
                         DetailDescirption = GetDescription<ManagerHumanModel>("编辑菜单，详情", human, oldHuman),
                         EntityModule = "系统管理",
                         Operates = "菜单编辑",
-                        PersonId = 1
+                        PersonId = GetCurrentPerson().ID
                     };
                     _historyOperatorService.CreateHistoryOperator(historyOperator);
                 }

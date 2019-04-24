@@ -315,6 +315,33 @@ namespace ShortRent.Resource.MetaData {
         /// <summary>
         ///   查找类似 编号 的本地化字符串。
         /// </summary>
+        public static string PerOrComIntroGuidanceViewModelIDDisplayName {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceViewModelIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 介绍问题内容 的本地化字符串。
+        /// </summary>
+        public static string PerOrComIntroGuidanceViewModelQuestionMsgDisplayName {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceViewModelQuestionMsgDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 问题针对人 的本地化字符串。
+        /// </summary>
+        public static string PerOrComIntroGuidanceViewModelTypeDisplayName {
+            get {
+                return ResourceManager.GetString("PerOrComIntroGuidanceViewModelTypeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
         public static string PersonAdminEditModelIDDisplayName {
             get {
                 return ResourceManager.GetString("PersonAdminEditModelIDDisplayName", resourceCulture);

@@ -255,4 +255,13 @@
   <data name="PersonAdminEditModelPassWordDisplayName" xml:space="preserve">
     <value>密码</value>
   </data>
+  <data name="PerOrComIntroGuidanceViewModelIDDisplayName" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PerOrComIntroGuidanceViewModelQuestionMsgDisplayName" xml:space="preserve">
+    <value>介绍问题内容</value>
+  </data>
+  <data name="PerOrComIntroGuidanceViewModelTypeDisplayName" xml:space="preserve">
+    <value>问题针对人</value>
+  </data>
 </root>

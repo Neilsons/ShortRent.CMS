@@ -27,6 +27,7 @@ namespace ShortRent.Web.Controllers
         private readonly MapperConfiguration _mapperConfig;
         private readonly ILogger _logger;
         #endregion
+
         #region Construction
         public PersonController(IPersonService personService
             ,IMapper mapper,
@@ -42,6 +43,7 @@ namespace ShortRent.Web.Controllers
             this._logger = logger;
         }
         #endregion
+
         #region Method
         public ActionResult List()
         {
@@ -104,7 +106,7 @@ namespace ShortRent.Web.Controllers
                     }
                     person = _mapper.Map<Person>(personAdminEditModel);
                     person.CreateTime = DateTime.Now;
-                    if(str["ImagePath"]!=null)
+                    if(str.Keys.Any(c => c == "ImagePath"))
                     {
                         person.PerImage = str["ImagePath"];
                     }
@@ -113,7 +115,7 @@ namespace ShortRent.Web.Controllers
                     person.Birthday = DateTime.Now.AddYears(-18);
                     person.CreditScore = 0;
                     _personService.CreatePerson(person);                   
-                    PersonAdminHumanEditModel human = _mapper.Map<PersonAdminHumanEditModel>(personAdminEditModel);
+                    PersonAdminHumanEditModel human = _mapper.Map<PersonAdminHumanEditModel>(person);
                     //将修改的信息加入记录中去
                     HistoryOperator history = new HistoryOperator()
                     {
@@ -140,7 +142,7 @@ namespace ShortRent.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            ViewBag.Title = "后台用户管理";
+            ViewBag.Title = "用户管理";
             ViewBag.Content = "后台用户编辑";
             PersonAdminEditModel person = new PersonAdminEditModel();
             try
@@ -154,8 +156,95 @@ namespace ShortRent.Web.Controllers
             }
             return View("Create",person);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PersonAdminEditModel model, HttpPostedFileBase headPhoto)
+        {
+            try
+            {
+                //判断模型是否有效
+                if(ModelState.IsValid)
+                {
+                    //判断上传的图片是否为空
+                    Person person = new Person();
+                    Dictionary<string, string> str = new Dictionary<string, string>();//上传成功后返回文件的信息
+                    if (headPhoto != null)
+                    {
+                        //上传文件到服务器
+                        str = UploadImg(headPhoto, "/Content/Images/AdminImg");
+                        if (str["Result"].ToString() == "0")
+                        {
+                            //上传文件失败出错！
+                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "上传文件格式不正确，请重新上传，所修改数据未被保留！", Url = Url.Action(nameof(PersonController.PersonAdminDetail)) });
+                        }
+                    }
+                    //将该模型映射成
+                    person = _mapper.Map<Person>(model);
+                    if (str.Keys.Any(c=>c=="ImagePath"))
+                    {
+                        person.PerImage = str["ImagePath"];
+                    }
+                    //先获取之前的后台 用户信息
+                    Person oldPerson = _personService.GetPerson(person.ID);
+                    var oldHumanPerson = _mapper.Map<PersonAdminHumanEditModel>(oldPerson);
+                    var newHumanPerson = _mapper.Map<PersonAdminHumanEditModel>(person);
+                    //将更改提交到数据库
+                    _personService.UpdatePerson(person);
+                    //将这样的修改记录存入数据库中去
+                    HistoryOperator history = new HistoryOperator()
+                    {
+                        CreateTime = DateTime.Now,
+                        DetailDescirption = GetDescription<PersonAdminHumanEditModel>("修改了一个后台用户，详情",newHumanPerson,oldHumanPerson),
+                        EntityModule = "用户管理",
+                        Operates = "后台用户编辑",
+                        PersonId = GetCurrentPerson().ID
+                    };
+                    _historyOperatorService.CreateHistoryOperator(history);
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("后台用户信息编辑出现错误",e);
+                throw e;
+            }
+            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "修改用户成功！", Url = Url.Action(nameof(PersonController.List)) });
+        }
         public ActionResult ReSetPassWord(int id)
         {
+            try
+            {
+                //首先得到要重置密码的用户
+                Person person = _personService.GetPerson(id);
+                PersonAdminUpdate adminPerson = null;
+                //重置密码为123456
+                if (person.PassWord != "123456")
+                {
+                    person.PassWord = "123456";
+                }
+                //将用户放到adminPerson作为缓冲
+                adminPerson = _mapper.Map<PersonAdminUpdate>(person);
+                Person model = _mapper.Map<Person>(adminPerson);
+                _personService.UpdatePerson(model);
+                //将更改密码写入历史操作中去
+                HistoryOperator history = new HistoryOperator()
+                {
+                    CreateTime = DateTime.Now,
+                    DetailDescirption = model.Name + "被重置了密码",
+                    EntityModule = "用户管理",
+                    Operates = "后台用户重置密码",
+                    PersonId = GetCurrentPerson().ID
+                };
+                _historyOperatorService.CreateHistoryOperator(history);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("重置密码出错",e);
+                throw e;
+            }
             return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "重置密码成功！", Url = Url.Action(nameof(PersonController.List)) });
         }
         [AllowAnonymous]
@@ -222,12 +311,12 @@ namespace ShortRent.Web.Controllers
             try
             {
                 WorkContext workContext = new WorkContext();
-                    //得到当前人的信息
-                    admin = _mapper.Map<PersonAdminEditModel>(workContext.CurrentPerson);
+                //得到当前人的信息
+                admin = _mapper.Map<PersonAdminEditModel>(workContext.CurrentPerson);
             }
             catch(Exception e)
             {
-                _logger.Debug("后台人员修改个人资料出错");
+                _logger.Debug("后台人员修改个人资料出错",e);
                 throw e;
             }
             return View(admin);
@@ -311,7 +400,7 @@ namespace ShortRent.Web.Controllers
             }
             catch(Exception e)
             {
-                _logger.Debug("修改密码出错！");
+                _logger.Debug("修改密码出错！",e);
                 throw e;
             }
             return Json(new AjaxJson() { HttpCodeResult=(int)HttpStatusCode.OK,Message="修改密码成功！",Url=Url.Action(nameof(PersonController.PersonalData)) });

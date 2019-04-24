@@ -112,7 +112,7 @@ namespace ShortRent.Web.Controllers
                     DetailDescirption = GetDescription<LogHumanModel>("删除了一个日志记录，详情", logHuman),
                     EntityModule = "系统管理",
                     Operates = "删除",
-                    PersonId = 1,
+                    PersonId = GetCurrentPerson().ID,
                 };
                 //插入记录
                 _historyOperatorService.CreateHistoryOperator(historyOperator);

@@ -122,7 +122,12 @@ else
         <div class="form-horizontal box">
             <div class="box-body">
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(c=>c.ID)
+                @Html.HiddenFor(c => c.ID)
+                @Html.HiddenFor(model => model.PassWord)
+                @Html.HiddenFor(model => model.CreateTime)
+                @Html.HiddenFor(model => model.Type)
+                @Html.HiddenFor(model=>model.IdCard)
+                @Html.HiddenFor(model=>model.Birthday)
                 @Html.ValidationSummary(true, "", new { @class = "text-error" })
                 <div class="form-group col-md-6">
                     <div class="row">
@@ -204,7 +209,7 @@ else
                             <span class="btn btn-success fileinput-button">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>选择图片</span>
-                                <input type="hidden" name="PerImage" value="admin.png" />
+                                <input type="hidden" name="PerImage" value="@Model.PerImage" />
                                 <input type="hidden" id="PerImage" value="~/Content/Images/AdminImg/@Model.PerImage" />
                                 <input type="file" name="headPhoto" onchange="ShowImage()">
                             </span>

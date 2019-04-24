@@ -23,6 +23,7 @@ namespace ShortRent.Service
             container.RegisterType<LogInfoService>().As<ILogInfoService>();
             container.RegisterType<ManagerService>().As<IManagerService>();
             container.RegisterType<IconsInfoService>().As<IIconsInfoService>();
+            container.RegisterType<PerOrComIntroGuidanceService>().As<IPerOrComIntroGuidanceService>();
         }
     }
 }

@@ -168,7 +168,7 @@ namespace ShortRent.Web.Controllers
                         DetailDescirption = GetDescription<IconHuman>("编辑了一个图标，详情", hisModel, oldRoleHum),
                         EntityModule = "系统管理",
                         Operates = "编辑图标",
-                        PersonId = 1,
+                        PersonId = GetCurrentPerson().ID,
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
                     return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "图标编辑成功", Url = Url.Action(nameof(IconsInfoController.List)) });
@@ -197,7 +197,7 @@ namespace ShortRent.Web.Controllers
                     DetailDescirption = GetDescription<IconHuman>("删除了一个图标，详情", iconHuman),
                     EntityModule = "系统管理",
                     Operates = "删除",
-                    PersonId = 1,
+                    PersonId = GetCurrentPerson().ID,
                 };
                 //插入记录
                 _historyOperatorService.CreateHistoryOperator(historyOperator);

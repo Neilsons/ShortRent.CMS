@@ -183,6 +183,18 @@
   <data name="ManagerHumanModelPidName" xml:space="preserve">
     <value>父级名称</value>
   </data>
+  <data name="PerOrComIntroGuidanceHumanModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="PerOrComIntroGuidanceHumanModelID" xml:space="preserve">
+    <value>数据库编号</value>
+  </data>
+  <data name="PerOrComIntroGuidanceHumanModelQuestionMsg" xml:space="preserve">
+    <value>介绍问题内容</value>
+  </data>
+  <data name="PerOrComIntroGuidanceHumanModelType" xml:space="preserve">
+    <value>问题类型</value>
+  </data>
   <data name="PersonAdminHumanEditModelCreateTime" xml:space="preserve">
     <value>创建时间</value>
   </data>
