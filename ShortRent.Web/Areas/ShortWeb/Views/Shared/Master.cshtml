@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--FAVICON ICON-->
+
+    <link rel="icon" href="~/Content/foreground/images/favicon.ico" type="image/x-icon">
+
+
+    <title>@ViewBag.Title</title>
+
+    <!--CUSTOM CSS-->
+    @Styles.Render("~/Content/Foreground/Custom")
+    <!--BOOTSTRAP CSS-->
+    @Styles.Render("~/Content/Foreground/bootstrap")
+    <!--COLOR CSS-->
+    @Styles.Render("~/Content/Foreground/Color")
+    <!--RESPONSIVE CSS-->
+    @Styles.Render("~/Content/Foreground/Responsive")
+    <!--OWL CAROUSEL CSS-->
+    @Styles.Render("~/Content/Foreground/Carousel")
+    <!--FONTAWESOME CSS-->
+    @Styles.Render("~/Content/Foreground/Font-Awesome")
+
+    <!--SCROLL FOR SIDEBAR NAVIGATION-->
+    @Styles.Render("~/Content/Foreground/MCustomScrollbar")
+    <!--GOOGLE FONTS-->
+    @Styles.Render("~/Content/Foreground/FontGoogle")
+    @RenderSection("Styles",required:false)
+    <!--[if lt IE 9]>
+
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+        <![endif]-->
+
+</head>
+
+
+<body class="theme-style-1">
+
+    <!--WRAPPER START-->
+
+    <div id="wrapper">
+
+        <!--HEADER START-->
+
+        <header id="header">
+            @Html.Partial("~/Areas/ShortWeb/Views/Shared/Header.cshtml")
+        </header>
+
+        <!--HEADER END-->
+          @RenderBody()
+        <!--FOOTER START-->
+
+        <footer id="footer">
+            <div class="container">
+
+                <div class="bottom-row">
+                    <strong class="copyrights">ShortRent &copy; 2019, 版权所有, 设计 &amp; 开发: <a href="https://github.com/Neilsons/" target="_blank">Github-Zhu</a></strong>
+                </div>
+
+            </div>
+
+        </footer>
+
+        <!--FOOTER END-->
+
+    </div>
+
+    <!--WRAPPER END-->
+    <!--jQuery START-->
+    <!--JQUERY MIN JS-->
+    @Scripts.Render("~/Scripts/Foreground/Jquery")
+    <!--BOOTSTRAP JS-->
+    @Scripts.Render("~/Scripts/Foreground/BootStrap")
+    <!--OWL CAROUSEL JS-->
+    @Scripts.Render("~/Scripts/Foreground/Carousel")
+    <!--BANNER ZOOM OUT IN-->
+    @Scripts.Render("~/Scripts/Foreground/Jquery-Velocity")
+    @Scripts.Render("~/Scripts/Foreground/Jquery-Kenburnsy")
+    <!--SCROLL FOR SIDEBAR NAVIGATION-->
+    @Scripts.Render("~/Scripts/Foreground/Jquery-CustomScrollbar")
+    <!--CUSTOM JS-->
+    @Scripts.Render("~/Scripts/Foreground/Custom")
+    @RenderSection("Scripts",required:false)
+</body>
+</html>

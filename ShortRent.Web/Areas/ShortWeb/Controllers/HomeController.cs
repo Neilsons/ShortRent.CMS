@@ -9,10 +9,26 @@ namespace ShortRent.Web.Areas.ShortWeb.Controllers
 {
     public class HomeController : BaseController
     {
-        // GET: ShortWeb/Home
+        #region Methods
+        public ActionResult List()
+        {
+
+            return View();
+        }
         public ActionResult Index()
         {
             return View();
         }
+        #endregion
+        // GET: ShortWeb/Home
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+
     }
 }

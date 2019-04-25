@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "登陆";
+    Layout = "~/Areas/ShortWeb/Views/Shared/Master.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/IcheckSkins")
+}
+<section id="inner-banner">
+
+    <div class="container">
+
+        <h1>登陆账户</h1>
+
+    </div>
+
+</section>
+
+<!--INNER BANNER END-->
+<!--MAIN START-->
+
+<div id="main">
+
+
+
+    <!--SIGNUP SECTION START-->
+
+    <section class="signup-section">
+
+        <div class="container">
+
+            <div class="holder">
+
+                <div class="thumb"><img src="~/Content/foreground/images/signup.png" alt="img"></div>
+
+                <form action="#">
+
+                    <div class="input-box">
+                        <i class="fa fa-user"></i>
+
+                        <input type="text" placeholder="用户名">
+
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa fa-unlock"></i>
+
+                        <input type="text" placeholder="密码">
+
+                    </div>
+                    <div class="select-box">
+                        <div class="selector">
+                            <select class="full-width">
+                                <option value="0">找工作</option>
+                                <option value="1">招聘</option>
+                            </select>
+                            <span class="custom-select full-width">找工作</span>
+                        </div>
+
+                    </div>
+                    <div class="check-box">
+
+                        <input id="id3" type="checkbox" />
+
+                        <label><strong>&nbsp;&nbsp;记住我</strong></label>
+                    </div>
+
+                    <input type="submit" value="Sign up">
+                    <div class="login-social">
+                        <em>您还没有账户？<a href="#">创建一个</a></em>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--SIGNUP SECTION END-->
+
+
+
+</div>
+@section Scripts{
+
+    @Scripts.Render("~/Scripts/Foreground/Jquery-Noconflict")
+    @Scripts.Render("~/Scripts/Foreground/Theme-Scripts")
+    @Scripts.Render("~/Scripts/Foreground/Jquery")
+    @Scripts.Render("~/Scripts/Icheck")
+    @Scripts.Render("~/Scripts/LayAlert")
+    @Scripts.Render("~/Scripts/Pace")
+    @*自定义js*@
+    @Scripts.Render("~/Scripts/Foreground/WebLogin")
+}
+

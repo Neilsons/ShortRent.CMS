@@ -120,6 +120,46 @@ namespace ShortRent.Web.App_Start
                     //!-- The File Upload user interface plugin -->
                     "~/Content/jQuery.FileUpload/jquery.fileupload-ui.js"
             ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //前台要捆绑的css
+            bundles.Add(new StyleBundle("~/Content/Foreground/Custom").Include("~/Content/foreground/css/custom.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/bootstrap").Include("~/Content/foreground/css/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/Color").Include("~/Content/foreground/css/color.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/Responsive").Include("~/Content/foreground/css/responsive.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/Carousel").Include("~/Content/foreground/css/owl.carousel.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/Font-Awesome").Include("~/Content/foreground/css/font-awesome.min.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/MCustomScrollbar").Include("~/Content/foreground/css/jquery.mCustomScrollbar.css"));
+            bundles.Add(new StyleBundle("~/Content/Foreground/FontGoogle", "https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,700,900"));
+            //登录引用的表单想到css
+            bundles.Add(new StyleBundle("~/Content/Foreground/JquerySteps").Include("~/Content/foreground/css/jquery.steps.css"));
+
+            //前台要捆绑的js
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Jquery").Include("~/Content/foreground/js/jquery-1.11.3.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/BootStrap").Include("~/Content/foreground/js/bootstrap.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Carousel").Include("~/Content/foreground/js/owl.carousel.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Jquery-Velocity").Include("~/Content/foreground/js/jquery.velocity.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Jquery-Kenburnsy").Include("~/Content/foreground/js/jquery.kenburnsy.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Jquery-CustomScrollbar").Include("~/Content/foreground/js/jquery.mCustomScrollbar.concat.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Custom").Include("~/Content/foreground/js/custom.js"));
+            //登陆使用的js
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Theme-Scripts").Include("~/Content/foreground/js/theme-scripts.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/Jquery-Noconflict").Include("~/Content/foreground/js/jquery.noconflict.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/WebLogin").Include("~/Content/foreground/js/Login/WebLogin.js"));
+            //注册使用的js 
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/JquerySteps").Include("~/Content/foreground/js/jquery.steps.min.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/WebRegister").Include("~/Content/foreground/js/Login/WebRegister.js"));
         }
     }
 }
