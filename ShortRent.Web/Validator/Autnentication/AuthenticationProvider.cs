@@ -42,6 +42,10 @@ namespace ShortRent.Web
             //加密票据
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) { HttpOnly=true};
+            if(ticket.IsPersistent)
+            {
+                cookie.Expires = ticket.Expiration;
+            }
             //添加到当前相应中去
             HttpContext.Current.Response.Cookies.Add(cookie);
         }

@@ -294,7 +294,7 @@ namespace ShortRent.Web.Controllers
         public ActionResult SignOut()
         {
             _authenticationProvider.SignOut();
-            throw new HttpException((int)HttpStatusCode.Unauthorized,"");
+            return  RedirectToAction(nameof(PersonController.Login));
         }
         public ActionResult PersonalData()
         {
