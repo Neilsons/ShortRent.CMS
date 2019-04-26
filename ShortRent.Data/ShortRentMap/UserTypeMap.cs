@@ -16,8 +16,7 @@ namespace ShortRent.Data.ShortRentMap
             this.HasKey(c=>c.ID);
             this.Property(c=>c.IdCardFront).HasMaxLength(200);
             this.Property(c => c.IdCardBack).HasMaxLength(200);
-            this.Property(c => c.CompanyName).HasMaxLength(100);
-            this.Property(c=>c.CompanyImg).HasMaxLength(500);
+            this.HasOptional(c => c.Company).WithMany(c => c.UserTypes).HasForeignKey(c => c.CompanyId);
             this.HasRequired(c => c.Person).WithMany(c=>c.UserTypes).HasForeignKey(c=>c.PerId);
             this.HasMany(c => c.PublishMsgs).WithRequired().HasForeignKey(c => c.UserTypeInfoId).WillCascadeOnDelete(false);
             this.HasMany(c => c.PerOrComIntros).WithRequired().HasForeignKey(c => c.UserTypeInfoId);

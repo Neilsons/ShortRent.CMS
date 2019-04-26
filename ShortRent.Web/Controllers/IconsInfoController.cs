@@ -113,7 +113,7 @@ namespace ShortRent.Web.Controllers
                     EntityModule = "系统管理",
                     DetailDescirption = GetDescription<IconHuman>("创建了一个图标，详情",human),
                     Operates="创建",
-                    PersonId=1,
+                    PersonId=GetCurrentPerson().ID,
                 };
                 _historyOperatorService.CreateHistoryOperator(history);
             }
@@ -140,7 +140,7 @@ namespace ShortRent.Web.Controllers
             }
             catch (Exception e)
             {
-                _logger.Debug("编辑角色显示界面", e); ;
+                _logger.Debug("编辑图标显示界面", e); ;
                 throw e;
             }
             return View("Create", model);

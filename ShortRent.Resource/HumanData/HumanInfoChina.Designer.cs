@@ -376,6 +376,51 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 标签颜色 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsHumanModelColor {
+            get {
+                return ResourceManager.GetString("PublishTagsHumanModelColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsHumanModelCreateTime {
+            get {
+                return ResourceManager.GetString("PublishTagsHumanModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsHumanModelID {
+            get {
+                return ResourceManager.GetString("PublishTagsHumanModelID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 标签名称 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsHumanModelName {
+            get {
+                return ResourceManager.GetString("PublishTagsHumanModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 顺序等级 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsHumanModelTagOrder {
+            get {
+                return ResourceManager.GetString("PublishTagsHumanModelTagOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 数据库编号 的本地化字符串。
         /// </summary>
         public static string RoleHumanModelID {

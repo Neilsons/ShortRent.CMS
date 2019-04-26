@@ -88,6 +88,10 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/PerOrComIntroGuidanceIndex").Include("~/Scripts/PerOrComIntroGuidance/PerOrComIntroGuidanceIndex.js"));
             bundles.Add(new ScriptBundle("~/Scripts/PerOrComIntroGuidanceCreateOrEdit").Include("~/Scripts/PerOrComIntroGuidance/PerOrComIntroGuidanceCreteOrEdit.js"));
 
+            //后台 发布内容的标签列表
+            bundles.Add(new ScriptBundle("~/Scripts/PublishTags").Include("~/Scripts/CompanyPerTags/PublishTags.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/PublishCreateOrEdit").Include("~/Scripts/CompanyPerTags/PublishTagsCreateOrEdit.js"));
+
 
 
 

@@ -34,32 +34,10 @@
                     <div class="box">
                         <div class="box-body">
                             <form id="form" action="form_wizard.html#" class="wizard-big wizard clearfix" role="application" novalidate="novalidate">
-                                <div class="steps clearfix">
-                                    <ul class="row" role="tablist">
-                                        <li role="tab" class="first current col-xs-12 col-sm-6 col-md-4 col-lg-3" aria-disabled="false" aria-selected="true">
-                                            <a id="form-t-0" href="#form-h-0" aria-controls="form-p-0">
-                                                <span class="current-info audible">当前步骤： </span>
-                                                <span class="number">1.</span> 账户</a>
-                                        </li>
-                                        <li role="tab" class="disabled col-xs-12 col-sm-6 col-md-4 col-lg-3" aria-disabled="true">
-                                            <a id="form-t-1" href="#form-h-1" aria-controls="form-p-1">
-                                                <span class="number">2.</span> 个人资料</a>
-                                        </li>
-                                        <li role="tab" class="disabled col-xs-12 col-sm-6 col-md-4 col-lg-3" aria-disabled="true">
-                                            <a id="form-t-2" href="#form-h-2" aria-controls="form-p-2">
-                                                <span class="number">3.</span> 警告</a>
-                                        </li>
-                                        <li role="tab" class="disabled last col-xs-12 col-sm-6 col-md-4 col-lg-3" aria-disabled="true">
-                                            <a id="form-t-3" href="#form-h-3" aria-controls="form-p-3">
-                                                <span class="number">4.</span> 完成</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content clearfix">
-                                    <h1 id="form-h-0" tabindex="-1" class="title current">账户</h1>
-                                    <fieldset id="form-p-0" role="tabpanel" aria-labelledby="form-h-0" class="body current" aria-hidden="false">
-                                        <h2>账户信息</h2>
-                                        <div class="row">
+                                <div>
+                                    <h3>Account</h3>
+                                    <section>
+                                    <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
@@ -71,7 +49,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
                                                         <label class="control-label col-md-4 text-right">密码 *</label>
@@ -94,46 +71,119 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </fieldset>
-                                    <h1 id="form-h-1" tabindex="-1" class="title">个人资料</h1>
-                                    <fieldset id="form-p-1" role="tabpanel" aria-labelledby="form-h-1" class="body" aria-hidden="true" style="display: none;">
-                                        <h2>个人资料信息</h2>
+                                    </section>
+                                    <h3 class="col-md-6">Profile</h3>
+                                    <section>
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>姓名 *</label>
-                                                    <input id="name" name="name" type="text" class="form-control required" aria-required="true">
+                                            <div class="col-sm-12">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email *</label>
-                                                    <input id="email" name="email" type="text" class="form-control required email" aria-required="true">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>地址 *</label>
-                                                    <input id="address" name="address" type="text" class="form-control">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </fieldset>
-
-                                    <h1 id="form-h-2" tabindex="-1" class="title">警告</h1>
-                                    <fieldset id="form-p-2" role="tabpanel" aria-labelledby="form-h-2" class="body" aria-hidden="true" style="display: none;">
-                                        <div class="text-center" style="margin-top: 120px">
-                                            <h2>你是火星人 :-)</h2>
+                                    </section>
+                                    <h3 class="col-md-6">Hints</h3>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </fieldset>
-
-                                    <h1 id="form-h-3" tabindex="-1" class="title">完成</h1>
-                                    <fieldset id="form-p-3" role="tabpanel" aria-labelledby="form-h-3" class="body" aria-hidden="true" style="display: none;">
-                                        <h2>条款</h2>
-                                        <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required" aria-required="true">
-                                        <label for="acceptTerms">我同意注册条款</label>
-                                    </fieldset>
+                                    </section>
+                                    <h3 class="col-md-6">Finish</h3>
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
-                                <div class="actions clearfix"><ul role="menu" aria-label="分页"><li class="disabled" aria-disabled="true"><a href="#previous" role="menuitem">上一步</a></li><li aria-hidden="false" aria-disabled="false"><a href="#next" role="menuitem">下一步</a></li><li aria-hidden="false"><a href="#finish" role="menuitem">完成</a></li><li><a href="#cancel" role="menuitem">取消</a></li></ul></div>
                             </form>
                         </div>
                     </div>
@@ -156,5 +206,7 @@
 
 @section Scripts{
     @Scripts.Render("~/Scripts/Foreground/JquerySteps")
+    @Scripts.Render("~/Scripts/Jquery-Validate")
+    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
     @Scripts.Render("~/Scripts/Foreground/WebRegister")
 }

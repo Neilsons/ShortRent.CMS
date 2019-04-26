@@ -1,0 +1,132 @@
+﻿@model PublishTagsViewModel
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles
+{
+    @Styles.Render("~/Styles/ColorPicker")
+}
+@if (Model == null)
+{
+    using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "post", OnBegin = "BeginCreateTags", OnSuccess = "SuccessCreateTags" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.TagOrder, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.TagOrder, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                @Html.ValidationMessageFor(model => model.TagOrder, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="submit" value="创建" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>`
+        </div>
+    }
+}
+else
+{
+    using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "post", OnBegin = "BeginEditTags", OnSuccess = "SuccessCreateTags" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal box">
+            <div class="box-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                @Html.HiddenFor(c => c.ID)
+                @Html.HiddenFor(c=>c.CreateTime)
+                @Html.HiddenFor(c=>c.IsPublish)
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidName" type="hidden" value="@Model.Name" />
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidColor" type="hidden" value="@Model.Color" />
+                                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="row">
+                        @Html.LabelFor(model => model.TagOrder, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                        <div class="col-xs-12 col-md-8">
+                            <div class="row clear-margin">
+                                @Html.EditorFor(model => model.TagOrder, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                <input id="hidTagOrder" type="hidden" value="@Model.TagOrder" />
+                                @Html.ValidationMessageFor(model => model.TagOrder, "", new { @class = "text-error" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <div class="row text-center marTop-xs">
+                        <input type="submit" value="创建" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>`
+        </div>
+    }
+}
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/ColorPicker")
+    @Scripts.Render("~/Scripts/PublishCreateOrEdit")
+}

@@ -22,14 +22,6 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string IdCardBack { get; set; }
         /// <summary>
-        /// 公司名称
-        /// </summary>
-        public string CompanyName { get; set; }
-        /// <summary>
-        /// 公司证件照或营业执照
-        /// </summary>
-        public string CompanyImg { get; set; }
-        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
@@ -43,6 +35,9 @@ namespace ShortRent.Core.Domain
         /// Person中的外键
         /// </summary>
         public int PerId { get; set; }
+        //公司id
+        public int? CompanyId { get; set; }
+        public virtual Company Company { get; set; }
 
         public virtual Person Person { get; set; }
         /// <summary>

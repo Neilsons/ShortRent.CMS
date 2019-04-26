@@ -17,9 +17,16 @@ namespace ShortRent.Data.ShortRentMap
             this.Property(c=>c.Decription).HasMaxLength(200);
             this.Property(c=>c.Email).HasMaxLength(50);
             this.Property(c=>c.Phone).HasMaxLength(20);
+            this.Property(c => c.Currency).HasMaxLength(20);
             this.HasRequired(c=>c.Business).WithMany().HasForeignKey(c=>c.BusinessTypeId);
             this.HasRequired(c => c.UserType).WithMany().HasForeignKey(c => c.UserTypeInfoId).WillCascadeOnDelete(false);
             this.HasMany(c => c.Discusss).WithRequired(c => c.PublishMsg).HasForeignKey(c => c.PublishId);
+            this.HasMany(c=>c.CompanyPerTags).WithMany().Map(m =>
+            {
+                m.ToTable("PublishCompanyTags");
+                m.MapLeftKey("PublishId");
+                m.MapRightKey("TagsId");
+            });
         }
     }
 }

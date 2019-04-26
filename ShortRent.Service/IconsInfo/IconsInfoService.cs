@@ -101,7 +101,7 @@ namespace ShortRent.Service
             }
             catch(Exception e)
             {
-                _logger.Error("创建图标业务方面出错！");
+                _logger.Error("创建图标业务方面出错！",e);
                 throw e;
             }
         }
@@ -114,7 +114,7 @@ namespace ShortRent.Service
             }
             catch (Exception e)
             {
-                _logger.Error("编辑图标业务方面出错！");
+                _logger.Error("编辑图标业务方面出错！",e);
                 throw e;
             }
         }
@@ -127,7 +127,7 @@ namespace ShortRent.Service
             }
             catch (Exception e)
             {
-                _logger.Error("删除图标业务方面出错！");
+                _logger.Error("删除图标业务方面出错！",e);
                 throw e;
             }
         }

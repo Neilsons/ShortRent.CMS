@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="CompanyPerTags\CompanyPerTagsService.cs" />
+    <Compile Include="CompanyPerTags\ICompanyPerTagsService.cs" />
     <Compile Include="HistoryOperator\HistoryOperatorService.cs" />
     <Compile Include="HistoryOperator\IHistoryOperatorService.cs" />
     <Compile Include="IconsInfo\IconsInfoService.cs" />

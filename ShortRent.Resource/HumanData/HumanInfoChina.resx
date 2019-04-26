@@ -222,6 +222,21 @@
   <data name="PersonAdminHumanEditModelWeChat" xml:space="preserve">
     <value>微信</value>
   </data>
+  <data name="PublishTagsHumanModelColor" xml:space="preserve">
+    <value>标签颜色</value>
+  </data>
+  <data name="PublishTagsHumanModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="PublishTagsHumanModelID" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PublishTagsHumanModelName" xml:space="preserve">
+    <value>标签名称</value>
+  </data>
+  <data name="PublishTagsHumanModelTagOrder" xml:space="preserve">
+    <value>顺序等级</value>
+  </data>
   <data name="RoleHumanModelID" xml:space="preserve">
     <value>数据库编号</value>
   </data>

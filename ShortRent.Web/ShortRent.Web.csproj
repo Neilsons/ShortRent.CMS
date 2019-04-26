@@ -574,6 +574,8 @@
     <Content Include="Content\pace\pace.min.css" />
     <Content Include="Content\pace\pace.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\CompanyPerTags\PublishTags.js" />
+    <Content Include="Scripts\CompanyPerTags\PublishTagsCreateOrEdit.js" />
     <Content Include="Scripts\extensions\export\bootstrap-table-export.js" />
     <Content Include="Scripts\extensions\jquery.unobtrusive.table.js" />
     <Content Include="Content\laydate\theme\default\font\iconfont.eot" />
@@ -780,6 +782,7 @@
     <Compile Include="Areas\ShortWeb\ShortWebAreaRegistration.cs" />
     <Compile Include="AutofacRegister\AutoMapperRegister.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CompanyPerTagsController.cs" />
     <Compile Include="Controllers\HistoryOperatorController.cs" />
     <Compile Include="Controllers\IconsInfoController.cs" />
     <Compile Include="Controllers\LogInfoController.cs" />
@@ -790,6 +793,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyPerTags\PublishTagsHumanModel.cs" />
+    <Compile Include="Models\CompanyPerTags\PublishTagsViewModel.cs" />
     <Compile Include="Models\HistoryOperator\HistoryOperatorDetail.cs" />
     <Compile Include="Models\HistoryOperator\HistoryOperatorViewModel.cs" />
     <Compile Include="Models\IconsInfo\IconHuman.cs" />
@@ -816,6 +821,7 @@
     <Compile Include="Models\Person\PersonViewModel.cs" />
     <Compile Include="Models\Role\RoleHumanModel.cs" />
     <Compile Include="Models\Role\RoleViewModelIndex.cs" />
+    <Compile Include="MvcExtention\AutoMapper\CompanyPerTagsProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\HistoryOperatorProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\IconsInfoProfile.cs" />
     <Compile Include="MvcExtention\AutoMapper\LogInfoProfile.cs" />
@@ -838,6 +844,7 @@
     <Compile Include="Validator\Autnentication\IAutnenticationProvider.cs" />
     <Compile Include="Validator\Autnentication\WorkContext.cs" />
     <Compile Include="Validator\AutofacValidatorFactory.cs" />
+    <Compile Include="Validator\CompanyPerTags\PublishTagsValidator.cs" />
     <Compile Include="Validator\IconsInfo\IconsInfoValidator.cs" />
     <Compile Include="Validator\Managers\ManagerValidator.cs" />
     <Compile Include="Validator\PerOrComIntroGuidance\PerOrComIntroViewModelValidator.cs" />
@@ -911,6 +918,8 @@
     <Content Include="Views\Person\Create.cshtml" />
     <Content Include="Views\PerOrComIntroGuidance\List.cshtml" />
     <Content Include="Views\PerOrComIntroGuidance\Create.cshtml" />
+    <Content Include="Views\CompanyPerTags\List.cshtml" />
+    <Content Include="Views\CompanyPerTags\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

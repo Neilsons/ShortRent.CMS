@@ -448,6 +448,51 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 标签颜色 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsViewModelColorDisplayName {
+            get {
+                return ResourceManager.GetString("PublishTagsViewModelColorDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsViewModelCreateTimeDisplayName {
+            get {
+                return ResourceManager.GetString("PublishTagsViewModelCreateTimeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsViewModelIDDisplayName {
+            get {
+                return ResourceManager.GetString("PublishTagsViewModelIDDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 标签名称 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsViewModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("PublishTagsViewModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 排序等级 的本地化字符串。
+        /// </summary>
+        public static string PublishTagsViewModelTagOrderDisplayName {
+            get {
+                return ResourceManager.GetString("PublishTagsViewModelTagOrderDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}格式不正确 的本地化字符串。
         /// </summary>
         public static string regex_error {

@@ -20,7 +20,7 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 0代表普通用户 1代表招聘
         /// </summary>
-        public bool Type { get; set; }
+        public bool? Type { get; set; }
         /// <summary>
         /// 标签排序
         /// </summary>
@@ -28,11 +28,15 @@ namespace ShortRent.Core.Domain
         /// <summary>
         /// 是否公司
         /// </summary>
-        public bool IsCompany { get; set; }
+        public bool? IsCompany { get; set; }
+        /// <summary>
+        /// 是否是发布者
+        /// </summary>
+        public bool? IsPublish { get; set; }
         /// <summary>
         /// 用户或公司ID
         /// </summary>
-        public int PerOrComId { get; set; }
+        public int? PerOrComId { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

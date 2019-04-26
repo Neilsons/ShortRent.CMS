@@ -22,6 +22,18 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string Email { get; set; }
         /// <summary>
+        /// 币种 这里是符号
+        /// </summary>
+        public string Currency { get; set; }
+        /// <summary>
+        /// 开始区间
+        /// </summary>
+        public int StartSection { get; set; }
+        /// <summary>
+        /// 结束区间
+        /// </summary>
+        public int EndSection { get; set; }
+        /// <summary>
         /// 内容简介
         /// </summary>
         public string Decription { get; set; }
@@ -55,6 +67,7 @@ namespace ShortRent.Core.Domain
         /// 所有的评论
         /// </summary>
         public virtual ICollection<Discuss> Discusss { get; set; }
+        public virtual ICollection<CompanyPerTag> CompanyPerTags { get; set; }
 
     }
 }

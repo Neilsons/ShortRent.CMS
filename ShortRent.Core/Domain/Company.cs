@@ -18,22 +18,42 @@ namespace ShortRent.Core.Domain
         /// </summary>
         [DefaultValue(100)]
        public decimal Score { get; set; }
+       /// <summary>
+       /// 公司logo
+       /// </summary>
+       public string CompanyImg { get; set; }
         /// <summary>
         /// 公司简介
         /// </summary>
        public string Introduction { get; set; }
        /// <summary>
-       /// 公司营业执照
+       /// 公司营业执照 pdf文档地址
        /// </summary>
-       public string CompanyImg { get; set; }
+       public string CompanyLicense { get; set; }
+        /// <summary>
+        /// 员工数量
+        /// </summary>
+       public int EmployeesCount { get; set; }
+        /// <summary>
+        /// 公司成立时间
+        /// </summary>
+       public DateTime EstablishTime { get; set; }
+        /// <summary>
+        /// 位置
+        /// </summary>
+        public string Address { get; set; }
        /// <summary>
        /// 创建时间 
        /// </summary>
        public DateTime CreateTime { get; set; }
+        //操作人
+       public int UserTypeId { get; set; }
        /// <summary>
        /// 是否删除 false 不删除 true删除
        /// </summary>
        [DefaultValue(false)]
        public bool IsDelete { get; set; }
+
+       public virtual ICollection<UserType> UserTypes { get; set; } 
     }
 }

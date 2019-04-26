@@ -264,4 +264,19 @@
   <data name="PerOrComIntroGuidanceViewModelTypeDisplayName" xml:space="preserve">
     <value>问题针对人</value>
   </data>
+  <data name="PublishTagsViewModelColorDisplayName" xml:space="preserve">
+    <value>标签颜色</value>
+  </data>
+  <data name="PublishTagsViewModelCreateTimeDisplayName" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="PublishTagsViewModelIDDisplayName" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="PublishTagsViewModelNameDisplayName" xml:space="preserve">
+    <value>标签名称</value>
+  </data>
+  <data name="PublishTagsViewModelTagOrderDisplayName" xml:space="preserve">
+    <value>排序等级</value>
+  </data>
 </root>
