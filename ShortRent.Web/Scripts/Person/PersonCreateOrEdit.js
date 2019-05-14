@@ -50,15 +50,24 @@ $(function () {
                 $("input[type='button']").prop("disabled", true);
             },
             success: function (data) {
-                layer.alert(data.message, {
-                    closeBtn: 1    // 是否显示关闭按钮
-                    , yes: function () {
-                        window.location.href = data.url;
-                    }
-                    , cancel: function () {
-                        window.location.href = data.url;
-                    }
-                });
+                if (data.httpCodeResult == 500) {
+                    layer.alert(data.message, {
+                        closeBtn: 1    // 是否显示关闭按钮
+                    });
+                    $("input[type='button']").prop("disabled", false);
+                }
+                else {
+                    layer.alert(data.message, {
+                        closeBtn: 1    // 是否显示关闭按钮
+                        , yes: function () {
+                            window.location.href = data.url;
+                        }
+                        , cancel: function () {
+                            window.location.href = data.url;
+                        }
+                    });
+                }
+                  
             }
         });
     });

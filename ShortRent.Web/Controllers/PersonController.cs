@@ -91,8 +91,6 @@ namespace ShortRent.Web.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
-                {
                     Person person = new Person();
                     Dictionary<string, string> str = new Dictionary<string, string>();//上传成功后返回文件的信息
                     if (headPhoto != null)
@@ -101,8 +99,14 @@ namespace ShortRent.Web.Controllers
                         str = UploadImg(headPhoto, "/Content/Images/AdminImg");
                         if (str["Result"].ToString() == "0")
                         {
-                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "上传文件格式不正确，请重新上传，所修改数据未被保留！", Url = Url.Action(nameof(PersonController.PersonAdminDetail)) });
+                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "上传文件格式不正确，请重新上传，所修改数据未被保留！" });
                         }
+                    }
+                    //如果数据库中存在和姓名一样的要填写表单。
+                    Person ifPerson = _personService.GetPersons().Where(t => t.Type == true).SingleOrDefault(t => t.Name == personAdminEditModel.Name);
+                    if (ifPerson != null)
+                    {
+                        return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = $"已经存在名称为{personAdminEditModel.Name}的人，请重新调整。" });
                     }
                     person = _mapper.Map<Person>(personAdminEditModel);
                     person.CreateTime = DateTime.Now;
@@ -126,11 +130,6 @@ namespace ShortRent.Web.Controllers
                         PersonId = GetCurrentPerson().ID
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
-                }
-                else
-                {
-                    return View(personAdminEditModel);
-                }
             }
             catch(Exception e)
             {
@@ -162,9 +161,6 @@ namespace ShortRent.Web.Controllers
         {
             try
             {
-                //判断模型是否有效
-                if(ModelState.IsValid)
-                {
                     //判断上传的图片是否为空
                     Person person = new Person();
                     Dictionary<string, string> str = new Dictionary<string, string>();//上传成功后返回文件的信息
@@ -186,6 +182,15 @@ namespace ShortRent.Web.Controllers
                     }
                     //先获取之前的后台 用户信息
                     Person oldPerson = _personService.GetPerson(person.ID);
+                    //如果修改的模型的姓名和数据库中的模型相同，那么重新修改
+                    if(oldPerson.Name!=person.Name)
+                    {
+                        Person ifPerson = _personService.GetPersons().Where(t => t.Type == true).FirstOrDefault(p=>p.Name==person.Name);
+                        if(ifPerson!=null)
+                        {
+                            return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = $"已经存在名称为{person.Name}的人，请重新调整。" });
+                        }
+                    }
                     var oldHumanPerson = _mapper.Map<PersonAdminHumanEditModel>(oldPerson);
                     var newHumanPerson = _mapper.Map<PersonAdminHumanEditModel>(person);
                     //将更改提交到数据库
@@ -200,11 +205,6 @@ namespace ShortRent.Web.Controllers
                         PersonId = GetCurrentPerson().ID
                     };
                     _historyOperatorService.CreateHistoryOperator(history);
-                }
-                else
-                {
-                    return View(model);
-                }
             }
             catch(Exception e)
             {
@@ -261,7 +261,7 @@ namespace ShortRent.Web.Controllers
             try
             {
                 //获得所有的用户
-                var person = _personService.GetPersons().Where(c=>c.Type==true).SingleOrDefault(c => c.Name == model.Name && c.PassWord == model.PassWord);
+                var person = _personService.GetPersons().Where(c=>c.Type==true).FirstOrDefault(c => c.Name == model.Name && c.PassWord == model.PassWord);
                 if(person!=null)
                 {
                     var singnPer = person;

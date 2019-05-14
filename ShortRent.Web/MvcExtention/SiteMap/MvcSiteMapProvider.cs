@@ -124,10 +124,10 @@ namespace ShortRent.Web.MvcExtention
                     copy.ControllerName = node.ControllerName;
                     copy.ActionName = node.ActionName;
                     copy.HasActiveChildren = node.Childrens.Any(c => c.Activity &&
-                             (string.Equals(c.ActionName.Trim(), action.Trim(), StringComparison.OrdinalIgnoreCase) &&
-                              string.Equals(c.ControllerName.Trim(), controller.Trim(), StringComparison.OrdinalIgnoreCase)))
-                            || (string.Equals(node.ActionName.Trim(), action.Trim(), StringComparison.OrdinalIgnoreCase) &&
-                            string.Equals(node.ControllerName.Trim(), controller.Trim(), StringComparison.OrdinalIgnoreCase));
+                             (string.Equals(c.ActionName, action.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                              string.Equals(c.ControllerName, controller.Trim(), StringComparison.OrdinalIgnoreCase)))
+                            || (string.Equals(node.ActionName, action.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                            string.Equals(node.ControllerName, controller.Trim(), StringComparison.OrdinalIgnoreCase));
                     copy.Activity = node.Activity;
                     copy.Childrens = CopyAndSetState(node.Childrens, controller, action);
                     copies.Add(copy);
