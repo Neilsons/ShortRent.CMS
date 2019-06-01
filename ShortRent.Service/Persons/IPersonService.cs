@@ -15,6 +15,11 @@ namespace ShortRent.Service
         List<Person> GetTypePerson(int pageSize, int pageNumber, string AdminName, int? Type, out int total);
         List<Person> GetPersons(bool? IsActivator=null);
         Person GetPerson(int id, bool? IsActivator=null);
+        Person GetPersonByName(string name);
+        List<PersonUserType> GetPersonUserType();
+        List<Role> GetPersonRole(int id);
+        void CreateUserRole(UserRole userRole);
+        void DeleteUserRole(int id);
 
     }
 }

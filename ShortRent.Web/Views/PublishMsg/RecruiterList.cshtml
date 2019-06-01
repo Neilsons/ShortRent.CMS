@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+@section Styles{
+    @Styles.Render("~/Styles/BootstraTable")
+    @Styles.Render("~/Styles/LayerDate")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="row">
+                    <label class="control-label text-right col-sm-2" for="txt_search_CompanyName"><span>公司名称</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="txt_search_CompanyName">
+                    </div>
+                    <label class="control-label text-right col-sm-2" for="txt_search_Name"><span>名称</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="txt_search_Name">
+                    </div>
+                    <label class="control-label text-right col-sm-2  marTOrd-xs_min  pad-bottom-xs" for="txt_search_type"><span>行业</span></label>
+                    <div class="col-sm-4  marTOrd-xs_min">
+                        @Html.DropDownList("txt-search-type", ViewBag.Bussiness as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <label class="control-label text-right col-sm-2 marTOrd-xs_min pad-bottom-xs" for="txt_search_stratTime"><span>开始时间</span></label>
+                    <div class="col-sm-4 marTOrd-xs_min">
+                        <input type="text" class="form-control" id="txt_search_stratTime">
+                    </div>
+                    <label class="control-label text-right col-sm-2 marTOrd-xs_min pad-bottom-xs" for="txt_search_endTime"><span>结束时间</span></label>
+                    <div class="col-sm-4 marTOrd-xs_min">
+                        <input type="text" class="form-control" id="txt_search_endTime">
+                    </div>
+                    <div class="col-xs-12 marTOrd-xs text-right">
+                        <button type="button" id="btn_query" class="btn btn-primary btn-sm">查询</button>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <table id="RecruiterTable" class="table col-xs-12 col-sm-12 col-lg-12 text-nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @Scripts.Render("~/Scripts/LayDate")
+    @*本页面要用到的js*@
+    @Scripts.Render("~/Scripts/RecruiterListIndex")
+
+}
+
+
+
+

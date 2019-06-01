@@ -1,0 +1,55 @@
+﻿@model SelectList
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+@section Styles{
+    @Styles.Render("~/Styles/IcheckSkins")
+}
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "post", OnSuccess = "SuccessCreateEntity" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("roleId", (int)ViewBag.ID)
+    <div class="form-horizontal box">
+        <div class="box-body">
+            <div class="form-group col-md-12 ">
+
+                <table class="table table-responsive table-striped">
+                    <tr>
+                        <th>头菜单</th>
+                        <th>权限配置</th>
+                        <th>全选</th>
+                    </tr>
+                    @foreach (var group in Model.Items.OfType<SelectListItem>().GroupBy(sli => sli.Group))
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelitem => group.Key.Name)</td>
+                            <td>
+                                @foreach (var item in group)
+                                {
+                                    <input type="checkbox" name="permissionIds" value="@item.Value" @(item.Selected ? Html.Raw("checked") : null) />
+                                    <span class="mar-rightPri">@item.Text</span>
+                                }
+                            </td>
+                            <td>
+                                <input type="checkbox" class="check-all" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="row text-center marTop-xs">
+                    <input type="submit" value="提交" class="btn btn-success" />
+                </div>
+            </div>
+        </div>`
+    </div>
+}
+
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/Icheck")
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/PrivilegesIndex")
+}

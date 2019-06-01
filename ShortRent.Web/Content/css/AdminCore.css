@@ -48,6 +48,9 @@
     body{
         font-size:12px !important;
     }
+    .mar-rightPri{
+        margin-right:1%;
+    }
 }
 @media (min-width:768px) {
     .marTOrd-xs {
@@ -64,6 +67,9 @@
     }
     body {
         font-size: 13px !important;
+    }
+    .mar-rightPri {
+        margin-right: 2%;
     }
 }
 /*媒体查询结束*/

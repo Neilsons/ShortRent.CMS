@@ -12,7 +12,7 @@
     <div class="caption">
 
         <div class="holder">
-            <div class="btn-row"> <a href="job-seekers.html"><i class="fa fa-user"></i>我要招聘</a> <a href="employers.html"><i class="fa fa-building-o"></i>我要工作</a> </div>
+            <div class="btn-row"> <a href="@Url.Action("Login",new RouteValueDictionary { { "isReduit", "true" } })"><i class="fa fa-user"></i>我要招聘</a> <a href="@Url.Action("Login",new RouteValueDictionary { { "isReduit", "false" } })"><i class="fa fa-building-o"></i>我要工作</a> </div>
 
         </div>
 

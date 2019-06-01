@@ -41,7 +41,7 @@
 
                             <li><a href="employers.html">公司</a></li>
 
-                            <li><a href="contact.html">联系我们</a> </li>
+                            <li><a href="@Url.Action("Contact")">联系我们</a> </li>
 
                         </ul>
 
@@ -93,7 +93,7 @@
                     <li><a href="employers.html">公司</a></li>
 
                     <li>
-                        <a href="jobs.html">联系我们</a>
+                        <a href="@Url.Action("Contact","Web")">联系我们</a>
                     </li>
                 </ul>
 
@@ -121,30 +121,17 @@
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                <li><a href="#">管理账户</a></li>
+                <li><a href="">管理账户</a></li>
 
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">登 出</a></li>
+                <li><a href="@Url.Action("EditPassWord","Home")">修改密码</a></li>
+                <li><a href="@Url.Action("PublishMsg","Web")">发布</a></li>
+                <li><a href="@Url.Action("SignOut","Home")">登 出</a></li>
 
             </ul>
 
         </div>
 
     </div>
-
-    <div class="dropdown-box">
-
-        <div class="dropdown">
-
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/foreground/images/option-icon.png" alt="img"> </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a href="@Url.Action("Login","Home")" class="btn-login">登录</a> </li>
-            </ul>
-
-        </div>
-
-    </div>
-
 </div>
 
 <!--USER OPTION COLUMN END-->

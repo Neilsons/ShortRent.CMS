@@ -84,6 +84,14 @@ namespace ShortRent.Data
         {
             return this.DbSet.Include<T>(path);
         }
+        public IEnumerable<S> SqlQuery<S>(string sql, params object[] parameters)
+        {
+            return _dbContext.ExecuteSqlQuery<S>(sql,parameters);
+        }
+        public int SqlCommand<W>(string sql,params object[] parameters)
+        {
+            return _dbContext.ExecuteSqlCommand(sql, parameters);
+        }
         #endregion
 
     }

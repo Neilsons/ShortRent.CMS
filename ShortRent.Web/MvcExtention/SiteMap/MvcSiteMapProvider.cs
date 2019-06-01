@@ -133,7 +133,7 @@ namespace ShortRent.Web.MvcExtention
                     copies.Add(copy);
                 }
                 _cacheManager.Remove(mvcSiteMapProviderCacheKey);
-                _cacheManager.Set(mvcSiteMapProviderCacheKey, copies, TimeSpan.FromDays(10));
+                _cacheManager.Set(mvcSiteMapProviderCacheKey, copies, TimeSpan.FromDays(1));
                 return copies;
             }
         }

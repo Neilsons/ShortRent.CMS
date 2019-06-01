@@ -61,6 +61,114 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 行业名称 的本地化字符串。
+        /// </summary>
+        public static string BussinessIndexNameDisplayName {
+            get {
+                return ResourceManager.GetString("BussinessIndexNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 位置 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditAddressDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditAddressDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 营业执照 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditCompanyLicenseDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditCompanyLicenseDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 回执信息 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditCompanyMessageDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditCompanyMessageDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditCompanyStatusDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditCompanyStatusDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册时间 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditEstablishTime {
+            get {
+                return ResourceManager.GetString("CompanyAuditEstablishTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司名称 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditNameDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 信用积分 的本地化字符串。
+        /// </summary>
+        public static string CompanyAuditScoreDisplayName {
+            get {
+                return ResourceManager.GetString("CompanyAuditScoreDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 简介 的本地化字符串。
+        /// </summary>
+        public static string ContactViewModelBriefDisplayName {
+            get {
+                return ResourceManager.GetString("ContactViewModelBriefDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 内容 的本地化字符串。
+        /// </summary>
+        public static string ContactViewModelContentDisplayName {
+            get {
+                return ResourceManager.GetString("ContactViewModelContentDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 邮箱 的本地化字符串。
+        /// </summary>
+        public static string ContactViewModelEmailDisplayName {
+            get {
+                return ResourceManager.GetString("ContactViewModelEmailDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string ContactViewModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("ContactViewModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 {PropertyName}必须大于或等于{ComparisonValue} 的本地化字符串。
         /// </summary>
         public static string greaterthanorequal_error {
@@ -412,6 +520,24 @@ namespace ShortRent.Resource.MetaData {
         }
         
         /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string PersonLoginModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("PersonLoginModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string PersonLoginModelPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("PersonLoginModelPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 出生日期 的本地化字符串。
         /// </summary>
         public static string PersonViewModelBirthdayDisplayName {
@@ -444,6 +570,87 @@ namespace ShortRent.Resource.MetaData {
         public static string predicate_error {
             get {
                 return ResourceManager.GetString("predicate_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 地址 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelAddressDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelAddressDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 行业 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelBusinessTypeIdDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelBusinessTypeIdDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 币种 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelCurrencyDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelCurrencyDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 描述信息 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelDecriptionDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelDecriptionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 详细信息 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelDetailDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelDetailDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 邮箱 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelEmailDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelEmailDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 结束区间 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelEndSectionDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelEndSectionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 联系电话 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelPhoneDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelPhoneDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 开始区间 的本地化字符串。
+        /// </summary>
+        public static string PublishCreateModelStartSectionDisplayName {
+            get {
+                return ResourceManager.GetString("PublishCreateModelStartSectionDisplayName", resourceCulture);
             }
         }
         
@@ -543,6 +750,303 @@ namespace ShortRent.Resource.MetaData {
         public static string Scope {
             get {
                 return ResourceManager.GetString("Scope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 出生日期 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditBirthdayDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditBirthdayDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 信用积分 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditCreditScoreDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditCreditScoreDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证反面 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditIdCardBackDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditIdCardBackDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证号 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditIdCardDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditIdCardDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证正面 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditIdCardFrontDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditIdCardFrontDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditNameDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 排序 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditPerOrderDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditPerOrderDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 性别 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditSexDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditSexDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 回执信息 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditTypeMessageDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditTypeMessageDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditTypeUserDisplayName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditTypeUserDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string WebLoginModelNameDisplayName {
+            get {
+                return ResourceManager.GetString("WebLoginModelNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string WebLoginModelPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("WebLoginModelPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 记住我 的本地化字符串。
+        /// </summary>
+        public static string WebLoginModelReadMeDisplayName {
+            get {
+                return ResourceManager.GetString("WebLoginModelReadMeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 账号类型 的本地化字符串。
+        /// </summary>
+        public static string WebLoginModelTypeDisplayName {
+            get {
+                return ResourceManager.GetString("WebLoginModelTypeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 地址信息 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterAddressDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterAddressDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 出生日期 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterBirthdayDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterBirthdayDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司LOGO 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterCompanyImgDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterCompanyImgDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 营业执照 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterCompanyLicenseDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterCompanyLicenseDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司名称 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterCompanyNameDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterCompanyNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确认密码 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterConfirmDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterConfirmDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 员工数量 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterEmployeesCountDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterEmployeesCountDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册时间 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterEstablishTimeDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterEstablishTimeDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证反面 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterIdCardBackDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterIdCardBackDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证号 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterIdCardDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterIdCardDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证正面 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterIdCardFrontDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterIdCardFrontDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 介绍信息 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterIntroductionDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterIntroductionDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 账号类型 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterIsRecruitDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterIsRecruitDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterNameDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterNameDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterPassWordDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterPassWordDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 个人头像 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterPerImageDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterPerImageDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 QQ 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterQqDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterQqDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 性别 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterSexDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterSexDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 微信 的本地化字符串。
+        /// </summary>
+        public static string WebRegisterWeChatDisplayName {
+            get {
+                return ResourceManager.GetString("WebRegisterWeChatDisplayName", resourceCulture);
             }
         }
     }

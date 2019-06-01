@@ -1,0 +1,41 @@
+﻿@model SelectList
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+@section Styles{
+    @Styles.Render("~/Styles/IcheckSkins")
+}
+@using (Ajax.BeginForm(new AjaxOptions() { HttpMethod = "post", OnSuccess = "SuccessAssign" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("personId", (int)ViewBag.ID)
+    <div class="form-horizontal box">
+        <div class="box-body">
+            <div class="form-group col-md-12 ">
+                @foreach (var group in Model.Items.OfType<SelectListItem>())
+                {
+                    <div class="col-md-2">
+                        <input type="checkbox" name="roleIds" value="@group.Value" @(group.Selected ? Html.Raw("checked") : null) />
+                        <span class="mar-rightPri">@group.Text</span>
+                    </div>
+                }
+                </div>
+            <div class="form-group col-md-12">
+                <div class="row text-center marTop-xs">
+                    <input type="submit" value="提交" class="btn btn-success" />
+                </div>
+            </div>
+        </div>`
+    </div>
+}
+
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/Icheck")
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/AssignRolesIndex")
+}
+
+

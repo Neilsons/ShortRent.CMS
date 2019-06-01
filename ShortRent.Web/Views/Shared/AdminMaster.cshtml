@@ -43,7 +43,7 @@
                     @for (int i = 0; i < breadcrumb.Length; i++)
                     {
                         ManagerBread manager = breadcrumb[i];
-                        if (i == breadcrumb.Length - 1)
+                        if ((i == breadcrumb.Length - 1)||string.IsNullOrWhiteSpace(manager.ControllerName))
                         {
                             <li class="active"><i class="@manager.ClassIcons" style="color:@manager.Color;"></i>&nbsp;&nbsp;@manager.Name</li>
                         }

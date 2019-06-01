@@ -279,4 +279,172 @@
   <data name="PublishTagsViewModelTagOrderDisplayName" xml:space="preserve">
     <value>排序等级</value>
   </data>
+  <data name="WebRegisterNameDisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="WebRegisterBirthdayDisplayName" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="WebRegisterIdCardDisplayName" xml:space="preserve">
+    <value>身份证号</value>
+  </data>
+  <data name="WebRegisterIsRecruitDisplayName" xml:space="preserve">
+    <value>账号类型</value>
+  </data>
+  <data name="WebRegisterPerImageDisplayName" xml:space="preserve">
+    <value>个人头像</value>
+  </data>
+  <data name="WebRegisterQqDisplayName" xml:space="preserve">
+    <value>QQ</value>
+  </data>
+  <data name="WebRegisterSexDisplayName" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="WebRegisterWeChatDisplayName" xml:space="preserve">
+    <value>微信</value>
+  </data>
+  <data name="WebRegisterAddressDisplayName" xml:space="preserve">
+    <value>地址信息</value>
+  </data>
+  <data name="WebRegisterCompanyImgDisplayName" xml:space="preserve">
+    <value>公司LOGO</value>
+  </data>
+  <data name="WebRegisterCompanyLicenseDisplayName" xml:space="preserve">
+    <value>营业执照</value>
+  </data>
+  <data name="WebRegisterCompanyNameDisplayName" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="WebRegisterConfirmDisplayName" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="WebRegisterEmployeesCountDisplayName" xml:space="preserve">
+    <value>员工数量</value>
+  </data>
+  <data name="WebRegisterEstablishTimeDisplayName" xml:space="preserve">
+    <value>注册时间</value>
+  </data>
+  <data name="WebRegisterIdCardBackDisplayName" xml:space="preserve">
+    <value>身份证反面</value>
+  </data>
+  <data name="WebRegisterIdCardFrontDisplayName" xml:space="preserve">
+    <value>身份证正面</value>
+  </data>
+  <data name="WebRegisterIntroductionDisplayName" xml:space="preserve">
+    <value>介绍信息</value>
+  </data>
+  <data name="WebRegisterPassWordDisplayName" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="CompanyAuditAddressDisplayName" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="CompanyAuditCompanyLicenseDisplayName" xml:space="preserve">
+    <value>营业执照</value>
+  </data>
+  <data name="CompanyAuditCompanyMessageDisplayName" xml:space="preserve">
+    <value>回执信息</value>
+  </data>
+  <data name="CompanyAuditCompanyStatusDisplayName" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="CompanyAuditNameDisplayName" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="CompanyAuditScoreDisplayName" xml:space="preserve">
+    <value>信用积分</value>
+  </data>
+  <data name="CompanyAuditEstablishTime" xml:space="preserve">
+    <value>注册时间</value>
+  </data>
+  <data name="UserTypeAuditBirthdayDisplayName" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="UserTypeAuditCreditScoreDisplayName" xml:space="preserve">
+    <value>信用积分</value>
+  </data>
+  <data name="UserTypeAuditIdCardBackDisplayName" xml:space="preserve">
+    <value>身份证反面</value>
+  </data>
+  <data name="UserTypeAuditIdCardDisplayName" xml:space="preserve">
+    <value>身份证号</value>
+  </data>
+  <data name="UserTypeAuditIdCardFrontDisplayName" xml:space="preserve">
+    <value>身份证正面</value>
+  </data>
+  <data name="UserTypeAuditNameDisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="UserTypeAuditPerOrderDisplayName" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="UserTypeAuditSexDisplayName" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="UserTypeAuditTypeMessageDisplayName" xml:space="preserve">
+    <value>回执信息</value>
+  </data>
+  <data name="UserTypeAuditTypeUserDisplayName" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="WebLoginModelNameDisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="WebLoginModelPassWordDisplayName" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="WebLoginModelReadMeDisplayName" xml:space="preserve">
+    <value>记住我</value>
+  </data>
+  <data name="WebLoginModelTypeDisplayName" xml:space="preserve">
+    <value>账号类型</value>
+  </data>
+  <data name="ContactViewModelBriefDisplayName" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="ContactViewModelContentDisplayName" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="ContactViewModelEmailDisplayName" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="ContactViewModelNameDisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="BussinessIndexNameDisplayName" xml:space="preserve">
+    <value>行业名称</value>
+  </data>
+  <data name="PersonLoginModelNameDisplayName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="PersonLoginModelPassWordDisplayName" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PublishCreateModelAddressDisplayName" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="PublishCreateModelBusinessTypeIdDisplayName" xml:space="preserve">
+    <value>行业</value>
+  </data>
+  <data name="PublishCreateModelCurrencyDisplayName" xml:space="preserve">
+    <value>币种</value>
+  </data>
+  <data name="PublishCreateModelDecriptionDisplayName" xml:space="preserve">
+    <value>描述信息</value>
+  </data>
+  <data name="PublishCreateModelDetailDisplayName" xml:space="preserve">
+    <value>详细信息</value>
+  </data>
+  <data name="PublishCreateModelEmailDisplayName" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="PublishCreateModelEndSectionDisplayName" xml:space="preserve">
+    <value>结束区间</value>
+  </data>
+  <data name="PublishCreateModelPhoneDisplayName" xml:space="preserve">
+    <value>联系电话</value>
+  </data>
+  <data name="PublishCreateModelStartSectionDisplayName" xml:space="preserve">
+    <value>开始区间</value>
+  </data>
 </root>

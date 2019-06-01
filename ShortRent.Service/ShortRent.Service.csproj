@@ -45,8 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="Bussiness\BussinessService.cs" />
+    <Compile Include="Bussiness\IBussinessService.cs" />
     <Compile Include="CompanyPerTags\CompanyPerTagsService.cs" />
     <Compile Include="CompanyPerTags\ICompanyPerTagsService.cs" />
+    <Compile Include="Company\CompanyService.cs" />
+    <Compile Include="Company\ICompanyService.cs" />
+    <Compile Include="Contact\ContactService.cs" />
+    <Compile Include="Contact\IContactService.cs" />
+    <Compile Include="EntityPermission\EntityPermissionService.cs" />
+    <Compile Include="EntityPermission\IEntityPermissionService.cs" />
     <Compile Include="HistoryOperator\HistoryOperatorService.cs" />
     <Compile Include="HistoryOperator\IHistoryOperatorService.cs" />
     <Compile Include="IconsInfo\IconsInfoService.cs" />
@@ -63,9 +71,13 @@
     <Compile Include="Persons\IPersonService.cs" />
     <Compile Include="Persons\PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublishMsg\IPublishMsgService.cs" />
+    <Compile Include="PublishMsg\PublishMsgService.cs" />
     <Compile Include="Role\IRoleService.cs" />
     <Compile Include="Role\RoleService.cs" />
     <Compile Include="ServiceRegister.cs" />
+    <Compile Include="UserType\IUserTypeService.cs" />
+    <Compile Include="UserType\UserTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />

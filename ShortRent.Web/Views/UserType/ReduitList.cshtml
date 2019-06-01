@@ -1,0 +1,35 @@
+﻿
+@{
+      Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+
+@section Styles{
+    @Styles.Render("~/Styles/BootstraTable")
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="row">
+                    <label class="control-label text-right col-sm-2" for="txt_search_Name"><span>姓名</span></label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="txt_search_Name">
+                    </div>
+                    <div class="col-xs-12 marTOrd-xs text-right">
+                        <button type="button" id="btn_query" class="btn btn-primary btn-sm">查询</button>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body table-responsive">
+                <table id="ReduitTable" class="table col-xs-12 col-sm-12 col-lg-12 text-nowrap"></table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/BootstrapTable")
+    @Scripts.Render("~/Scripts/BootstrapTable_zh")
+    @Scripts.Render("~/Scripts/ReduitUserType")
+}
+
+

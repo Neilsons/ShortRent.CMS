@@ -14,10 +14,6 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// 名称拼写
-        /// </summary>
-        public string NameSpell { get; set; }
-        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }

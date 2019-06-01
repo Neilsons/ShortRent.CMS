@@ -114,7 +114,7 @@ var TableInit = function () {
                     var result = "";
                     result += "<a href='/Person/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
                     result += "<a href='javascript:ResetPassWord(" + value + ")'>重置密码</a><span>&nbsp;|&nbsp;</span>";
-                    result += "<a href=" + value + ">分配角色</a>";
+                    result += "<a href='/Person/AssignRoles/" + value + "'>分配角色</a>";
                     return result;
                 }
             }],

@@ -14,5 +14,6 @@ namespace ShortRent.Service
         void CreateManager(Manager manager);
         Manager GetManager(int? id);
         void UpdateManager(Manager model);
+        List<IGrouping<int?, Manager>> GetManagerGroup();
     }
 }

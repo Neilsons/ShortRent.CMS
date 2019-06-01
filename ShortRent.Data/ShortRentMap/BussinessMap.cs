@@ -15,7 +15,6 @@ namespace ShortRent.Data.ShortRentMap
             this.ToTable("Bussiness");
             this.HasKey(c=>c.ID);
             this.Property(c=>c.Name).IsRequired().HasMaxLength(50);
-            this.Property(c=>c.NameSpell).IsRequired().HasMaxLength(200);
         }
     }
 }

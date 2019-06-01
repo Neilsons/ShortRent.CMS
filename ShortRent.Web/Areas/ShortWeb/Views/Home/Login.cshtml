@@ -1,4 +1,4 @@
-﻿
+﻿@model WebLoginModel
 @{
     ViewBag.Title = "登陆";
     Layout = "~/Areas/ShortWeb/Views/Shared/Master.cshtml";
@@ -30,48 +30,43 @@
         <div class="container">
 
             <div class="holder">
-
+                <input type="hidden" value="@ViewBag.IsReduit" />
                 <div class="thumb"><img src="~/Content/foreground/images/signup.png" alt="img"></div>
-
-                <form action="#">
-
+                @using (Ajax.BeginForm("Login", new { returnUrl = ViewBag.ReturnUrl }, new AjaxOptions() { HttpMethod = "POST", OnBegin = "BeginLogin", OnSuccess = "SuccessLogin" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                    @Html.AntiForgeryToken()
                     <div class="input-box">
                         <i class="fa fa-user"></i>
-
-                        <input type="text" placeholder="用户名">
-
+                        @Html.TextBoxFor(c => c.Name, htmlAttributes: new { placeholder = "用户名" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
                     </div>
 
                     <div class="input-box">
                         <i class="fa fa-unlock"></i>
-
-                        <input type="text" placeholder="密码">
-
+                        @Html.PasswordFor(c => c.PassWord, htmlAttributes: new { placeholder = "密码" })
+                        @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-error" })
                     </div>
                     <div class="select-box">
                         <div class="selector">
-                            <select class="full-width">
-                                <option value="0">找工作</option>
-                                <option value="1">招聘</option>
+                            <select class="full-width" name="Type">
+                                <option value="False">找工作</option>
+                                <option value="True">招聘</option>
                             </select>
                             <span class="custom-select full-width">找工作</span>
                         </div>
 
                     </div>
                     <div class="check-box">
-
-                        <input id="id3" type="checkbox" />
-
+                        @Html.CheckBoxFor(c => c.ReadMe)
                         <label><strong>&nbsp;&nbsp;记住我</strong></label>
                     </div>
 
-                    <input type="submit" value="Sign up">
+                    <input type="submit" value="登 陆">
                     <div class="login-social">
-                        <em>您还没有账户？<a href="#">创建一个</a></em>
+                        <em>您还没有账户？<a href="@Url.Action("Register", "Home")">创建一个</a></em>
                     </div>
-
-                </form>
-
+                }
             </div>
 
         </div>
@@ -88,6 +83,9 @@
     @Scripts.Render("~/Scripts/Foreground/Jquery-Noconflict")
     @Scripts.Render("~/Scripts/Foreground/Theme-Scripts")
     @Scripts.Render("~/Scripts/Foreground/Jquery")
+    @Scripts.Render("~/Scripts/Jquery-Validate")
+    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
     @Scripts.Render("~/Scripts/Icheck")
     @Scripts.Render("~/Scripts/LayAlert")
     @Scripts.Render("~/Scripts/Pace")

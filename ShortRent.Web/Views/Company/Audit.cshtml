@@ -1,0 +1,116 @@
+﻿@model CompanyAudit
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+    List<SelectListItem> selectListItems = new List<SelectListItem>() {
+new SelectListItem(){Selected=true,Text="未审核",Value="0" },
+new SelectListItem(){ Selected=false,Text="审核通过",Value="1"},
+new SelectListItem(){ Selected=false,Text="审核未通过",Value="2"}
+};
+}
+@section Styles{
+    @Styles.Render("~/Styles/LayerDate")
+}
+@using (Ajax.BeginForm("Audit", new AjaxOptions() { HttpMethod = "post", OnBegin = "BeginCreateAudit", OnSuccess = "SuccessCreateAudit" }))
+{
+    <div class="form-horizontal box">
+        <div class="box-body">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-error" })
+            @Html.HiddenFor(c => c.ID)
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.EstablishTime, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.EstablishTime, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.EstablishTime, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Score, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.Score, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.Score, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="row">
+                    @Html.LabelFor(model => model.CompanyLicense, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
+                    <div class="col-xs-4 col-sm-10">
+                        <div class="row clear-margin ">
+                            <img id="headPhoto" class="images-response" src="~/Content/Images/WebImage/Company/@Model.CompanyLicense" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.CompanyStatus, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.DropDownListFor(model => model.CompanyStatus, (IEnumerable<SelectListItem>)selectListItems, new { @class = "form-control col-md-8" })
+                            @Html.ValidationMessageFor(model => model.CompanyStatus, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.CompanyMessage, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.CompanyMessage, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.CompanyMessage, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="row text-center marTop-xs">
+                    <input type="submit" value="审核" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/LayDate")
+    @Scripts.Render("~/Scripts/CompanyAudit")
+}

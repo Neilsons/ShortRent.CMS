@@ -1,0 +1,24 @@
+﻿@model PublishMsgWatch
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+}
+<div class="form-horizontal box">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">描述信息</h2>
+            </div>
+            <div class="col-sm-12">
+                <p class="text-center">@Model.Decription</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">详细信息</h2>
+            </div>
+            <div class="col-sm-12">
+                <p>@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Detail))</p>
+            </div>
+        </div>
+    </div>`
+</div>

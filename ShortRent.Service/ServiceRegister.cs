@@ -25,6 +25,12 @@ namespace ShortRent.Service
             container.RegisterType<IconsInfoService>().As<IIconsInfoService>();
             container.RegisterType<PerOrComIntroGuidanceService>().As<IPerOrComIntroGuidanceService>();
             container.RegisterType<CompanyPerTagsService>().As<ICompanyPerTagsService>();
+            container.RegisterType<UserTypeService>().As<IUserTypeService>();
+            container.RegisterType<CompanyService>().As<ICompanyService>();
+            container.RegisterType<ContactService>().As<IContactService>();
+            container.RegisterType<PublishMsgService>().As<IPublishMsgService>();
+            container.RegisterType<BussinessService>().As<IBussinessService>();
+            container.RegisterType<EntityPermissionService>().As<IEntityPermissionService>();
         }
     }
 }

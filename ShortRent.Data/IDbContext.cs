@@ -28,5 +28,6 @@ namespace ShortRent.Data
         /// <param name="parameters"></param>
         /// <returns></returns>
         int ExecuteSqlCommand(string sql, params object[] parameters);
+        IEnumerable<T> ExecuteSqlQuery<T>(string sql, params object[] parameters);
     }
 }

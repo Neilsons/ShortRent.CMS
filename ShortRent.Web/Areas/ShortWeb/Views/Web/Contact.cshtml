@@ -1,0 +1,119 @@
+﻿@model ContactViewModel
+@{
+    ViewBag.Title = "联系我们";
+    Layout = "~/Areas/ShortWeb/Views/Shared/Master.cshtml";
+}
+
+<section id="inner-banner">
+
+    <div class="container">
+
+        <h1>联系我们</h1>
+
+    </div>
+
+</section>
+<div id="main">
+
+
+
+    <!--SIGNUP SECTION START-->
+
+    <section class="signup-section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="box">
+                        <div class="box-body">
+                            @using (Ajax.BeginForm("Contact", "Web", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "SuccessContact", OnBegin = "BeginContact" }))
+                            {
+                                @Html.AntiForgeryToken();
+                            <div class="box-body">
+                                @Html.ValidationSummary(true, "", new { @class = "text-error" })
+                                <div class="form-group col-md-6">
+                                    <div class="row">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="row clear-margin">
+                                                @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <div class="row">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="row clear-margin">
+                                                @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-error" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <div class="row">
+                                        @Html.LabelFor(model => model.Brief, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="row clear-margin">
+                                                @Html.TextBoxFor(model => model.Brief, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                @Html.ValidationMessageFor(model => model.Brief, "", new { @class = "text-error" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="row">
+                                        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+                                        <div class="col-xs-12 col-md-10">
+                                            <div class="row clear-margin">
+                                                @Html.TextAreaFor(model => model.Content, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-error" })
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <div class="row text-center marTop-xs">
+                                        <input type="submit" value="提交" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <!--SIGNUP SECTION END-->
+
+
+
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/Jquery-Validate")
+    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
+    @Scripts.Render("~/Scripts/LayAlert")
+    @Scripts.Render("~/Scripts/Pace")
+    @Scripts.Render("~/Scripts/Foreground/WebContact")
+}

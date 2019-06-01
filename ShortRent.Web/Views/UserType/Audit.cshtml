@@ -1,0 +1,161 @@
+﻿@using ShortRent.Core.Domain
+@model UserTypeAudit
+@{
+    Layout = "~/Views/Shared/AdminMaster.cshtml";
+    List<SelectListItem> selectListItems = new List<SelectListItem>() {
+new SelectListItem(){Selected=true,Text="未审核",Value="0" },
+new SelectListItem(){ Selected=false,Text="审核通过",Value="1"},
+new SelectListItem(){ Selected=false,Text="审核未通过",Value="2"}
+};
+    List<SelectListItem> selectList = new List<SelectListItem>() {
+new SelectListItem(){Selected=true,Text="保密"},
+new SelectListItem(){ Selected=false,Text="男",Value="true"},
+new SelectListItem(){ Selected=false,Text="女",Value="false"}
+};
+}
+@section Styles{
+    @Styles.Render("~/Styles/LayerDate")
+}
+@using (Ajax.BeginForm("Audit", new AjaxOptions() { HttpMethod = "post", OnBegin = "BeginCreateAudit", OnSuccess = "SuccessCreateAudit" }))
+{
+    <div class="form-horizontal box">
+        <div class="box-body">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-error" })
+            @Html.HiddenFor(c => c.ID)
+            @Html.HiddenFor(c => c.UserTypeId)
+            @Html.HiddenFor(c=>c.CreateTime)
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.CreditScore, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.CreditScore, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.CreditScore, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.DropDownListFor(model => model.Sex, (IEnumerable<SelectListItem>)selectList, new { @class = "form-control col-md-8" })
+                            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.IdCard, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.IdCard, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.IdCard, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.PerOrder, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.PerOrder, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.PerOrder, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="row">
+                    @Html.LabelFor(model => model.IdCardFront, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
+                    <div class="col-xs-4 col-sm-10">
+                        <div class="row clear-margin ">
+                            <img id="headPhoto1" class="images-response" src="~/Content/Images/WebImage/IdCard/@Model.IdCardFront" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <div class="row">
+                    @Html.LabelFor(model => model.IdCardBack, htmlAttributes: new { @class = "col-xs-2 control-label col-md-2 text-right" })
+                    <div class="col-xs-4 col-sm-10">
+                        <div class="row clear-margin ">
+                            <img id="headPhoto2" class="images-response" src="~/Content/Images/WebImage/IdCard/@Model.IdCardBack" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.TypeUser, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.DropDownListFor(model => model.TypeUser, (IEnumerable<SelectListItem>)selectListItems, new { @class = "form-control col-md-8" })
+                            @Html.ValidationMessageFor(model => model.TypeUser, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <div class="row">
+                    @Html.LabelFor(model => model.TypeMessage, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                    <div class="col-xs-12 col-md-8">
+                        <div class="row clear-margin">
+                            @Html.EditorFor(model => model.TypeMessage, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                            @Html.ValidationMessageFor(model => model.TypeMessage, "", new { @class = "text-error" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <div class="row text-center marTop-xs">
+                    <input type="submit" value="审核" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/LayDate")
+    @Scripts.Render("~/Scripts/UserTypeAudit")
+}
+

@@ -23,6 +23,10 @@ namespace ShortRent.Web
             this.CreateMap<PersonAdminUpdate,Person>();
             this.CreateMap<PersonAdminEditModel, PersonAdminHumanEditModel>();
             this.CreateMap<Person, PersonAdminHumanEditModel>();
+            this.CreateMap<Person, UserTypeAudit>();
+            this.CreateMap<UserTypeAudit, Person>();
+            this.CreateMap<UserTypeAudit, UserTypeAuditHumanModel>().ForMember(c => c.TypeUser, m => m.MapFrom(w => w.TypeUser == 1 ? "审核通过" : "审核未通过"))
+                .ForMember(c => c.Sex, m => m.MapFrom(w => w.Sex == null ? "保密" : (w.Sex == true ? "男" : "女")));
         }
     }
 }

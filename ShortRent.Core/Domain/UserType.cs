@@ -22,6 +22,14 @@ namespace ShortRent.Core.Domain
         /// </summary>
         public string IdCardBack { get; set; }
         /// <summary>
+        /// 创建者的用户类型0未审核，1审核通过，2审核不通过
+        /// </summary>
+        public int TypeUser { get; set; }
+        /// <summary>
+        /// 用户返回的信息
+        /// </summary>
+        public string TypeMessage { get; set; }
+        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }

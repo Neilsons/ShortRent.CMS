@@ -70,12 +70,14 @@ namespace ShortRent.Service
                 if (pagedIndex == 0 && pagedSize == 0)
                 {
                     models = list.Where(expression.Compile()).ToList();
+                    total = list.Where(expression.Compile()).Count();
                 }
                 else
                 {
                     models = list.Where(expression.Compile()).Skip((pagedIndex - 1) * pagedSize).Take(pagedSize).ToList();
+                    total = list.Where(expression.Compile()).Count();
                 }
-                total = list.Count();
+                
                    
             }
             catch (Exception e)

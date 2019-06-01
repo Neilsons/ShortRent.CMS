@@ -32,7 +32,10 @@ namespace ShortRent.Data
         {
             return Database.ExecuteSqlCommand(sql, parameters);
         }
-        
+        public IEnumerable<T> ExecuteSqlQuery<T>(string sql, params object[] parameters)
+        {
+            return Database.SqlQuery<T>(sql, parameters).AsEnumerable();
+        }
         IDbSet<TEntity> IDbContext.Set<TEntity>()
         {
             return base.Set<TEntity>();

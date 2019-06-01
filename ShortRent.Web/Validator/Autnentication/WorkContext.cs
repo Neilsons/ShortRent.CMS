@@ -26,5 +26,12 @@ namespace ShortRent.Web
                 return new AuthenticationProvider(_personService).GetAutnenticationPerson();
             }
         }
+        public PersonUserType CurrentWebPerson
+        {
+            get
+            {
+                return new AuthenticationProvider(_personService).GetAutnenticationPersonUserType();
+            }
+        }
     }
 }

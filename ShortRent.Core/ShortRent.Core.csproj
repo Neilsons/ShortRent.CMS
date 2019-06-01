@@ -105,6 +105,7 @@
     <Compile Include="Domain\Collect.cs" />
     <Compile Include="Domain\Company.cs" />
     <Compile Include="Domain\CompanyPerTag.cs" />
+    <Compile Include="Domain\Contact.cs" />
     <Compile Include="Domain\Discuss.cs" />
     <Compile Include="Domain\EntityPermission.cs" />
     <Compile Include="Domain\HistoryOperator.cs" />
@@ -119,6 +120,14 @@
     <Compile Include="Domain\PublishMsg.cs" />
     <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\UserType.cs" />
+    <Compile Include="Domain\ViewModel\ManagerEntityPermission.cs" />
+    <Compile Include="Domain\ViewModel\PersonUserType.cs" />
+    <Compile Include="Domain\ViewModel\RecruiterByUserTypePersonModel.cs" />
+    <Compile Include="Domain\ViewModel\RecruiterByViewModel.cs" />
+    <Compile Include="Domain\ViewModel\RecruiterUserTypePersonModel.cs" />
+    <Compile Include="Domain\ViewModel\RecruiterViewModel.cs" />
+    <Compile Include="Domain\ViewModel\UserRole.cs" />
+    <Compile Include="Domain\ViewModel\UserTypeAudit.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IDependencyRegister.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />

@@ -117,6 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BussinessHumanCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="BussinessHumanID" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="BussinessHumanName" xml:space="preserve">
+    <value>行业名称</value>
+  </data>
+  <data name="CompanyHumanModelAddress" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="CompanyHumanModelCompanyImg" xml:space="preserve">
+    <value>公司LOGO</value>
+  </data>
+  <data name="CompanyHumanModelCompanyLicense" xml:space="preserve">
+    <value>营业执照</value>
+  </data>
+  <data name="CompanyHumanModelCompanyMessage" xml:space="preserve">
+    <value>审核的内容</value>
+  </data>
+  <data name="CompanyHumanModelCompanyStatus" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="CompanyHumanModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="CompanyHumanModelEmployeesCount" xml:space="preserve">
+    <value>员工数量</value>
+  </data>
+  <data name="CompanyHumanModelEstablishTime" xml:space="preserve">
+    <value>注册时间</value>
+  </data>
+  <data name="CompanyHumanModelIntroduction" xml:space="preserve">
+    <value>公司简介</value>
+  </data>
+  <data name="CompanyHumanModelName" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="CompanyHumanModelScore" xml:space="preserve">
+    <value>信用积分</value>
+  </data>
   <data name="IconHumanContent" xml:space="preserve">
     <value>内容</value>
   </data>
@@ -245,5 +287,32 @@
   </data>
   <data name="RoleHumanModelType" xml:space="preserve">
     <value>用户类型</value>
+  </data>
+  <data name="UserTypeAuditHumanModelBirthday" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="UserTypeAuditHumanModelCreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="UserTypeAuditHumanModelCreditScore" xml:space="preserve">
+    <value>信用积分</value>
+  </data>
+  <data name="UserTypeAuditHumanModelIdCard" xml:space="preserve">
+    <value>身份证号</value>
+  </data>
+  <data name="UserTypeAuditHumanModelName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="UserTypeAuditHumanModelPerOrder" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="UserTypeAuditHumanModelSex" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="UserTypeAuditHumanModelTypeMessage" xml:space="preserve">
+    <value>回执信息</value>
+  </data>
+  <data name="UserTypeAuditHumanModelTypeUser" xml:space="preserve">
+    <value>审核状态</value>
   </data>
 </root>

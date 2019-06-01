@@ -20,6 +20,7 @@ namespace ShortRent.Web.Controllers
     {
         #region Field 
         private readonly IPersonService _personService;
+        private readonly IRoleService _roleService;
         private readonly IHistoryOperatorService _historyOperatorService;
         private readonly IAutnenticationProvider _authenticationProvider;
         //autoMapper
@@ -29,13 +30,15 @@ namespace ShortRent.Web.Controllers
         #endregion
 
         #region Construction
-        public PersonController(IPersonService personService
+        public PersonController(IPersonService personService,
+            IRoleService roleService
             ,IMapper mapper,
             MapperConfiguration mapperConfiguration,ILogger logger
             ,IHistoryOperatorService historyOperator
             ,IAutnenticationProvider autnentication)
         {
             this._personService = personService;
+            this._roleService = roleService;
             this._historyOperatorService = historyOperator;
             this._authenticationProvider = autnentication;
             this._mapper = mapper;
@@ -404,6 +407,60 @@ namespace ShortRent.Web.Controllers
                 throw e;
             }
             return Json(new AjaxJson() { HttpCodeResult=(int)HttpStatusCode.OK,Message="修改密码成功！",Url=Url.Action(nameof(PersonController.PersonalData)) });
+        }
+
+        public ActionResult AssignRoles(int id)
+        {
+            ViewBag.Title = "分配角色";
+            ViewBag.Content = "后台用户管理";
+            try
+            {
+                List<SelectListItem> selectListItems = new List<SelectListItem>();
+                var models = _personService.GetPersonRole(id);
+                var list = _roleService.GetRoles().Where(t=>t.Type);
+                foreach(var li in list)
+                {
+                    selectListItems.Add(new SelectListItem() {
+                        Selected = models.FirstOrDefault(c => c.ID == li.ID) == null ? false : true,
+                        Text = li.Name,
+                        Value = li.ID.ToString()
+                    });
+                }
+                ViewBag.ID = id;
+                return View(new SelectList(selectListItems));
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("显示角色出错",e);
+                throw e;
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AssignRoles(int personId,List<int> roleIds)
+        {
+            try
+            {
+                _personService.DeleteUserRole(personId);
+                foreach (var id in roleIds)
+                {
+                    if (roleIds.Count() > 0)
+                    {
+                        UserRole entity = new UserRole()
+                        {
+                            PersonId=personId,
+                            RoleId=id
+                        };
+                        _personService.CreateUserRole(entity);
+                    }
+                }
+                return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "分配角色成功", Url = Url.Action(nameof(PersonController.List)) });
+            }
+            catch (Exception e)
+            {
+                _logger.Debug("提交创建信息出错", e);
+                return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "系统出错", Url = Url.Action(nameof(SystemController.InternalServerError)) });
+            }
         }
         private Dictionary<string,string> UploadImg(HttpPostedFileBase file,string dir)
         {

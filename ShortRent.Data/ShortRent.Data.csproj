@@ -68,6 +68,7 @@
     <Compile Include="ShortRentMap\CollectMap.cs" />
     <Compile Include="ShortRentMap\CompanyMap.cs" />
     <Compile Include="ShortRentMap\CompanyPerTagMap.cs" />
+    <Compile Include="ShortRentMap\ContactMap.cs" />
     <Compile Include="ShortRentMap\DiscussMap.cs" />
     <Compile Include="ShortRentMap\EntityPermissionMap.cs" />
     <Compile Include="ShortRentMap\HistoryOperatorMap.cs" />

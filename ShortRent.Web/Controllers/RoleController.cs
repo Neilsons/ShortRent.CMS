@@ -19,6 +19,8 @@ namespace ShortRent.Web.Controllers
     {
         #region Fields
         private readonly IRoleService _roleService;
+        private readonly IEntityPermissionService _entityPermissionService;
+        private readonly IManagerService _managerService;
         private readonly IPermissionService _permissionService;
         private readonly IHistoryOperatorService _historyOperatorService;
         private readonly IMapper _mapper;
@@ -27,10 +29,19 @@ namespace ShortRent.Web.Controllers
         #endregion
 
         #region Contruction
-        public RoleController(IRoleService roleService,IHistoryOperatorService historyOperatorService,IMapper mapper,MapperConfiguration mapperConfig,ILogger logger,IPermissionService permissionService)
+        public RoleController(IRoleService roleService,
+            IHistoryOperatorService historyOperatorService,
+            IMapper mapper,
+            MapperConfiguration mapperConfig,
+            ILogger logger,
+            IPermissionService permissionService,
+            IEntityPermissionService entityPermissionService,
+            IManagerService managerService)
         {
             this._roleService = roleService;
             this._permissionService = permissionService;
+            this._entityPermissionService = entityPermissionService;
+            this._managerService = managerService;
             this._historyOperatorService = historyOperatorService;
             this._mapper = mapper;
             this._mapperConfig = mapperConfig;
@@ -206,6 +217,77 @@ namespace ShortRent.Web.Controllers
                 throw e;
             }
             return View("Create", model);
+        }
+        /// <summary>
+        /// 分配权限
+        /// </summary>
+        /// <param name="id">角色ID</param>
+        /// <returns></returns>
+        public ActionResult Privileges(int id)
+        {
+            ViewBag.Title = "分配权限";
+            ViewBag.Content = "角色管理";
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            try
+            {
+                List<EntityPermission> entities = _entityPermissionService.GetEntityPermissions().Where(c=>c.RoleInfoId==id).ToList();
+                var models = _managerService.GetManagerGroup();
+                foreach(var group in models)
+                {
+                    if(group.Key==null)
+                    {
+                        continue;
+                    }
+                    string name = _managerService.GetManager(group.Key).Name;
+                    var selectListGroup = new SelectListGroup { Name = name };
+                    selectListItems.AddRange(group.Select(s => new SelectListItem() {
+                        Group = selectListGroup,
+                        Selected =entities.FirstOrDefault(w=>w.EntityId==s.ID)==null?false:true,
+                        Text=s.Name,
+                        Value=s.ID.ToString() 
+                    }));
+                }
+                ViewBag.ID = id;
+                return View(new SelectList(selectListItems));
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("分配权限信息出错！",e);
+                throw e;
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Privileges(List<int> permissionIds,int roleId)
+        {            
+            try
+            {
+                List<EntityPermission> permission = _entityPermissionService.GetEntityPermissions().Where(c=>c.RoleInfoId==roleId).ToList();
+                foreach(var per in permission)
+                {
+                    _entityPermissionService.DeleteEntity(per);
+                }
+                foreach (var id in permissionIds)
+                {
+                    if (permissionIds.Count() > 0)
+                    {
+                        EntityPermission entity = new EntityPermission()
+                        {
+                            EntityId = id,
+                            Name = "Role",
+                            RoleInfoId = roleId,
+                            CreateTime = DateTime.Now
+                        };
+                        _entityPermissionService.CreateEntity(entity);
+                    }
+                }
+                return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.OK, Message = "权限创建成功", Url = Url.Action(nameof(RoleController.List)) });
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("提交创建信息出错",e);
+                return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Message = "系统出错", Url = Url.Action(nameof(SystemController.InternalServerError)) });
+            }
         }
         #endregion
 

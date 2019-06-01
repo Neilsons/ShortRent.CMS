@@ -10,6 +10,7 @@ using ShortRent.Core.Domain;
 using ShortRent.Core.Log;
 using ShortRent.Core;
 using System.Linq.Expressions;
+using System.Data.SqlClient;
 
 namespace ShortRent.Service
 {
@@ -17,19 +18,23 @@ namespace ShortRent.Service
     {
         #region Field
         private readonly IRepository<Person> _personRepository;
+        private readonly IRepository<UserType> _userTypeRepository;
         private readonly ICacheManager _cacheManager;
         private readonly ILogger _logger;
         private readonly ApplicationConfig _config;
         //缓存中的key值
         private const string PersonsCacheKey = nameof(PersonService) + nameof(Person);
         private const string HistoryOperatorCacheKey = nameof(PersonService) + nameof(HistoryOperator);
+        private const string PersonUserTypeCacheKey = nameof(PersonService) + nameof(UserTypeService);
         #endregion
 
         #region Contruction
         public PersonService(IRepository<Person> personRepository,
+            IRepository<UserType> userTypeRrepository,
             ICacheManager cacheManager,ILogger logger,ApplicationConfig config)
         {
             _personRepository = personRepository;
+            _userTypeRepository = userTypeRrepository;
             _cacheManager = cacheManager;
             _logger = logger;
             _config = config;
@@ -41,11 +46,14 @@ namespace ShortRent.Service
         {
             _personRepository.Insert(person);
             _cacheManager.Remove(PersonsCacheKey);
+            _cacheManager.Remove(PersonUserTypeCacheKey);
         }
 
         public void DeletePerson(Person person)
         {
             _personRepository.Delete(person);
+            _cacheManager.Remove(PersonsCacheKey);
+            _cacheManager.Remove(PersonUserTypeCacheKey);
         }
         public List<Person> GetTypePerson(int pageSize, int pageNumber,string AdminName,int? Type, out int total)
         {
@@ -189,6 +197,32 @@ namespace ShortRent.Service
             }
             return person;
         }
+        /// <summary>
+        /// 根据姓名得到相同的用户
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public  Person GetPersonByName(string name)
+        {
+            Person person = null;
+            try
+            {
+                if (_cacheManager.Contains(PersonsCacheKey))
+                {
+                    person = _cacheManager.Get<List<Person>>(PersonsCacheKey).Where(c => c.Name==name&&c.Type==false).FirstOrDefault();
+                }
+                else
+                {
+                    person = _personRepository.Entitys.Where(c => c.Name== name&&c.Type == false).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.Error("判断是否有相同的用户", e);
+                throw e;
+            }
+            return person;
+        }
         public List<HistoryOperator> GetPersonHistoryOperator(int personId)
         {
             List<HistoryOperator> list = null;
@@ -221,6 +255,112 @@ namespace ShortRent.Service
         {
             _personRepository.Update(person);
             _cacheManager.Remove(PersonsCacheKey);
+            _cacheManager.Remove(PersonUserTypeCacheKey);
+        }
+        public List<PersonUserType> GetPersonUserType()
+        {
+            List<PersonUserType> list = null;
+            try
+            {
+                if (_cacheManager.Contains(PersonUserTypeCacheKey))
+                {
+                    var cache = _cacheManager.Get<List<PersonUserType>>(PersonUserTypeCacheKey);
+                    list = cache;
+                }
+                else
+                {
+                    var models = from p in _personRepository.Entitys
+                                 join u in _userTypeRepository.Entitys on p.ID equals u.PerId
+                                 where p.Type==false
+                                 select new PersonUserType()
+                                 {
+                                     ID = p.ID,
+                                     Name = p.Name,
+                                     Birthday = p.Birthday,
+                                     CreditScore = p.CreditScore,
+                                     IdCard = p.IdCard,
+                                     PerImage = p.PerImage,
+                                     PerOrder = p.PerOrder,
+                                     Sex = p.Sex,
+                                     TypeUser = u.TypeUser,
+                                     TypeMessage=u.TypeMessage,
+                                     CreateTime = p.CreateTime,
+                                     IsDelete=p.IsDelete,
+                                     IsReduit=u.Type,
+                                     PassWord=p.PassWord,
+                                     PersonDetail=p.PersonDetail,
+                                     Type=p.Type,
+                                     Position=p.Position,
+                                     Qq=p.Qq,
+                                     WeChat=p.WeChat,
+                                     UserTypeId=u.ID
+                                 };
+                    list = models.OrderByDescending(c => c.PerOrder).ThenByDescending(c => c.CreateTime).ToList();
+                    if (list.Any())
+                    {
+                        int cacheTime = GetTimeFromConfig((int)CacheTimeLev.lev1);
+                        _cacheManager.Set(PersonUserTypeCacheKey, list, TimeSpan.FromMinutes(cacheTime));
+                    }
+                    else
+                    {
+                        list = new List<PersonUserType>();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.Error("获取前台人员列表出错", e);
+                throw e;
+            }
+            return list;
+        }
+        public List<Role> GetPersonRole(int id)
+        {
+            List<Role> roles = null;
+            try
+            {
+                var persons = _personRepository.IncludeEntitys("Roles");
+                roles = persons.FirstOrDefault(c=>c.ID==id).Roles.ToList();
+            }
+            catch (Exception e)
+            {
+                _logger.Debug("获得某个用户的所有角色", e);
+                throw e;
+            }
+            return roles;
+        }
+        public void CreateUserRole(UserRole userRole)
+        {
+            try
+            {
+                SqlParameter[] sqls = new SqlParameter[]
+                 {
+                     new SqlParameter("@personId",userRole.PersonId),
+                     new SqlParameter("@RoleId",userRole.RoleId)
+                 };
+                _personRepository.SqlCommand<UserType>("INSERT INTO UserRole Values(@personId,@RoleId)",sqls);
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("创建用户角色信息出现错误！",e);
+                throw e;
+            }
+        }
+        public void DeleteUserRole(int id)
+        {
+            try
+            {
+                SqlParameter[] sqls = new SqlParameter[]
+                 {
+                     new SqlParameter("@personId",id)
+                 };
+                _personRepository.SqlCommand<UserType>("Delete From UserRole WHERE PersonId=@personId", sqls);
+            }
+            catch (Exception e)
+            {
+                _logger.Debug("创建用户角色信息出现错误！", e);
+                throw e;
+            }
         }
         #endregion
 

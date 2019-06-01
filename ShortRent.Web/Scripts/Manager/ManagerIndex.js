@@ -86,7 +86,7 @@ function IsActivity(value, row, index) {
 }
 function Editor(value, row, index) {
     var result = "";
-    result += "<a href='/Manager/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
+    result += "<a href='/Manager/Edit/" + value + "'>编辑</a>";
     return result;
 }
 function Controller(value,row,index) {

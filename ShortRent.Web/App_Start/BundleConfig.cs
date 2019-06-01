@@ -21,7 +21,6 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new StyleBundle("~/Styles/jqueryTreeGrid").Include("~/Content/bootstrapTableTreeGrid/jquery.treegrid.min.css"));
             bundles.Add(new StyleBundle("~/Styles/ColorPicker").Include("~/Content/bootstrapColorPicker/css/bootstrap-colorpicker.min.css"));
             bundles.Add(new StyleBundle("~/Styles/IcheckSkins").Include("~/Content/Icheck/skins/square/_all.css"));
-
             //异步加载进度指示条
             bundles.Add(new StyleBundle("~/Styles/Pace").Include("~/Content/pace/pace.min.css"));
             //日志详情的自定义css
@@ -60,6 +59,7 @@ namespace ShortRent.Web.App_Start
             //role用到的js 自定义的开始
             bundles.Add(new ScriptBundle("~/Scripts/RoleIndex").Include("~/Scripts/Role/RoleIndex.js"));
             bundles.Add(new ScriptBundle("~/Scripts/RoleCreateOrEdit").Include("~/Scripts/Role/RoleCreateOrEdit.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/PrivilegesIndex").Include("~/Scripts/Role/PrivilegesIndex.js"));
             //表格导出
             bundles.Add(new ScriptBundle("~/Scripts/BootstrapTableExport", "https://cdn.bootcss.com/bootstrap-table/1.14.2/extensions/export/bootstrap-table-export.js").Include("~/Scripts/extensions/export/bootstrap-table-export.js"));
             bundles.Add(new ScriptBundle("~/Scripts/TableExport").Include("~/Scripts/tableexport-1.10.3.js"));
@@ -79,6 +79,7 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/AdminEdit").Include("~/Scripts/Person/AdminEdit.js"));
             //后台 用户列表用到的js
             bundles.Add(new ScriptBundle("~/Scripts/AdminIndex").Include("~/Scripts/Person/PersonIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/AssignRolesIndex").Include("~/Scripts/Person/AssignRolesIndex.js"));
             //后台 修改用户密码用到的js
             bundles.Add(new ScriptBundle("~/Scripts/PersonEditPassWord").Include("~/Scripts/Person/EditPersonPassWord.js"));
             //后台 用户创建或者编辑用到的js
@@ -92,8 +93,26 @@ namespace ShortRent.Web.App_Start
             bundles.Add(new ScriptBundle("~/Scripts/PublishTags").Include("~/Scripts/CompanyPerTags/PublishTags.js"));
             bundles.Add(new ScriptBundle("~/Scripts/PublishCreateOrEdit").Include("~/Scripts/CompanyPerTags/PublishTagsCreateOrEdit.js"));
 
+            //后台 公司内容的列表
+            bundles.Add(new ScriptBundle("~/Scripts/CompanyIndex").Include("~/Scripts/Company/CompanyIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/CompanyAudit").Include("~/Scripts/Company/CompanyAudit.js"));
+            //后台 被招聘者列表
+            bundles.Add(new ScriptBundle("~/Scripts/UserTypeIndex").Include("~/Scripts/UserType/UserTypeIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/UserTypeAudit").Include("~/Scripts/UserType/UserTypeAudit.js"));
 
+            //后台 招聘者列表
+            bundles.Add(new ScriptBundle("~/Scripts/ReduitUserType").Include("~/Scripts/UserType/ReduitUserType.js"));
 
+            //后台 联系我们
+            bundles.Add(new ScriptBundle("~/Scripts/ContactIndex").Include("~/Scripts/Contact/ContactIndex.js"));
+
+            //后台 行业
+            bundles.Add(new ScriptBundle("~/Scritps/BussinessIndex").Include("~/Scripts/Bussiness/BussinessIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/BussinessCreate").Include("~/Scripts/Bussiness/BussinessCreate.js"));
+
+            //后台 发布消息
+            bundles.Add(new ScriptBundle("~/Scripts/RecruiterByListIndex").Include("~/Scripts/PublishMsg/RecruiterByListIndex.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/RecruiterListIndex").Include("~/Scripts/PublishMsg/RecruiterListIndex.js"));
 
 
 
@@ -164,6 +183,14 @@ namespace ShortRent.Web.App_Start
             //注册使用的js 
             bundles.Add(new ScriptBundle("~/Scripts/Foreground/JquerySteps").Include("~/Content/foreground/js/jquery.steps.min.js"));
             bundles.Add(new ScriptBundle("~/Scripts/Foreground/WebRegister").Include("~/Content/foreground/js/Login/WebRegister.js"));
+
+            //联系我们使用的js
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/WebContact").Include("~/Content/foreground/js/Web/WebContact.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Foreground/WebPublishMsgCreate").Include("~/Content/foreground/js/Web/WebPublishMsgCreate.js"));
+
+
+            //富文本编辑器的用法
+            bundles.Add(new ScriptBundle("~/Scripts/wangEditor").Include("~/Content/wangEditor-3.1.1/release/wangEditor.min.js"));
         }
     }
 }

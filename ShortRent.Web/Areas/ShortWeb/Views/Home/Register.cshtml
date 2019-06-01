@@ -1,10 +1,12 @@
-﻿
+﻿@model WebRegister
 @{
     ViewBag.Title = "注册";
     Layout = "~/Areas/ShortWeb/Views/Shared/Master.cshtml";
 }
 @section Styles{
     @Styles.Render("~/Content/Foreground/JquerySteps")
+    @Styles.Render("~/Content/jQuery-File-Upload")
+    @Styles.Render("~/Styles/LayAlert")
 }
 <section id="inner-banner">
 
@@ -33,38 +35,98 @@
                 <div class="col-sm-12">
                     <div class="box">
                         <div class="box-body">
-                            <form id="form" action="form_wizard.html#" class="wizard-big wizard clearfix" role="application" novalidate="novalidate">
+                            @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "wizard-big wizard clearfix", role = "application", novalidate = "novalidate", ID = "form", Name = "form" }))
+                            {
+                                @Html.AntiForgeryToken();
                                 <div>
-                                    <h3>Account</h3>
+                                    <h3>基本信息</h3>
                                     <section>
-                                    <div class="row">
+                                        <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
                                                             <div class="row">
-                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                                @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-error" })
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
                                                             <div class="row">
-                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                                @Html.TextBoxFor(model => model.Birthday, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-error" })
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
+                                                        @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
                                                             <div class="row">
-                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                                <div class="col-md-6 col-xs-6 text-center">
+                                                                    <label><input id="sex1" name="Sex" value="True" type="radio" />&nbsp;&nbsp;男</label>
+                                                                </div>
+                                                                <div class="col-md-6 col-xs-6 text-center">
+                                                                    <label><input id="sex2" name="Sex" value="False" type="radio" />&nbsp;&nbsp;女</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.IdCard, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.IdCard, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.IdCard, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.Qq, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.Qq, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.Qq, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.WeChat, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.WeChat, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.WeChat, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.PerImage, htmlAttributes: new { @class = "control-label  col-md-2 text-right" })
+                                                        <div class="col-xs-12 col-md-2">
+                                                            <span class="btn btn-success fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>选择图片</span>
+                                                                <input type="file" name="headPhoto" onchange="ShowImage('headPhoto')">
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row clear-margin ">
+                                                                <img id="headPhoto" class="images-response" />
+                                                                <input name="PerImage" type="hidden" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -72,36 +134,21 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <h3 class="col-md-6">Profile</h3>
+                                    <h3 class="col-md-6">账号类型</h3>
                                     <section>
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group col-sm-6">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        @Html.LabelFor(model => model.IsRecruit, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
                                                             <div class="row">
-                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">密码 *</label>
-                                                        <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
-                                                        <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                                <div class="col-md-6 col-xs-6 text-center">
+                                                                    <label><input id="Recruit1" name="IsRecruit" value="True" type="radio" />&nbsp;&nbsp;被招聘者</label>
+                                                                </div>
+                                                                <div class="col-md-6 col-xs-6 text-center">
+                                                                    <label><input id="Recruit2" name="IsRecruit" value="False" type="radio" />&nbsp;&nbsp;招聘者</label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -109,36 +156,130 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <h3 class="col-md-6">Hints</h3>
+                                    <h3 class="col-md-6">专属信息</h3>
                                     <section>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="form-group col-sm-6">
+                                                <div class="form-group col-md-12 recruiterBy">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                        @Html.LabelFor(model => model.IdCardFront, htmlAttributes: new { @class = "control-label  col-md-2 text-right" })
+                                                        <div class="col-xs-12 col-md-2">
+                                                            <span class="btn btn-success fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>选择图片</span>
+                                                                <input type="file" name="idCardFront" onchange="ShowImage('idCardFront')">
+                                                            </span>
+                                                        </div>
                                                         <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                            <div class="row clear-margin ">
+                                                                <img id="idCardFront" class="images-response" />
+                                                                <input name="IdCardFront" type="hidden" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-6">
+
+                                                <div class="form-group col-md-12 recruiterBy">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                        @Html.LabelFor(model => model.IdCardBack, htmlAttributes: new { @class = "control-label  col-md-2 text-right" })
+                                                        <div class="col-xs-12 col-md-2">
+                                                            <span class="btn btn-success fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>选择图片</span>
+                                                                <input type="file" name="idCardBack" onchange="ShowImage('idCardBack')">
+                                                            </span>
+                                                        </div>
                                                         <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                            <div class="row clear-margin ">
+                                                                <img id="idCardBack" class="images-response" />
+                                                                <input name="IdCardBack" type="hidden" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-sm-6">
+
+                                                <div class="form-group col-sm-6 recruiter">
                                                     <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
+                                                        @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
                                                             <div class="row">
-                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
+                                                                @Html.TextBoxFor(model => model.CompanyName, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 recruiter">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.EmployeesCount, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.EmployeesCount, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.EmployeesCount, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 recruiter">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.EstablishTime, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.EstablishTime, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.EstablishTime, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 recruiter">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row">
+                                                                @Html.TextBoxFor(model => model.Address, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-error" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group col-md-12 recruiter">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.CompanyImg, htmlAttributes: new { @class = "control-label  col-md-2 text-right" })
+                                                        <div class="col-xs-12 col-md-2">
+                                                            <span class="btn btn-success fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>选择图片</span>
+                                                                <input type="file" name="companyImg" onchange="ShowImage('companyImg')">
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row clear-margin ">
+                                                                <img id="companyImg" class="images-response" />
+                                                                <input name="CompanyImg" type="hidden" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-12 recruiter">
+                                                    <div class="row text-left">
+                                                        @Html.LabelFor(model => model.CompanyLicense, htmlAttributes: new { @class = "control-label  col-md-2 text-right" })
+                                                        <div class="col-xs-12 col-md-2">
+                                                            <span class="btn btn-success fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>选择图片</span>
+                                                                <input type="file" name="companyLicense" onchange="ShowImage('companyLicense')">
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-8">
+                                                            <div class="row clear-margin ">
+                                                                <img id="companyLicense" class="images-response" />
+                                                                <input name="CompanyLicense" type="hidden" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,45 +287,41 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <h3 class="col-md-6">Finish</h3>
+                                    <h3 class="col-md-6">创建所属密码</h3>
                                     <section>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="form-group col-sm-6">
-                                                    <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">用户名 *</label>
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="userName" name="userName" type="text" class="form-control required" aria-required="true">
+                                                            <div class="row clear-margin">
+                                                                @Html.PasswordFor(model => model.PassWord, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-error" })
                                                             </div>
+
                                                         </div>
                                                     </div>
+
                                                 </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">密码 *</label>
+                                                <div class="form-group col-md-6">
+                                                    <div class="row">
+                                                        @Html.LabelFor(model => model.Confirm, htmlAttributes: new { @class = "control-label col-md-4 text-right" })
                                                         <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="password" name="password" type="text" class="form-control required" aria-required="true">
+                                                            <div class="row clear-margin">
+                                                                @Html.PasswordFor(model => model.Confirm, htmlAttributes: new { @class = "form-control col-md-8" })
+                                                                @Html.ValidationMessageFor(model => model.Confirm, "", new { @class = "text-error" })
                                                             </div>
+
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group col-sm-6">
-                                                    <div class="row text-left">
-                                                        <label class="control-label col-md-4 text-right">确认密码 *</label>
-                                                        <div class="col-xs-12 col-md-8">
-                                                            <div class="row">
-                                                                <input id="confirm" name="confirm" type="text" class="form-control required" aria-required="true">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </section>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -192,6 +329,8 @@
             </div>
 
         </div>
+
+
 
     </section>
 
@@ -208,5 +347,10 @@
     @Scripts.Render("~/Scripts/Foreground/JquerySteps")
     @Scripts.Render("~/Scripts/Jquery-Validate")
     @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
+    @Scripts.Render("~/Scripts/ValidationExtention-Bootstrap")
+    @Scripts.Render("~/Scripts/LayDate")
+    @Scripts.Render("~/Scripts/LayAlert")
+    @Scripts.Render("~/Scripts/Jquery-Form")
     @Scripts.Render("~/Scripts/Foreground/WebRegister")
+}
 }

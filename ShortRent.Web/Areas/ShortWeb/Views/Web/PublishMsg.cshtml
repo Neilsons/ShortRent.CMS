@@ -1,0 +1,121 @@
+﻿@model PublishCreateModel
+@{
+    Layout = "~/Areas/ShortWeb/Views/Shared/Master.cshtml";
+}
+<div id="main">
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>发布职位</h1>
+
+        </div>
+
+    </section>
+
+    <section class="resum-form padd-tb">
+
+        <div class="container">
+
+            @using (Ajax.BeginForm("PublishMsg", "Web", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "SuccessPublishMsg", OnBegin = "BeginPublishMsg" }))
+            {
+                @Html.AntiForgeryToken()
+                
+            <div class="row">
+
+                <div class="form-group col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.Address, htmlAttributes: new { @class = "form-control", placeholder = "地址" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-error" })
+
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.Phone, htmlAttributes: new { @class = "form-control", placeholder = "电话" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-error" })
+
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control", placeholder = "邮箱" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-error" })
+
+                </div>
+
+                <div class="form-group  col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.Currency, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.Currency, htmlAttributes: new { @class = "form-control", placeholder = "币种类型如￥" })
+                    @Html.ValidationMessageFor(model => model.Currency, "", new { @class = "text-error" })
+
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.StartSection, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.StartSection, htmlAttributes: new { @class = "form-control", placeholder = "钱开始区间" })
+                    @Html.ValidationMessageFor(model => model.StartSection, "", new { @class = "text-error" })
+
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+
+                    @Html.LabelFor(model => model.EndSection, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.EndSection, htmlAttributes: new { @class = "form-control", placeholder = "钱结束区间" })
+                    @Html.ValidationMessageFor(model => model.EndSection, "", new { @class = "text-error" })
+                </div>
+
+                <div class="form-group col-md-6 col-sm-6">
+                    @Html.LabelFor(model => model.Decription, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.TextBoxFor(model => model.Decription, htmlAttributes: new { @class = "form-control", placeholder = "描述信息" })
+                    @Html.ValidationMessageFor(model => model.Decription, "", new { @class = "text-error" })
+                </div>
+                <div class="form-group col-md-6 col-sm-6">
+                    @Html.LabelFor(model => model.BusinessTypeId, htmlAttributes: new { @class = "control-label" })
+
+                    @Html.DropDownList("BusinessTypeId", ViewBag.Bussiness as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.BusinessTypeId, "", new { @class = "text-error" })
+                </div>
+                <div class="form-group col-md-12">
+                    @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label" })
+                    <div id="Editor"></div>
+                    @Html.HiddenFor(model => model.Detail)
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="btn-col">
+                        <input type="submit" value="发 布">
+                    </div>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+    </section>
+</div>
+@section Scripts{
+    @Scripts.Render("~/Scripts/wangEditor")
+    @Scripts.Render("~/Scripts/Jquery-Validate")
+    @Scripts.Render("~/Scripts/Jquery-Validate-unobtrusive")
+    @Scripts.Render("~/Scripts/ValidationExtention-Bootstrap")
+    @Scripts.Render("~/Scripts/LayAlert")
+    @Scripts.Render("~/Scripts/Pace")
+    @Scripts.Render("~/Scripts/Jquery-Ajax-unobtrusive")
+    @Scripts.Render("~/Scripts/Foreground/WebPublishMsgCreate")
+}

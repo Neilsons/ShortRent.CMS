@@ -40,16 +40,26 @@ namespace ShortRent.Data.Migrations
                 new Role() { Name = "前台招聘用户", Type = false, CreateTime = DateTime.Now }
                 );
             context.Managers.AddOrUpdate(
-                new Manager() {ID=1, Name = "系统管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-birthday-cake", Color = "#ef5350", Activity = true, CreateTime = DateTime.Now, Pid = null },
-                new Manager() { ID = 7, Name = "历史操作管理", ActionName = "List", ControllerName = "HistoryOperator", ClassIcons = "fa fa-address-book-o", Color = "#ce93d8", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 8, Name = "图标管理", ActionName = "List", ControllerName = "IconsInfo", ClassIcons = "fa fa-apple", Color = "#ea80fc", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 9, Name = "介绍信息管理", ActionName = "List", ControllerName = "PerOrComIntroGuidance", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 2, Name = "日志管理", ActionName = "List", ControllerName = "LogInfo", ClassIcons = "fa fa-facebook", Color = "#f8bbd0", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 2, Name = "标签管理", ActionName = "List", ControllerName = "CompanyPerTags", ClassIcons = "fa fa-facebook", Color = "#f8bbd0", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() {ID=3, Name = "菜单管理", ActionName = "List", ControllerName = "Manager", ClassIcons = "fa fa-address-book-o", Color = "#ce93d8", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 4, Name = "角色管理", ActionName = "List", ControllerName = "Role", ClassIcons = "fa fa-apple", Color = "#ea80fc", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
-                new Manager() { ID = 5, Name = "用户管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = null },
-                new Manager() { ID = 6, Name = "后台用户", ActionName = "List", ControllerName = "Person", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 5 }
+                new Manager() {ID=1, Name = "信息管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-birthday-cake", Color = "#ef5350", Activity = true, CreateTime = DateTime.Now, Pid = null },
+                new Manager() { ID = 2, Name = "历史操作管理", ActionName = "List", ControllerName = "HistoryOperator", ClassIcons = "fa fa-address-book-o", Color = "#ce93d8", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID =3, Name = "图标管理", ActionName = "List", ControllerName = "IconsInfo", ClassIcons = "fa fa-apple", Color = "#ea80fc", Activity = true, CreateTime = DateTime.Now, Pid = 15 },
+                new Manager() { ID = 4, Name = "介绍信息管理", ActionName = "List", ControllerName = "PerOrComIntroGuidance", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID = 5, Name = "日志管理", ActionName = "List", ControllerName = "LogInfo", ClassIcons = "fa fa-facebook", Color = "#f8bbd0", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID = 6, Name = "标签管理", ActionName = "List", ControllerName = "CompanyPerTags", ClassIcons = "fa fa-facebook", Color = "#f8bbd0", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() {ID=7, Name = "菜单管理", ActionName = "List", ControllerName = "Manager", ClassIcons = "fa fa-address-book-o", Color = "#ce93d8", Activity = true, CreateTime = DateTime.Now, Pid = 15 },
+                new Manager() { ID = 8, Name = "角色管理", ActionName = "List", ControllerName = "Role", ClassIcons = "fa fa-apple", Color = "#ea80fc", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID = 9, Name = "后台用户管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = null },
+                new Manager() { ID = 10, Name = "后台用户", ActionName = "List", ControllerName = "Person", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 9 },
+                new Manager() { ID=11,Name="前台用户管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = null },
+                new Manager() { ID = 12, Name = "公司管理", ActionName = "List", ControllerName = "Company", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 11 },
+                new Manager() { ID = 13, Name = "被招聘者管理", ActionName = "List", ControllerName = "UserType", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 11 },
+                new Manager() { ID=14,Name="招聘者管理",ActionName= "ReduitList", ControllerName="UserType",ClassIcons= "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 11 },
+                new Manager() { ID = 15, Name = "系统管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid =null },
+                new Manager() { ID = 16, Name = "联系信息管理", ActionName = "List", ControllerName = "Contact", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID = 17, Name = "行业管理", ActionName = "List", ControllerName = "Bussiness", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 1 },
+                new Manager() { ID = 18, Name = "发布信息管理", ActionName = "", ControllerName = "", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = null },
+                new Manager() { ID = 19, Name = "被招聘者管理", ActionName = "RecruiterByList", ControllerName = "PublishMsg", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 18 },
+                 new Manager() { ID = 20, Name = "招聘者管理", ActionName = "RecruiterList", ControllerName = "PublishMsg", ClassIcons = "fa fa-adjust", Color = "#c2185b", Activity = true, CreateTime = DateTime.Now, Pid = 18 }
                 );
             context.IconsInfos.AddOrUpdate(
                 new IconsInfo { ID=1,prefix="fa",Content= "fa-birthday-cake" },

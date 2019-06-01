@@ -34,6 +34,21 @@ namespace ShortRent.Web
             }
             return null;
         }
+        public PersonUserType GetAutnenticationPersonUserType()
+        {
+            HttpContext httpContext = HttpContext.Current;
+            if (httpContext != null && httpContext.Request != null && httpContext.Request.IsAuthenticated && (httpContext.User.Identity is FormsIdentity))
+            {
+                FormsIdentity formsIdentity = (FormsIdentity)httpContext.User.Identity;
+                bool Type =Convert.ToBoolean(formsIdentity.Ticket.Name);
+                string userData = formsIdentity.Ticket.UserData;
+                if (!string.IsNullOrEmpty(userData))
+                {
+                    return _personService.GetPersonUserType().Where(c => c.IsReduit == Type&&c.ID == Convert.ToInt32(userData)).SingleOrDefault();
+                }
+            }
+            return null;
+        }
         //登入
         public void SignIn(Person model, bool readmeMe)
         {
@@ -43,6 +58,20 @@ namespace ShortRent.Web
             string encryptedTicket = FormsAuthentication.Encrypt(ticket);
             var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) { HttpOnly=true};
             if(ticket.IsPersistent)
+            {
+                cookie.Expires = ticket.Expiration;
+            }
+            //添加到当前相应中去
+            HttpContext.Current.Response.Cookies.Add(cookie);
+        }
+        public void SignIn(PersonUserType model, bool readmeMe)
+        {
+            string userData = model.ID.ToString();
+            var ticket = new FormsAuthenticationTicket(1, model.IsReduit.ToString(), DateTime.Now, DateTime.Now.AddDays(1), readmeMe, userData);
+            //加密票据
+            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) { HttpOnly = true };
+            if (ticket.IsPersistent)
             {
                 cookie.Expires = ticket.Expiration;
             }

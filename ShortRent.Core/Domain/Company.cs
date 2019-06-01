@@ -53,6 +53,14 @@ namespace ShortRent.Core.Domain
        /// </summary>
        [DefaultValue(false)]
        public bool IsDelete { get; set; }
+        /// <summary>
+        /// 公司状态 0 未审核，1审核通过，2审核未通过。
+        /// </summary>
+        public int CompanyStatus { get; set; }
+        /// <summary>
+        /// 审核的信息
+        /// </summary>
+        public string CompanyMessage { get; set; }
 
        public virtual ICollection<UserType> UserTypes { get; set; } 
     }

@@ -61,6 +61,132 @@ namespace ShortRent.Resource.HumanData {
         }
         
         /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string BussinessHumanCreateTime {
+            get {
+                return ResourceManager.GetString("BussinessHumanCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string BussinessHumanID {
+            get {
+                return ResourceManager.GetString("BussinessHumanID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 行业名称 的本地化字符串。
+        /// </summary>
+        public static string BussinessHumanName {
+            get {
+                return ResourceManager.GetString("BussinessHumanName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 位置 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelAddress {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司LOGO 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelCompanyImg {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelCompanyImg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 营业执照 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelCompanyLicense {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelCompanyLicense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 审核的内容 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelCompanyMessage {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelCompanyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelCompanyStatus {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelCompanyStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelCreateTime {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 员工数量 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelEmployeesCount {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelEmployeesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册时间 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelEstablishTime {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelEstablishTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司简介 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelIntroduction {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelIntroduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 公司名称 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelName {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 信用积分 的本地化字符串。
+        /// </summary>
+        public static string CompanyHumanModelScore {
+            get {
+                return ResourceManager.GetString("CompanyHumanModelScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 内容 的本地化字符串。
         /// </summary>
         public static string IconHumanContent {
@@ -444,6 +570,87 @@ namespace ShortRent.Resource.HumanData {
         public static string RoleHumanModelType {
             get {
                 return ResourceManager.GetString("RoleHumanModelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 出生日期 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelBirthday {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelBirthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建时间 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelCreateTime {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelCreateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 信用积分 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelCreditScore {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelCreditScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 身份证号 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelIdCard {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelIdCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 姓名 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelName {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 排序 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelPerOrder {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelPerOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 性别 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelSex {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelSex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 回执信息 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelTypeMessage {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelTypeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 审核状态 的本地化字符串。
+        /// </summary>
+        public static string UserTypeAuditHumanModelTypeUser {
+            get {
+                return ResourceManager.GetString("UserTypeAuditHumanModelTypeUser", resourceCulture);
             }
         }
     }

@@ -103,7 +103,7 @@ var TableInit = function () {
                 formatter: function (value, row, index) {
                     var result = "";
                     result += "<a href='/Role/Edit/" + value + "'>编辑</a><span>&nbsp;|&nbsp;</span>";
-                    result += "<a href='/Role/Edit/" + value + "'>分配权限</a>";
+                    result += "<a href='/Role/Privileges/" + value + "'>分配权限</a>";
                     return result;
                 }
             }],

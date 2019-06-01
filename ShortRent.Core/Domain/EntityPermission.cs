@@ -10,6 +10,10 @@ namespace ShortRent.Core.Domain
     public class EntityPermission:BaseEntity
     {
         /// <summary>
+        /// 实体ID
+        /// </summary>
+        public int EntityId { get; set; }
+        /// <summary>
         /// 实体名称
         /// </summary>
         public string Name { get; set; }

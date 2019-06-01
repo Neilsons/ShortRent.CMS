@@ -1,14 +1,12 @@
-﻿using ShortRent.Core.Cache;
+﻿using ShortRent.Core;
+using ShortRent.Core.Cache;
 using ShortRent.Core.Config;
 using ShortRent.Core.Data;
 using ShortRent.Core.Domain;
 using ShortRent.Core.Log;
-using ShortRent.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShortRent.Service
 {
@@ -16,6 +14,7 @@ namespace ShortRent.Service
     {
         #region Fields
         private readonly IRepository<Manager> _managerRepository;
+        private readonly IRepository<EntityPermission> _entityRepository;
         private readonly ICacheManager _cacheManager;
         private readonly ILogger _logger;
         private readonly ApplicationConfig _config;
@@ -25,11 +24,14 @@ namespace ShortRent.Service
 
         #region  Construction
         public ManagerService(IRepository<Manager> managerRepository,
+                              IRepository<EntityPermission> entityRepository,
                               ICacheManager cacheManager,
+                              IEntityPermissionService entityPermissionService,
                               ILogger logger,
                               ApplicationConfig config)
         {
             this._managerRepository = managerRepository;
+            this._entityRepository = entityRepository;
             this._cacheManager = cacheManager;
             this._logger = logger;
             this._config = config;
@@ -162,6 +164,23 @@ namespace ShortRent.Service
             catch(Exception e)
             {
                 _logger.Debug("更新表单出错，数据库方面",e);
+                throw e;
+            }
+        }
+
+        public List<IGrouping<int?, Manager>> GetManagerGroup()
+        {
+            try
+            {
+                IEnumerable<IGrouping<int?,Manager>> managers = from m in _managerRepository.Entitys
+                               group m by m.Pid into g
+                               select g;
+                return managers.ToList();
+
+            }
+            catch(Exception e)
+            {
+                _logger.Debug("获得菜单权限出错",e);
                 throw e;
             }
         }

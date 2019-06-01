@@ -27,5 +27,7 @@ namespace ShortRent.Core.Data
         IEnumerable<T> Entitys { get; }
 
         IEnumerable<T> IncludeEntitys(string path);
+        IEnumerable<S> SqlQuery<S>(string sql, params object[] parameters);
+        int SqlCommand<W>(string sql, params object[] parameters);
     }
 }
