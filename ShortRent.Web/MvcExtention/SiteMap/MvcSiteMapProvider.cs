@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Xml.Linq;
 using AutoMapper;
 using ShortRent.Core.Cache;
+using ShortRent.Core.Domain;
 using ShortRent.Service;
 using ShortRent.Web.Models;
 
@@ -16,15 +17,17 @@ namespace ShortRent.Web.MvcExtention
     {
         #region  Field
         private readonly ICacheManager _cacheManager;
+        private readonly IPersonService _personService;
         private IEnumerable<ManagerBread> AllNodes { get; set; }
         private IEnumerable<ManagerBread> NodeTree { get; set; }
         //缓存其中的菜单列表
         private const string mvcSiteMapProviderCacheKey = nameof(MvcSiteMapProvider) + nameof(MvcSiteMapProvider.GetSiteMap);
         #endregion
         #region Contructor
-        public MvcSiteMapProvider(IManagerService managerService,IMapper mapper,ICacheManager cacheManager)
+        public MvcSiteMapProvider(IManagerService managerService,IPersonService personService,IMapper mapper,ICacheManager cacheManager)
         {
             this._cacheManager = cacheManager;
+            this._personService = personService;
             AllNodes =mapper.Map<List<ManagerBread>>(managerService.GetManagers().AsEnumerable());
             NodeTree= mapper.Map<List<ManagerBread>>(managerService.GetTreeViewManagers().AsEnumerable());
         }
@@ -38,7 +41,7 @@ namespace ShortRent.Web.MvcExtention
         {
             string action = context.RouteData.Values["action"] as string;
             string controller = context.RouteData.Values["controller"] as string;
-            ManagerBread current = AllNodes.SingleOrDefault(node => string.Equals(node.ActionName, action, StringComparison.OrdinalIgnoreCase)
+            ManagerBread current = AllNodes.FirstOrDefault(node => string.Equals(node.ActionName, action, StringComparison.OrdinalIgnoreCase)
             && string.Equals(node.ControllerName, controller, StringComparison.OrdinalIgnoreCase));
             List<ManagerBread> breadcrumb = new List<ManagerBread>();
             if(action!="Home")
@@ -102,11 +105,11 @@ namespace ShortRent.Web.MvcExtention
             int account = workContext.CurrentPerson.ID;
             string action = context.RouteData.Values["action"] as string;
             string controller = context.RouteData.Values["controller"] as string;
-            List<ManagerBread> nodes = CopyAndSetState(NodeTree.ToList(), controller, action);
+            List<ManagerBread> nodes = CopyAndSetState(NodeTree.ToList(), controller, action, account);
             return nodes;
             //return GetAuthorizedNodes(account, nodes);
         }
-        private List<ManagerBread> CopyAndSetState(List<ManagerBread> nodes,string controller,string action)
+        private List<ManagerBread> CopyAndSetState(List<ManagerBread> nodes,string controller,string action,int personId)
         {
             List<ManagerBread> copies = new List<ManagerBread>();
             if(action=="Create"||action=="Edit"||action=="Detail"||action=="Delete")
@@ -115,8 +118,10 @@ namespace ShortRent.Web.MvcExtention
             }
             else
             {
+                List<EntityPermission> entityPermissions = _personService.GetUserRoles(personId);
                 foreach (ManagerBread node in nodes)
                 {
+                    var Entity = entityPermissions.FirstOrDefault(c=>c.EntityId==node.ID);
                     ManagerBread copy = new ManagerBread();
                     copy.ClassIcons = node.ClassIcons;
                     copy.Color = node.Color;
@@ -129,7 +134,8 @@ namespace ShortRent.Web.MvcExtention
                             || (string.Equals(node.ActionName, action.Trim(), StringComparison.OrdinalIgnoreCase) &&
                             string.Equals(node.ControllerName, controller.Trim(), StringComparison.OrdinalIgnoreCase));
                     copy.Activity = node.Activity;
-                    copy.Childrens = CopyAndSetState(node.Childrens, controller, action);
+                    copy.Pid = (Entity == null&& string.IsNullOrWhiteSpace(node.ControllerName)==false ? 0 : 1);
+                    copy.Childrens = CopyAndSetState(node.Childrens, controller, action,personId);
                     copies.Add(copy);
                 }
                 _cacheManager.Remove(mvcSiteMapProviderCacheKey);

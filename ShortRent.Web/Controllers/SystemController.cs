@@ -10,8 +10,9 @@ namespace ShortRent.Web.Controllers
     public class SystemController : BaseController
     {
         // GET: System
-        public ActionResult InternalServerError()
+        public ActionResult InternalServerError(string aspxerrorpath)
         {
+            ViewBag.Url = aspxerrorpath;
             return View();
         }
         public ActionResult NotFound()

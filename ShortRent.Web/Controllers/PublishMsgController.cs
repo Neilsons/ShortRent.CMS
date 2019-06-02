@@ -136,7 +136,7 @@ namespace ShortRent.Web.Controllers
             }
             catch(Exception e)
             {
-                _logger.Debug("降低发布信息出现的顺序");
+                _logger.Debug("降低发布信息出现的顺序",e);
                 return Json(new AjaxJson() { HttpCodeResult = (int)HttpStatusCode.InternalServerError, Url = Url.Action(nameof(SystemController.InternalServerError), "System") });
             }
         }

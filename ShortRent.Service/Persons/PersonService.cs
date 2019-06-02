@@ -362,6 +362,23 @@ namespace ShortRent.Service
                 throw e;
             }
         }
+        public List<EntityPermission> GetUserRoles(int personId)
+        {
+            try
+            {
+                SqlParameter[] sqls = new SqlParameter[]
+               {
+                     new SqlParameter("@personId",personId)
+               };
+               var userRole=_personRepository.SqlQuery<EntityPermission>("SELECT e.EntityId,e.CreateTime,e.ID,e.IsDelete,e.Name,e.RoleInfoId FROM EntityPermission as e inner join UserRole as u on u.RoleId = e.RoleInfoId inner join Person as p  on p.id = u.PersonId where p.ID = @personId", sqls);
+                return userRole.ToList();
+            }
+            catch(Exception e)
+            {
+                _logger.Error("获取用户所拥有的菜单实体出错",e);
+                throw e;
+            }
+        }
         #endregion
 
     }

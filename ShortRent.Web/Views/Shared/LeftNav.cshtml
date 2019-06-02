@@ -49,17 +49,17 @@ foreach (ManagerBread node in nodes)
         highLight = "active";
         _class = "display-block";
     }
-    if (string.IsNullOrEmpty(node.ControllerName)==false  && string.IsNullOrEmpty(node.ActionName)==false&&node.Activity && node.Childrens.Any(c => c.Activity == true) == false)
+    if (string.IsNullOrEmpty(node.ControllerName)==false  && string.IsNullOrEmpty(node.ActionName)==false&&node.Activity && node.Childrens.Any(c => c.Activity == true) == false&&node.Pid==1)
     {
             <li class="@highLight">
                 <a href="/@node.ControllerName/@node.ActionName">
                     <i class="@node.ClassIcons" style="color:@node.Color;"></i> <span>@node.Name</span>
                 </a>
             </li>
-        }
-        else if (string.IsNullOrEmpty(node.ControllerName) == true && string.IsNullOrEmpty(node.ActionName) == true && node.Activity&&node.Childrens.Any(c=>c.Activity==true)==true)
-        {
-            
+    }
+    else if (string.IsNullOrEmpty(node.ControllerName) == true && string.IsNullOrEmpty(node.ActionName) == true && node.Activity&&node.Childrens.Any(c=>c.Activity==true&&c.Pid==1)==true && node.Pid == 1)
+    {
+
             <li class="treeview @IsOpen">
                 <a href="">
                     <i class="@node.ClassIcons" style="color:@node.Color;"></i> <span>@node.Name</span>

@@ -20,6 +20,7 @@ namespace ShortRent.Service
         List<Role> GetPersonRole(int id);
         void CreateUserRole(UserRole userRole);
         void DeleteUserRole(int id);
+        List<EntityPermission> GetUserRoles(int personId);
 
     }
 }
